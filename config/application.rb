@@ -16,5 +16,6 @@ module RafflesCsGo
   class Application < Rails::Application
     config.load_defaults 6.0
     config.generators.system_tests = nil
+    config.time_zone = 'America/Maceio'
   end
 end
