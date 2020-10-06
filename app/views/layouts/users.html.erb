@@ -32,6 +32,16 @@
             <span>Dashboard</span>
           <% end %>
         </li>
+        <% if current_user.is_admin == true %>
+          <span class="text-center">Admin</span>
+          <hr class="sidebar-divider my-0">
+          <li class="nav-item">
+            <%= link_to admins_users_index_path, class: 'nav-link' do %>
+              <i class="fas fa-users fa-tachometer-alt"></i>
+              <span>Usuários</span>
+            <% end %>
+          </li>
+        <% end %>
         <div class="text-center d-none d-md-inline">
           <button class="rounded-circle border-0" id="sidebarToggle"></button>
         </div>

@@ -1,0 +1,51 @@
+<div class="text-center">
+  <h4>Usuários cadastrados</h4>
+</div>
+<div class="card shadow mb-4">
+  <div class="card-body">
+    <div class="table-responsive">
+      <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+        <div class="row">
+          <div class="col-sm-12">
+            <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info">
+              <thead>
+                <tr role="row">
+                  <th>Nome</th>
+                  <th>E-mail</th>
+                  <th>Tipo de usuário</th>
+                  <th>Logado pela última vez em:</th>
+                  <th class="table-buttons">
+                    <%= link_to new_admins_user_path(@user), class: 'btn btn-success btn-circle' do %>
+                      <i class="fas fa-plus"></i>
+                    <% end %>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @users.each do |user| %>
+                  <tr role="row" class="odd">
+                    <td><%= user.first_name %> <%= user.last_name %></td>
+                    <td><%= user.email %></td>
+                    <td><%= user.is_admin %></td>
+                    <td><%= user.last_sign_in_at %></td>
+                    <td class="table-buttons">
+                      <%= link_to edit_admins_user_path(user), class: 'btn btn-info btn-circle' do %>
+                        <i class="fas fa-edit"></i>
+                      <% end %>
+                      <%= link_to admins_user_path(user), method: :delete, class: 'btn btn-danger btn-circle', data: { confirm: "Você tem certeza que deseja excluir o usuário #{user.email}?"} do %>
+                        <i class="fas fa-trash"></i>
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+            <% if @users.empty? %>
+              <tr>Não há usuários cadastrados</tr>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
