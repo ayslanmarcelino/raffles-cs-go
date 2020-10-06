@@ -1,0 +1,11 @@
+pt-BR:
+  admins:
+    users:
+      index:
+        registered_users: Usuários cadastrados
+        name: Nome completo
+        email: E-mail
+        user_type: Tipo de usuário
+        last_sign_in: Logado pela última vez em
+        delete_confirm: Você tem certeza que deseja excluir o usuário
+        no_user: Não há usuários cadastrados

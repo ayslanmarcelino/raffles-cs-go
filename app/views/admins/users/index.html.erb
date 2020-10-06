@@ -1,5 +1,5 @@
 <div class="text-center">
-  <h4>Usuários cadastrados</h4>
+  <h4><%= t('.registered_users') %></h4>
 </div>
 <div class="card shadow mb-4">
   <div class="card-body">
@@ -10,10 +10,10 @@
             <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info">
               <thead>
                 <tr role="row">
-                  <th>Nome</th>
-                  <th>E-mail</th>
-                  <th>Tipo de usuário</th>
-                  <th>Logado pela última vez em:</th>
+                  <th><%= t('.name') %></th>
+                  <th><%= t('.email') %></th>
+                  <th><%= t('.user_type') %></th>
+                  <th><%= t('.last_sign_in') %>:</th>
                   <th class="table-buttons">
                     <%= link_to new_admins_user_path(@user), class: 'btn btn-success btn-circle' do %>
                       <i class="fas fa-plus"></i>
@@ -27,12 +27,12 @@
                     <td><%= user.first_name %> <%= user.last_name %></td>
                     <td><%= user.email %></td>
                     <td><%= user.is_admin %></td>
-                    <td><%= user.last_sign_in_at %></td>
+                    <td><%= l(user.last_sign_in_at.to_datetime, format: :with_full_hour) %></td>
                     <td class="table-buttons">
                       <%= link_to edit_admins_user_path(user), class: 'btn btn-info btn-circle' do %>
                         <i class="fas fa-edit"></i>
                       <% end %>
-                      <%= link_to admins_user_path(user), method: :delete, class: 'btn btn-danger btn-circle', data: { confirm: "Você tem certeza que deseja excluir o usuário #{user.email}?"} do %>
+                      <%= link_to admins_user_path(user), method: :delete, class: 'btn btn-danger btn-circle', data: { confirm: "#{t('.delete_confirm')}: #{user.email}?" } do %>
                         <i class="fas fa-trash"></i>
                       <% end %>
                     </td>
@@ -41,7 +41,7 @@
               </tbody>
             </table>
             <% if @users.empty? %>
-              <tr>Não há usuários cadastrados</tr>
+              <tr><%= t('.no_user') %></tr>
             <% end %>
           </div>
         </div>
