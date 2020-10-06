@@ -2387,6 +2387,12 @@ fieldset:disabled a.btn {
   pointer-events: none;
 }
 
+.btn-pingo {
+  color: #fff;
+  background-color: #576db1;
+  border-color: #576db1;
+}
+
 .btn-primary {
   color: #fff;
   background-color: #4e73df;
@@ -3626,6 +3632,7 @@ input[type="button"].btn-block {
   position: relative;
   margin-bottom: 0;
   vertical-align: top;
+  margin-left: 42px;
 }
 
 .custom-control-label::before {
@@ -4855,6 +4862,21 @@ input[type="button"].btn-block {
   vertical-align: baseline;
   border-radius: 0.35rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.badge-type {
+  display: inline-block;
+  padding: 0.25em 0.4em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.35rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  width: 60%;
+  margin-left: 20%;
 }
 
 @media (prefers-reduced-motion: reduce) {

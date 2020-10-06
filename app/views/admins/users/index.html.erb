@@ -14,6 +14,7 @@
                   <th><%= t('.email') %></th>
                   <th><%= t('.user_type') %></th>
                   <th><%= t('.last_sign_in') %>:</th>
+                  <th><%= t('.sign_in_count') %></th>
                   <th class="table-buttons">
                     <%= link_to new_admins_user_path(@user), class: 'btn btn-success btn-circle' do %>
                       <i class="fas fa-plus"></i>
@@ -26,8 +27,13 @@
                   <tr role="row" class="odd">
                     <td><%= user.first_name %> <%= user.last_name %></td>
                     <td><%= user.email %></td>
-                    <td><%= user.is_admin %></td>
-                    <td><%= l(user.last_sign_in_at.to_datetime, format: :with_full_hour) %></td>
+                    <td>
+                      <span class="badge-type badge-<%= admin_color?(user.is_admin) %>">
+                        <%= admin?(user.is_admin) %>
+                      </span>
+                    </td>
+                    <td><%= last_sign_in_user(user.last_sign_in_at) %></td>
+                    <td><%= user.sign_in_count   %></td>
                     <td class="table-buttons">
                       <%= link_to edit_admins_user_path(user), class: 'btn btn-info btn-circle' do %>
                         <i class="fas fa-edit"></i>

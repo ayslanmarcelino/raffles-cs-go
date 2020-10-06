@@ -7,5 +7,10 @@ pt-BR:
         email: E-mail
         user_type: Tipo de usuário
         last_sign_in: Logado pela última vez em
+        sign_in_count: Qtd. de login
         delete_confirm: Você tem certeza que deseja excluir o usuário
         no_user: Não há usuários cadastrados
+        admin: Administrador
+        user: Usuário
+        no_access: Usuário ainda não acessou o sistema
+
