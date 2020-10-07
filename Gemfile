@@ -5,7 +5,9 @@ ruby '2.5.1'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
+gem 'faker'
 gem 'jbuilder', '~> 2.7'
+gem 'kaminari'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'pry'
 gem 'puma', '~> 4.1'
@@ -13,8 +15,6 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 gem 'rails-i18n'
 gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 4.0'
-gem 'kaminari'
-
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
