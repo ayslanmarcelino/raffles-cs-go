@@ -1,0 +1,22 @@
+<div class="text-center">
+  <h4><%= t('.new_item_type') %></h4>
+</div>
+<div class="row card">
+  <%= render partial: 'admins/item_types/components/errors.html.erb' %>
+  <div class="col-lg-12 m-t-10">
+    <%= form_with(model: [:admins, @item_type], local: true) do |form| %>
+      <%= render partial: 'admins/item_types/components/form.html.erb',
+            locals: { form: form } %>
+      <div class="row btn-actions">
+        <div class="col-lg-6">
+          <%= link_to t('.cancel'), admins_item_types_path, class: 'btn btn-danger btn-user btn-block' %>
+        </div>
+        <div class="col-lg-6">
+          <button class="btn btn-success btn-user btn-block">
+            <%= t('.create_new') %>
+          </button>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -3,8 +3,10 @@
 Rails.application.routes.draw do
   namespace :admins do
     get 'users/index'
+    get 'item_types/index'
 
     resources :users
+    resources :item_types
   end
 
   get 'dashboard/index'
