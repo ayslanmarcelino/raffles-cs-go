@@ -25,7 +25,7 @@
               <tbody>
                 <% @users.each do |user| %>
                   <tr role="row" class="odd">
-                    <td><%= user.first_name %> <%= user.last_name %></td>
+                    <td><%= full_name_formatted(user) %></td>
                     <td><%= user.email %></td>
                     <td>
                       <span class="badge-type badge-<%= admin_color?(user.is_admin) %>">

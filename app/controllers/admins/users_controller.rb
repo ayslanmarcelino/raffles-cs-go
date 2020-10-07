@@ -6,7 +6,7 @@ module Admins
     before_action :set_user, only: %w[edit update destroy]
 
     def index
-      @users = User.all.order(:first_name).page(params[:page])
+      @users = User.all.order(last_sign_in_at: :desc).page(params[:page])
     end
 
     def new
