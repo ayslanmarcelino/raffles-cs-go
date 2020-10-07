@@ -16,3 +16,6 @@
         updated_at: Atualizado em
       item_type:
         description: Nome do tipo de item
+      skin_type:
+        description: Tipo da skin
+        item_type: Tipo de item

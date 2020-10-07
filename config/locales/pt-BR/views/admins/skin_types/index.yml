@@ -6,6 +6,6 @@ pt-BR:
         description: Tipo da skin
         created_at: Criado em
         updated_at: Atualizado em
-        skin_type: Tipo de skin
+        skin_type: Tipo de item
         delete_confirm: Você deseja excluir o tipo de skin
         no_skin_types: Não há tipos de skin cadastrados
