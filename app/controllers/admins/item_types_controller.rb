@@ -5,7 +5,7 @@ module Admins
     before_action :set_item_type, only: %w[edit update destroy]
 
     def index
-      @item_types = ItemType.all.order(:description)
+      @item_types = ItemType.all.order(:description).page(params[:page])
     end
 
     def new

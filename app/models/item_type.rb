@@ -14,6 +14,7 @@
 class ItemType < ApplicationRecord
   validates_uniqueness_of :description
   before_save :downcase_description
+  paginates_per 25
 
   def downcase_description
     description.downcase!
