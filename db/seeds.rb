@@ -17,3 +17,8 @@ User.create!(email: Faker::Internet.email,
              last_name: Faker::Name.last_name,
              nickname: Faker::Name.name,
              is_admin: false)
+
+item_type = ItemType.create!(description: 'Faca')
+
+SkinType.create!(description: 'Karambit',
+                 item_type_id: item_type.id)

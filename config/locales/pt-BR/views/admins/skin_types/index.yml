@@ -1,0 +1,11 @@
+pt-BR:
+  admins:
+    skin_types:
+      index:
+        registered_skin_types: Tipos de skin cadastrados
+        description: Tipo da skin
+        created_at: Criado em
+        updated_at: Atualizado em
+        skin_type: Tipo de skin
+        delete_confirm: Você deseja excluir o tipo de skin
+        no_skin_types: Não há tipos de skin cadastrados
