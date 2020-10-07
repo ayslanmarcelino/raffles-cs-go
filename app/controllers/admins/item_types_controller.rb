@@ -3,6 +3,7 @@
 module Admins
   class ItemTypesController < AdminsController
     before_action :set_item_type, only: %w[edit update destroy]
+    rescue_from ActiveRecord::InvalidForeignKey, with: :invalid_foreign_key
 
     def index
       @item_types = ItemType.all.order(:description).page(params[:page])
@@ -29,6 +30,10 @@ module Admins
     end
 
     private
+
+    def invalid_foreign_key
+      redirect_to admins_item_types_path, notice: 'Tipo de skin não pode ser excluída, pois há um tipo de item associado'
+    end
 
     def set_item_type
       @item_type = ItemType.find(params[:id])

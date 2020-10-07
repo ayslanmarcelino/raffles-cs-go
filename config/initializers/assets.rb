@@ -13,4 +13,4 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # folder are already added.
 Rails.application.config.assets.precompile += %w[users.js users.css
                                                  logo.png profile-avatar.png
-                                                 favicon.ico ]
+                                                 favicon.ico .svg]

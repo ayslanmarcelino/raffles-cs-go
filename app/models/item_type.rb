@@ -19,4 +19,10 @@ class ItemType < ApplicationRecord
   def downcase_description
     description.downcase!
   end
+
+  def item_type_formatted
+    humanize_item_type = description.humanize
+
+    humanize_item_type.split.map { |x| x[0].upcase + x[1..-1] }.join(' ')
+  end
 end
