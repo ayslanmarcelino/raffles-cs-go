@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     get 'users/index'
     get 'item_types/index'
     get 'skin_types/index'
-    get 'skin_exterior/index'
+    get 'skin_exteriors/index'
 
     resources :users
     resources :item_types
