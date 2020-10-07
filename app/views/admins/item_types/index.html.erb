@@ -26,6 +26,14 @@
                     <td><%= item_type_formatted(item.description) %></td>
                     <td><%= l(item.created_at.to_datetime, format: :with_full_hour) %></td>
                     <td><%= l(item.updated_at.to_datetime, format: :with_full_hour) %></td>
+                    <td class="table-buttons">
+                      <%= link_to edit_admins_item_type_path(item), class: 'btn btn-info btn-circle' do %>
+                        <i class="fas fa-edit"></i>
+                      <% end %>
+                      <%= link_to admins_item_type_path(item), method: :delete, class: 'btn btn-danger btn-circle', data: { confirm: "#{t('.delete_confirm')}: #{item.description}?" } do %>
+                        <i class="fas fa-trash"></i>
+                      <% end %>
+                    </td>
                   </tr>
                 <% end %>
               </tbody>
