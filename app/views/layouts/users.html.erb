@@ -33,7 +33,7 @@
             <span><%= t('.dashboard') %></span>
           <% end %>
         </li>
-        <% if current_user.is_admin == true %>
+        <% if current_user.is_admin %>
           <span class="text-center"><%= t('.admin') %></span>
           <hr class="sidebar-divider my-0">
           <li class="nav-item">

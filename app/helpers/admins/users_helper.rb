@@ -8,7 +8,7 @@ module Admins
     end
 
     def admin_color?(admin)
-      admin == true ? 'success' : 'primary'
+      admin ? 'success' : 'primary'
     end
 
     def admin?(admin)
