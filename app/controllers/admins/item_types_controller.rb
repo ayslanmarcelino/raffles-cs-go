@@ -13,7 +13,7 @@ module Admins
     def create
       @item_type = ItemType.new(params_item_type)
 
-      @item_type.save ? (redirect_to new_admins_item_type_path, notice: 'Tipo de item cadastrado com sucesso') : (render :new)
+      @item_type.save ? (redirect_to admins_item_types_path, notice: 'Tipo de item cadastrado com sucesso') : (render :new)
     end
 
     private

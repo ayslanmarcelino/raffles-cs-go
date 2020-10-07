@@ -12,6 +12,7 @@
                 <tr role="row">
                   <th><%= t('.description') %></th>
                   <th><%= t('.created_at') %></th>
+                  <th><%= t('.updated_at') %></th>
                   <th class="table-buttons">
                     <%= link_to new_admins_item_type_path(@item_type), class: 'btn btn-success btn-circle' do %>
                       <i class="fas fa-plus"></i>
@@ -22,8 +23,9 @@
               <tbody>
                 <% @item_types.each do |item| %>
                   <tr role="row" class="odd">
-                    <td><%= item.description %></td>
-                    <td><%= item.created_at %></td>
+                    <td><%= item_type_formatted(item.description) %></td>
+                    <td><%= l(item.created_at.to_datetime, format: :with_full_hour) %></td>
+                    <td><%= l(item.updated_at.to_datetime, format: :with_full_hour) %></td>
                   </tr>
                 <% end %>
               </tbody>

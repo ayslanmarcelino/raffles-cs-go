@@ -5,4 +5,5 @@ pt-BR:
         registered_item_types: Tipos de item cadastrados
         description: Nome do item
         created_at: Criado em
+        updated_at: Atualizado em
         no_item_types: Não há tipos de item cadastrados

@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module Admins
   module UsersHelper
     def full_name_formatted(admin)
       full_name = "#{admin.first_name} #{admin.last_name}"
       humanize_full_name = full_name.humanize
 
-      humanize_full_name.split.map{ |x| x[0].upcase + x[1..-1] }.join(' ')
+      humanize_full_name.split.map { |x| x[0].upcase + x[1..-1] }.join(' ')
     end
 
     def admin_color?(admin)
