@@ -24,10 +24,10 @@
               <tbody>
                 <% @skin_types.each do |skin| %>
                   <tr role="row" class="odd">
-                    <td><%= skin.description %></td>
+                    <td><%= skin_type_formatted(skin.description) %></td>
                     <td><%= l(skin.created_at.to_datetime, format: :with_full_hour) %></td>
                     <td><%= l(skin.updated_at.to_datetime, format: :with_full_hour) %></td>
-                    <td><%= skin.item_type.description %></td>
+                    <td><%= item_type_formatted(skin.item_type.description) %></td>
                     <td class="table-buttons">
                       <%= link_to edit_admins_skin_type_path(skin), class: 'btn btn-info btn-circle' do %>
                         <i class="fas fa-edit"></i>
