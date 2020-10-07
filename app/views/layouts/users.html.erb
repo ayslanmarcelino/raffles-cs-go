@@ -43,18 +43,29 @@
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to admins_item_types_index_path, class: 'nav-link' do %>
-              <i class="fas fa-shapes"></i>
-              <span><%= t('.item_types') %></span>
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to admins_skin_types_index_path, class: 'nav-link' do %>
-              <div class="svg">
-                <%= show_svg('hand-gun.svg') %>
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+              <i class="fas fa-fw fa-list-alt"></i>
+              <span><%= t('.categories') %></span>
+            </a>
+            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar" style="">
+              <div class="bg-white py-2 collapse-inner rounded">
+                <a>
+                  <%= link_to admins_skin_exterior_index_path, class: 'collapse-item' do %>
+                    <span><%= t('.skin_exterior') %></span>
+                  <% end %>
+                </a>
+                <a>
+                  <%= link_to admins_item_types_index_path, class: 'collapse-item' do %>
+                    <span><%= t('.item_types') %></span>
+                  <% end %>
+                </a>
+                <a>
+                  <%= link_to admins_skin_types_index_path, class: 'collapse-item' do %>
+                    <span><%= t('.skin_types') %></span>
+                  <% end %>
+                </a>
               </div>
-              <span><%= t('.skin_types') %></span>
-            <% end %>
+            </div>
           </li>
         <% end %>
         <div class="text-center d-none d-md-inline">
