@@ -13,7 +13,7 @@
 # Indexes
 #
 #  index_skin_types_on_description   (description) UNIQUE
-#  index_skin_types_on_item_type_id  (item_type_id) UNIQUE
+#  index_skin_types_on_item_type_id  (item_type_id)
 #
 # Foreign Keys
 #
