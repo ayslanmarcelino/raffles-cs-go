@@ -1,0 +1,4 @@
+pt-BR:
+  layouts:
+    devise:
+      enterprise_instagram: '@pingo.rifas'

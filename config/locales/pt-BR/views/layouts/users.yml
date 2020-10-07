@@ -1,0 +1,12 @@
+pt-BR:
+  layouts:
+    users:
+      enterprise_instagram: '@pingo.rifas'
+      dashboard: Dashboard
+      admin: Admin
+      users: Usuários
+      exit: Sair
+      copyright: Copyright
+      enterprise: Pingo Rifas
+      developed_by: Desenvolvido por
+      developer: Ayslan Marcelino
