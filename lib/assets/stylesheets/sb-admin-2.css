@@ -9969,6 +9969,11 @@ a:focus {
   background-size: cover;
 }
 
+.svg {
+  width: 20px;
+  display: inline-table;
+}
+
 .bg-gray-100 {
   background-color: #f8f9fc !important;
 }
