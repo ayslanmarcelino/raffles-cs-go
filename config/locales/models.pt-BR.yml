@@ -14,3 +14,5 @@
         is_admin: Administrador?
         created_at: Criado em
         updated_at: Atualizado em
+      item_type:
+        description: Nome do tipo de item

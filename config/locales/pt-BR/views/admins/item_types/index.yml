@@ -1,0 +1,8 @@
+pt-BR:
+  admins:
+    item_types:
+      index:
+        registered_item_types: Tipos de item cadastrados
+        description: Nome do item
+        created_at: Criado em
+        no_item_types: Não há tipos de item cadastrados
