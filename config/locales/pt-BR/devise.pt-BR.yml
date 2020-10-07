@@ -54,7 +54,7 @@ pt-BR:
         email: E-mail
         password: Senha
         password_confirmation: Confirmação da senha
-        new_user: Novo cadastro
+        new_user: Cadastre-se
         cancel: Cancelar
         create_new: Cadastrar
         have_account: Já tem conta? Entre aqui

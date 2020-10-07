@@ -17,4 +17,13 @@
   </body>
   <%= javascript_pack_tag 'application' %>
   <%= javascript_include_tag 'users' %>
+  <% if notice %>
+    <script>
+      $.bootstrapGrowl('<%= notice %>', {
+        type: 'success',
+        stackup_spacing: 10,
+        width: '100%'
+      });
+    </script>
+  <% end %>
 </html>

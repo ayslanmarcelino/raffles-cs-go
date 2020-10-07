@@ -10017,6 +10017,18 @@ a:focus {
   font-size: 1.2rem;
 }
 
+.fa-instagram {
+  color: #c13584;
+}
+
+.fa-twitch {
+  color: #6441a5;
+}
+
+.fa-whatsapp {
+  color: #28d247;
+}
+
 .text-gray-100 {
   color: #f8f9fc !important;
 }
@@ -10150,6 +10162,14 @@ a:focus {
 
 .dropdown.no-arrow .dropdown-toggle::after {
   display: none;
+}
+
+.href-class {
+  color: inherit;
+}
+
+.icons-header {
+  margin-left: 10px;
 }
 
 .sidebar .nav-item.dropdown .dropdown-toggle::after,
