@@ -1,0 +1,7 @@
+pt-BR:
+  admins:
+    skin_exteriors:
+      new:
+        new_skin_type: Novo exterior de skin
+        cancel: Cancelar
+        create_new: Criar novo exterior de skin

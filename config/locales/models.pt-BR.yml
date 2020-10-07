@@ -14,6 +14,8 @@
         is_admin: Administrador?
         created_at: Criado em
         updated_at: Atualizado em
+      skin_exterior:
+        description: Exterior da skin
       item_type:
         description: Nome do tipo de item
       skin_type:

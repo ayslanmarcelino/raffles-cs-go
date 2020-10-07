@@ -1,5 +1,5 @@
 <div class="text-center">
-  <h4><%= t('.registered_skin_exteriors') %></h4>
+  <h4><%= t('.registered_skin_exterior') %></h4>
 </div>
 <div class="card shadow mb-4">
   <div class="card-body">
@@ -11,6 +11,7 @@
               <thead>
                 <tr role="row">
                   <th><%= t('.description') %></th>
+                  <th><%= t('.abbreviation') %></th>
                   <th><%= t('.created_at') %></th>
                   <th><%= t('.updated_at') %></th>
                   <th class="table-buttons">
@@ -21,16 +22,17 @@
                 </tr>
               </thead>
               <tbody>
-                <% @skin_exteriors.each do |skin| %>
+                <% @skin_exteriors.each do |exterior| %>
                   <tr role="row" class="odd">
-                    <td><%= skin.description %></td>
-                    <td><%= l(skin.created_at.to_datetime, format: :with_full_hour) %></td>
-                    <td><%= l(skin.updated_at.to_datetime, format: :with_full_hour) %></td>
+                    <td><%= formatted_field_capitalize(exterior.description) %></td>
+                    <td><%= abbreviation(exterior.description) %></td>
+                    <td><%= l(exterior.created_at.to_datetime, format: :with_full_hour) %></td>
+                    <td><%= l(exterior.updated_at.to_datetime, format: :with_full_hour) %></td>
                     <td class="table-buttons">
-                      <%= link_to edit_admins_skin_exterior_path(skin), class: 'btn btn-info btn-circle' do %>
+                      <%= link_to edit_admins_skin_exterior_path(exterior), class: 'btn btn-info btn-circle' do %>
                         <i class="fas fa-edit"></i>
                       <% end %>
-                      <%= link_to admins_skin_exterior_path(skin), method: :delete, class: 'btn btn-danger btn-circle', data: { confirm: "#{t('.delete_confirm')}: #{skin.description}?" } do %>
+                      <%= link_to admins_skin_exterior_path(exterior), method: :delete, class: 'btn btn-danger btn-circle', data: { confirm: "#{t('.delete_confirm')}: #{exterior.description}?" } do %>
                         <i class="fas fa-trash"></i>
                       <% end %>
                     </td>

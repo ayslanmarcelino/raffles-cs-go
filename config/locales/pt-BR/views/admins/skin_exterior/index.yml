@@ -1,0 +1,11 @@
+pt-BR:
+  admins:
+    skin_exteriors:
+      index:
+        registered_skin_exterior: Exterior de skins cadastrados
+        description: Exterior da skin
+        abbreviation: Abreviação
+        created_at: Criado em
+        updated_at: Atualizado em
+        delete_confirm: Você deseja excluir o tipo de skin
+        no_skin_exterior: Não há exterior de skins cadastrados

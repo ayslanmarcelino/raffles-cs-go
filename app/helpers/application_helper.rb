@@ -4,4 +4,14 @@ module ApplicationHelper
       raw file.read
     end
   end
+
+  def formatted_field_capitalize(field)
+    humanize_field = field.humanize
+
+    humanize_field.split.map { |x| x[0].upcase + x[1..-1] }.join(' ')
+  end
+
+  def abbreviation(exterior)
+    exterior.split.map(&:first).join.upcase
+  end
 end
