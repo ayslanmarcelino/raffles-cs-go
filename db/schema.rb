@@ -45,13 +45,6 @@ ActiveRecord::Schema.define(version: 2020_10_08_205553) do
     t.index ["description"], name: "index_transaction_types_on_description", unique: true
   end
 
-  create_table "type_acquisitions", force: :cascade do |t|
-    t.string "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["description"], name: "index_type_acquisitions_on_description", unique: true
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
