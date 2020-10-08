@@ -12,4 +12,11 @@
 #  index_transaction_types_on_description  (description) UNIQUE
 #
 class TransactionType < ApplicationRecord
+  validates_uniqueness_of :description
+  before_save :downcase_description
+  paginates_per 25
+
+  def downcase_description
+    description.downcase!
+  end
 end
