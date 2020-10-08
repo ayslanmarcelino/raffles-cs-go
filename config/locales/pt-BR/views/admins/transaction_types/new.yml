@@ -1,0 +1,7 @@
+pt-BR:
+  admins:
+    transaction_types:
+      new:
+        new_transaction_type: Novo tipo de transação
+        cancel: Cancelar
+        create_new: Criar novo tipo de transação

@@ -1,0 +1,11 @@
+pt-BR:
+  admins:
+    transaction_types:
+      index:
+        registered_transaction_types: Tipos de transação cadastrados
+        description: Tipo de transação
+        created_at: Criado em
+        updated_at: Atualizado em
+        skin_type: Tipo de item
+        delete_confirm: Você deseja excluir o tipo de transação
+        no_transaction_types: Não há tipos de transação cadastrados

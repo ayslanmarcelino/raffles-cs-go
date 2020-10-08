@@ -16,17 +16,17 @@ module Admins
     def create
       @transaction_type = TransactionType.new(params_transaction_type)
 
-      @transaction_type.save ? (redirect_to admins_transaction_types_path, notice: 'Tipo de skin cadastrado com sucesso') : (render :new)
+      @transaction_type.save ? (redirect_to admins_transaction_types_path, notice: 'Tipo de transação cadastrado com sucesso') : (render :new)
     end
 
     def edit; end
 
     def update
-      @transaction_type.update(params_transaction_type) ? (redirect_to admins_transaction_types_path, notice: 'Tipo de skin atualizado com sucesso') : (render :edit)
+      @transaction_type.update(params_transaction_type) ? (redirect_to admins_transaction_types_path, notice: 'Tipo de transação atualizado com sucesso') : (render :edit)
     end
 
     def destroy
-      @transaction_type.destroy ? (redirect_to admins_transaction_types_path, notice: 'Tipo de skin excluído com sucesso') : (render :index)
+      @transaction_type.destroy ? (redirect_to admins_transaction_types_path, notice: 'Tipo de transação excluído com sucesso') : (render :index)
     end
 
     private
