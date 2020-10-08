@@ -32,7 +32,7 @@
                       <%= link_to edit_admins_skin_exterior_path(exterior), class: 'btn btn-info btn-circle' do %>
                         <i class="fas fa-edit"></i>
                       <% end %>
-                      <%= link_to admins_skin_exterior_path(exterior), method: :delete, class: 'btn btn-danger btn-circle', data: { confirm: "#{t('.delete_confirm')}: #{exterior.description}?" } do %>
+                      <%= link_to admins_skin_exterior_path(exterior), method: :delete, class: 'btn btn-danger btn-circle', data: { confirm: "#{t('.delete_confirm')}: #{formatted_field_capitalize(exterior.description)} #{abbreviation(exterior.description)}?" } do %>
                         <i class="fas fa-trash"></i>
                       <% end %>
                     </td>
