@@ -21,16 +21,16 @@
                 </tr>
               </thead>
               <tbody>
-                <% @item_types.each do |item| %>
+                <% @item_types.each do |type| %>
                   <tr role="row" class="odd">
-                    <td><%= item_type_formatted(item.description) %></td>
-                    <td><%= l(item.created_at.to_datetime, format: :with_full_hour) %></td>
-                    <td><%= l(item.updated_at.to_datetime, format: :with_full_hour) %></td>
+                    <td><%= formatted_field_capitalize(type.description) %></td>
+                    <td><%= l(type.created_at.to_datetime, format: :with_full_hour) %></td>
+                    <td><%= l(type.updated_at.to_datetime, format: :with_full_hour) %></td>
                     <td class="table-buttons">
-                      <%= link_to edit_admins_item_type_path(item), class: 'btn btn-info btn-circle' do %>
+                      <%= link_to edit_admins_item_type_path(type), class: 'btn btn-info btn-circle' do %>
                         <i class="fas fa-edit"></i>
                       <% end %>
-                      <%= link_to admins_item_type_path(item), method: :delete, class: 'btn btn-danger btn-circle', data: { confirm: "#{t('.delete_confirm')}: #{item_type_formatted(item.description)}?" } do %>
+                      <%= link_to admins_item_type_path(type), method: :delete, class: 'btn btn-danger btn-circle', data: { confirm: "#{t('.delete_confirm')}: #{formatted_field_capitalize(type.description)}?" } do %>
                         <i class="fas fa-trash"></i>
                       <% end %>
                     </td>

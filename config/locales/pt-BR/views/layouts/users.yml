@@ -5,8 +5,11 @@ pt-BR:
       dashboard: Dashboard
       admin: Admin
       users: Usuários
+      categories: Categorias
+      skin_exterior: Exterior de skin
       item_types: Tipos de item
       skin_types: Tipos de skin
+      exterior: Exterior
       exit: Sair
       copyright: Copyright
       enterprise: Pingo Rifas
