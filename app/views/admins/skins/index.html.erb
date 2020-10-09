@@ -1,0 +1,56 @@
+<div class="text-center">
+  <h4><%= t('.registered_skins') %></h4>
+</div>
+<div class="card shadow mb-4">
+  <div class="card-body">
+    <div class="table-responsive">
+      <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+        <div class="row">
+          <div class="col-sm-12">
+            <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info">
+              <thead>
+                <tr role="row">
+                  <th><%= t('.skin_type') %></th>
+                  <th><%= t('.description') %></th>
+                  <th><%= t('.price_steam') %></th>
+                  <th><%= t('.price_paid') %></th>
+                  <th><%= t('.sale_price') %></th>
+                  <th><%= t('.is_available') %></th>
+                  <th class="table-buttons">
+                    <%= link_to new_admins_skin_path(@skin), class: 'btn btn-success btn-circle' do %>
+                      <i class="fas fa-plus"></i>
+                    <% end %>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @skins.each do |skin| %>
+                  <tr role="row" class="odd">
+                    <td><%= formatted_field_capitalize(skin.skin_type.description) %></td>
+                    <td><%= formatted_field_capitalize(skin.description) %></td>
+                    <td><%= skin.price_steam %></td>
+                    <td><%= skin.price_paid %></td>
+                    <td><%= skin.sale_price %></td>
+                    <td><%= skin.is_available %></td>
+                    <td class="table-buttons">
+                      <%= link_to edit_admins_skin_path(skin), class: 'btn btn-info btn-circle' do %>
+                        <i class="fas fa-edit"></i>
+                      <% end %>
+                      <%= link_to admins_skin_path(skin), method: :delete, class: 'btn btn-danger btn-circle', data: { confirm: "#{t('.delete_confirm')}: #{formatted_field_capitalize(skin.skin_type.description)} #{formatted_field_capitalize(skin.description)}?" } do %>
+                        <i class="fas fa-trash"></i>
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+            <% if @skins.empty? %>
+              <tr><%= t('.no_skins') %></tr>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <%= paginate @skins %>
+    </div>
+  </div>
+</div>

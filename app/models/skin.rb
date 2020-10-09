@@ -36,7 +36,13 @@
 #
 class Skin < ApplicationRecord
   belongs_to :item_type
-  belongs_to :skins_type
-  belongs_to :skins_exterior
+  belongs_to :skin_type
+  belongs_to :skin_exterior
   belongs_to :transaction_type
+  before_save :downcase_description
+  paginates_per 25
+
+  def downcase_description
+    description.downcase!
+  end
 end
