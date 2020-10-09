@@ -4,7 +4,7 @@ module Admins
     before_action :set_skin_type, only: %w[new create edit]
     before_action :set_skin_exterior, only: %w[new create edit]
     before_action :set_transaction_type, only: %w[new create edit]
-    before_action :set_skin, only: %w[edit update destroy]
+    before_action :set_skin, only: %w[show edit update destroy]
 
     def index
       @skins = Skin.all.order(:description).page(params[:page])
