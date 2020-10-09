@@ -55,7 +55,7 @@ module Admins
     def params_skin
       params.require(:skin).permit(:description, :float, :price_steam, :price_csmoney, :price_paid, :sale_price,
                                    :is_stattrak, :has_sticker, :is_available, :item_type_id, :skin_type_id,
-                                   :skin_exterior_id, :transaction_type_id)
+                                   :skin_exterior_id, :transaction_type_id, :image_skin)
     end
   end
 end

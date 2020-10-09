@@ -41,6 +41,7 @@ class Skin < ApplicationRecord
   belongs_to :transaction_type
   before_save :downcase_description
   paginates_per 25
+  has_one_attached :image_skin
 
   def downcase_description
     description.downcase!
