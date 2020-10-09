@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   def show_svg(path)
     File.open("lib/assets/images/#{path}", 'rb') do |file|
@@ -13,5 +15,9 @@ module ApplicationHelper
 
   def abbreviation(exterior)
     exterior.split.map(&:first).join.upcase
+  end
+
+  def translate_boolean(boolean)
+    boolean ? t('application.positive') : t('application.negative')
   end
 end
