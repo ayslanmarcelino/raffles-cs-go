@@ -21,3 +21,5 @@
       skin_type:
         description: Tipo da skin
         item_type: Tipo de item
+      transaction_type:
+        description: Tipo de transação

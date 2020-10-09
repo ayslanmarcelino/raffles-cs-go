@@ -2387,12 +2387,6 @@ fieldset:disabled a.btn {
   pointer-events: none;
 }
 
-.btn-pingo {
-  color: #fff;
-  background-color: #576db1;
-  border-color: #576db1;
-}
-
 .btn-primary {
   color: #fff;
   background-color: #4e73df;
@@ -6508,6 +6502,10 @@ button.bg-dark:focus {
   background-color: #42444e !important;
 }
 
+.color-white {
+  color: white;
+}
+
 .bg-white {
   background-color: #fff !important;
 }
@@ -9958,8 +9956,8 @@ a:focus {
 }
 
 .bg-gradient-pingo {
-  background-color: #576db1;
-  background-image: linear-gradient(180deg, #576db1 10%, #c2cbe5 100%);
+  background-color: black;
+  background-image: linear-gradient(180deg, black 10%, #c2cbe5 100%);
   background-size: cover;
 }
 

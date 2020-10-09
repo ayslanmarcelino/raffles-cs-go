@@ -34,7 +34,7 @@
           <% end %>
         </li>
         <% if current_user.is_admin %>
-          <span class="text-center"><%= t('.admin') %></span>
+          <span class="text-center color-white"><%= t('.admin') %></span>
           <hr class="sidebar-divider my-0">
           <li class="nav-item">
             <%= link_to admins_users_index_path, class: 'nav-link' do %>
@@ -47,7 +47,7 @@
               <i class="fas fa-fw fa-list-alt"></i>
               <span><%= t('.categories') %></span>
             </a>
-            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar" style="">
+            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
               <div class="bg-white py-2 collapse-inner rounded">
                 <a>
                   <%= link_to admins_skin_exteriors_index_path, class: 'collapse-item' do %>
@@ -62,6 +62,11 @@
                 <a>
                   <%= link_to admins_skin_types_index_path, class: 'collapse-item' do %>
                     <span><%= t('.skin_types') %></span>
+                  <% end %>
+                </a>
+                <a>
+                  <%= link_to admins_transaction_types_index_path, class: 'collapse-item' do %>
+                    <span><%= t('.transaction_types') %></span>
                   <% end %>
                 </a>
               </div>
