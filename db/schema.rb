@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_08_205553) do
+ActiveRecord::Schema.define(version: 2020_10_09_005347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,29 @@ ActiveRecord::Schema.define(version: 2020_10_08_205553) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["description"], name: "index_skin_types_on_description", unique: true
     t.index ["item_type_id"], name: "index_skin_types_on_item_type_id"
+  end
+
+  create_table "skins", force: :cascade do |t|
+    t.string "description", null: false
+    t.float "float", null: false
+    t.float "price_steam", null: false
+    t.float "price_csmoney", null: false
+    t.float "price_paid", null: false
+    t.float "sale_price", null: false
+    t.boolean "is_stattrak", default: false
+    t.boolean "has_sticker", default: false
+    t.boolean "is_available", default: true
+    t.bigint "item_type_id", null: false
+    t.bigint "skin_type_id", null: false
+    t.bigint "skin_exterior_id", null: false
+    t.bigint "transaction_type_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["description"], name: "index_skins_on_description", unique: true
+    t.index ["item_type_id"], name: "index_skins_on_item_type_id"
+    t.index ["skin_exterior_id"], name: "index_skins_on_skin_exterior_id"
+    t.index ["skin_type_id"], name: "index_skins_on_skin_type_id"
+    t.index ["transaction_type_id"], name: "index_skins_on_transaction_type_id"
   end
 
   create_table "transaction_types", force: :cascade do |t|
@@ -67,4 +90,8 @@ ActiveRecord::Schema.define(version: 2020_10_08_205553) do
   end
 
   add_foreign_key "skin_types", "item_types"
+  add_foreign_key "skins", "item_types"
+  add_foreign_key "skins", "skin_exteriors"
+  add_foreign_key "skins", "skin_types"
+  add_foreign_key "skins", "transaction_types"
 end

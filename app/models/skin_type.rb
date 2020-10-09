@@ -24,6 +24,7 @@ class SkinType < ApplicationRecord
   validates_uniqueness_of :description
   before_save :downcase_description
   paginates_per 25
+  has_many :skin
 
   def downcase_description
     description.downcase!
