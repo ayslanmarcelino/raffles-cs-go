@@ -1,5 +1,9 @@
 module Admins
   class SkinsController < AdminsController
+    before_action :set_item_type, only: %w[new create edit]
+    before_action :set_skin_type, only: %w[new create edit]
+    before_action :set_skin_exterior, only: %w[new create edit]
+    before_action :set_transaction_type, only: %w[new create edit]
     before_action :set_skin, only: %w[edit update destroy]
 
     def index
@@ -28,12 +32,30 @@ module Admins
 
     private
 
+    def set_item_type
+      @item_types = ItemType.all.order(:description)
+    end
+
+    def set_skin_type
+      @skin_types = SkinType.all.order(:description)
+    end
+
+    def set_skin_exterior
+      @skin_exteriors = SkinExterior.all.order(:description)
+    end
+
+    def set_transaction_type
+      @transaction_types = TransactionType.all.order(:description)
+    end
+
     def set_skin
       @skin = Skin.find(params[:id])
     end
 
     def params_skin
-      params.require(:skin).permit(:description, :item_type_id)
+      params.require(:skin).permit(:description, :float, :price_steam, :price_csmoney, :price_paid, :sale_price,
+                                   :is_stattrak, :has_sticker, :is_available, :item_type_id, :skin_type_id,
+                                   :skin_exterior_id, :transaction_type_id)
     end
   end
 end

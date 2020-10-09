@@ -29,4 +29,10 @@ class SkinType < ApplicationRecord
   def downcase_description
     description.downcase!
   end
+
+  def skin_type_formatted
+    humanize_skin_type = description.humanize
+
+    humanize_skin_type.split.map { |x| x[0].upcase + x[1..-1] }.join(' ')
+  end
 end

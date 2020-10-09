@@ -22,4 +22,10 @@ class SkinExterior < ApplicationRecord
   def downcase_description
     description.downcase!
   end
+
+  def skin_exterior_formatted
+    humanize_skin_exterior = description.humanize
+
+    humanize_skin_exterior.split.map { |x| x[0].upcase + x[1..-1] }.join(' ')
+  end
 end
