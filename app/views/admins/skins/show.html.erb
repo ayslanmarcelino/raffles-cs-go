@@ -1,10 +1,12 @@
 <div class="text-center">
-  <h4><%= t('.skin') %>: <%= @skin.description %></h4>
+  <h4><%= t('.skin') %>: <%= formatted_field_capitalize(@skin.description) %></h4>
 </div>
-<%= link_to :back, class: 'col-lg-1 btn btn-dark btn-user' do %>
-  <i class="fas fa-arrow-left"></i>
-  <%= t('.back') %>
-<%end%>
+<div class="col-xs-12">
+  <%= link_to :back, class: 'col-xs-3 btn btn-secondary btn-user' do %>
+    <i class="fas fa-arrow-left"></i>
+    <%= t('.back') %>
+  <% end %>
+</div>
 <div class="card shadow mb-4">
   <div class="card-body">
     <div class="table-responsive">
@@ -24,7 +26,7 @@
                           <div class="modal-dialog">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h4 class="modal-title"><%= t('.image_of_skin') %>: <%= @skin.description %></h4>
+                                <h4 class="modal-title"><%= t('.image_skin') %>: <%= @skin.description %></h4>
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                               </div>
                               <div class="modal-body">
@@ -68,31 +70,31 @@
                   </tr>
                   <tr>
                     <th><%= t('.price_steam') %></th>
-                    <td><%= @skin.price_steam %></td>
+                    <td><%= number_to_currency(@skin.price_steam) %></td>
                   </tr>
                   <tr>
                     <th><%= t('.price_csmoney') %></th>
-                    <td><%= @skin.price_csmoney %></td>
+                    <td><%= number_to_currency(@skin.price_csmoney) %></td>
                   </tr>
                   <tr>
                     <th><%= t('.price_paid') %></th>
-                    <td><%= @skin.price_paid %></td>
+                    <td><%= number_to_currency(@skin.price_paid) %></td>
                   </tr>
                   <tr>
                     <th><%= t('.sale_price') %></th>
-                    <td><%= @skin.sale_price %></td>
+                    <td><%= number_to_currency(@skin.sale_price) %></td>
                   </tr>
                   <tr>
-                    <th><%= t('.is_stattrak') %></th>
-                    <td><%= @skin.is_stattrak %></td>
+                    <th><%= t('.is_stattrak') %>?</th>
+                    <td><%= translate_boolean(@skin.is_stattrak) %></td>
                   </tr>
                   <tr>
-                    <th><%= t('.has_sticker') %></th>
-                    <td><%= @skin.has_sticker %></td>
+                    <th><%= t('.has_sticker') %>?</th>
+                    <td><%= translate_boolean(@skin.has_sticker) %></td>
                   </tr>
                   <tr>
-                    <th><%= t('.is_available') %></th>
-                    <td><%= @skin.is_available %></td>
+                    <th><%= t('.is_available') %>?</th>
+                    <td><%= translate_boolean(@skin.is_available) %></td>
                   </tr>
                   <tr>
                     <th><%= t('.transaction_type') %></th>

@@ -1,0 +1,7 @@
+pt-BR:
+  admins:
+    skins:
+      new:
+        new_skin: Nova skin
+        cancel: Cancelar
+        create_new: Criar nova skin

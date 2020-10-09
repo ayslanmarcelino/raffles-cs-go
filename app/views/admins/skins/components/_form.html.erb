@@ -48,22 +48,18 @@
 </div>
 <div class="col-lg-12" style="display: inline-flex; text-align: center;">
   <div class="col-lg-4 custom-switch">
-    <%= form.label(:is_stattrak) %>
+    <%= form.label(:is_stattrak) %>?
     <%= form.check_box(:is_stattrak, class: "custom-control-input", id: "is_stattrak_switch") %>
     <label class="custom-control-label switch-user" for="is_stattrak_switch"></label>
   </div>
   <div class="col-lg-4 custom-switch">
-    <%= form.label(:has_sticker) %>
+    <%= form.label(:has_sticker) %>?
     <%= form.check_box(:has_sticker, class: "custom-control-input", id: "has_sticker_switch") %>
     <label class="custom-control-label switch-user" for="has_sticker_switch"></label>
   </div>
   <div class="col-lg-4 custom-switch">
-    <%= form.label(:is_available) %>
+    <%= form.label(:is_available) %>?
     <%= form.check_box(:is_available, class: "custom-control-input", id: "is_available_switch") %>
     <label class="custom-control-label switch-user" for="is_available_switch"></label>
   </div>
 </div>
-
-<script>
-  document.getElementById("selectedFile").click()
-</script>
