@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get 'skin_exteriors/index'
     get 'transaction_types/index'
     get 'skins/index'
+    get 'dashboard/index'
 
     resources :users
     resources :item_types

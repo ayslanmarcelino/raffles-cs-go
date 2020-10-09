@@ -1,0 +1,150 @@
+<h3 class="text-center">
+  <%= t('.metrics') %>
+</h3>
+<div class="col-12 d-inline-flex f-wrap">
+  <div class="card bg-success text-white mb-4 col-lg-3">
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="mr-3">
+          <div class="text-white-75 small">
+            <%= t('.count_users') %>
+          </div>
+          <div class="text-lg font-weight-bold">
+            <%= @dashboard[:users].count %>
+          </div>
+        </div>
+        <i class="fas fa-users fa-tachometer-alt"></i>
+      </div>
+    </div>
+    <div class="card-footer d-flex align-items-center justify-content-between">
+      <a class="small text-white stretched-link"><%= t('.view_users') %></a>
+      <div class="small text-white">
+        <svg class="svg-inline--fa fa-angle-right fa-w-8" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" data-fa-i2svg="">
+          <path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="card bg-primary text-white mb-4 col-lg-3">
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="mr-3">
+          <div class="text-white-75 small">
+            <%= t('.count_skins_available') %>
+          </div>
+          <div class="text-lg font-weight-bold">
+            <%= @dashboard[:skins_available].count %>
+          </div>
+        </div>
+        <div class="svg">
+          <%= show_svg('hand-gun.svg') %>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer d-flex align-items-center justify-content-between">
+      <a class="small text-white stretched-link"><%= t('.view_skins_available') %></a>
+      <div class="small text-white">
+        <svg class="svg-inline--fa fa-angle-right fa-w-8" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" data-fa-i2svg="">
+          <path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+<h3 class="text-center">
+  <%= t('.financial') %>
+</h3>
+<div class="col-12 d-inline-flex f-wrap">
+  <div class="card bg-steam text-white mb-4 col-lg-3">
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="mr-3">
+          <div class="text-white-75 small">
+            <%= t('.price_total_steam') %>
+          </div>
+          <div class="text-lg font-weight-bold">
+            <%= number_to_currency(@dashboard[:price_total_steam]) %>
+          </div>
+        </div>
+        <i class="fas fa-money"></i>
+      </div>
+    </div>
+    <div class="card-footer d-flex align-items-center justify-content-between">
+      <a class="small text-white stretched-link"><%= t('.view_price_total_steam') %></a>
+      <div class="small text-white">
+        <svg class="svg-inline--fa fa-angle-right fa-w-8" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" data-fa-i2svg="">
+          <path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="card bg-csmoney text-white mb-4 col-lg-3">
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="mr-3">
+          <div class="text-white-75 small">
+            <%= t('.price_total_csmoney') %>
+          </div>
+          <div class="text-lg font-weight-bold">
+            <%= number_to_currency(@dashboard[:price_total_csmoney]) %>
+          </div>
+        </div>
+        <i class="fas fa-money"></i>
+      </div>
+    </div>
+    <div class="card-footer d-flex align-items-center justify-content-between">
+      <a class="small text-white stretched-link"><%= t('.view_price_total_csmoney') %></a>
+      <div class="small text-white">
+        <svg class="svg-inline--fa fa-angle-right fa-w-8" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" data-fa-i2svg="">
+          <path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="card bg-warning text-white mb-4 col-lg-3">
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="mr-3">
+          <div class="text-white-75 small">
+            <%= t('.price_total_paid') %>
+          </div>
+          <div class="text-lg font-weight-bold">
+            <%= number_to_currency(@dashboard[:price_total_paid]) %>
+          </div>
+        </div>
+        <i class="fas fa-money"></i>
+      </div>
+    </div>
+    <div class="card-footer d-flex align-items-center justify-content-between">
+      <a class="small text-white stretched-link"><%= t('.view_price_total_paid') %></a>
+      <div class="small text-white">
+        <svg class="svg-inline--fa fa-angle-right fa-w-8" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" data-fa-i2svg="">
+          <path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="card bg-<%= @dashboard[:difference_value].positive? ? 'success' : 'danger' %> text-white mb-4 col-lg-3">
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="mr-3">
+          <div class="text-white-75 small">
+            <%= t('.difference_value') %>
+          </div>
+          <div class="text-lg font-weight-bold">
+            <%= number_to_currency(@dashboard[:difference_value]) %>
+          </div>
+        </div>
+        <i class="fas fa-money"></i>
+      </div>
+    </div>
+    <div class="card-footer d-flex align-items-center justify-content-between">
+      <a class="small text-white stretched-link"><%= t('.view_difference_value') %></a>
+      <div class="small text-white">
+        <svg class="svg-inline--fa fa-angle-right fa-w-8" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" data-fa-i2svg="">
+          <path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>

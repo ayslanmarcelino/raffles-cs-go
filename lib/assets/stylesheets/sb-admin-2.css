@@ -9977,6 +9977,18 @@ a:focus {
   display: inline-table;
 }
 
+.f-wrap {
+  flex-wrap: wrap;
+}
+
+.bg-steam {
+  background-color: #156495 !important;
+}
+
+.bg-csmoney {
+  background-color: #d55f92 !important;
+}
+
 .bg-gray-100 {
   background-color: #f8f9fc !important;
 }
