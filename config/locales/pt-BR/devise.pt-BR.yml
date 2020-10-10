@@ -50,7 +50,7 @@ pt-BR:
       new:
         first_name: Primeiro nome
         last_name: Sobrenome
-        nickname: Como prefere ser chamado
+        nickname: Como prefere ser chamado?
         email: E-mail
         password: Senha
         password_confirmation: Confirmação da senha
