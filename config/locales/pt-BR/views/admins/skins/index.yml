@@ -1,0 +1,15 @@
+pt-BR:
+  admins:
+    skins:
+      index:
+        registered_skins: Skins cadastradas
+        skin_type: Tipo da skin
+        description: Nome do item
+        price_steam: Preço na Steam
+        price_paid: Preço pago
+        sale_price: Preço de venda
+        is_available: Está disponível
+        created_at: Criado em
+        updated_at: Atualizado em
+        delete_confirm: Você deseja excluir a skin
+        no_skins: Não há skins cadastradas

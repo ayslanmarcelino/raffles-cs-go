@@ -1,24 +1,7 @@
-# README
+# Rifas - @pingo.rifas
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Repositório criado com intuito de criar um sistema básico que inicialmente irá controlar o estoque de pessoas que trabalham com rifas, compras e/ou vendas de skins relacionadas a CS:GO.
 
-Things you may want to cover:
+## Hospedagem
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Hoje o sistema de testes está atualmente hospedado no *Heroku*, onde é possível acessar clicando [aqui](https://testes-pingo-rifas.herokuapp.com/). Apenas usuário do tipo `admin` consegue visualizar todas as funcionalidades, caso deseje o acesso, entre em contato comigo que liberarei para você. =D

@@ -1,0 +1,50 @@
+<div class="text-center">
+  <h4><%= t('.registered_transaction_types') %></h4>
+</div>
+<div class="card shadow mb-4">
+  <div class="card-body">
+    <div class="table-responsive">
+      <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+        <div class="row">
+          <div class="col-sm-12">
+            <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info">
+              <thead>
+                <tr role="row">
+                  <th><%= t('.description') %></th>
+                  <th><%= t('.created_at') %></th>
+                  <th><%= t('.updated_at') %></th>
+                  <th class="table-buttons">
+                    <%= link_to new_admins_transaction_type_path(@transaction_type), class: 'btn btn-success btn-circle' do %>
+                      <i class="fas fa-plus"></i>
+                    <% end %>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @transaction_types.each do |transaction| %>
+                  <tr role="row" class="odd">
+                    <td><%= formatted_field_capitalize(transaction.description) %></td>
+                    <td><%= l(transaction.created_at.to_datetime, format: :with_full_hour) %></td>
+                    <td><%= l(transaction.updated_at.to_datetime, format: :with_full_hour) %></td>
+                    <td class="table-buttons">
+                      <%= link_to edit_admins_transaction_type_path(transaction), class: 'btn btn-info btn-circle' do %>
+                        <i class="fas fa-edit"></i>
+                      <% end %>
+                      <%= link_to admins_transaction_type_path(transaction), method: :delete, class: 'btn btn-danger btn-circle', data: { confirm: "#{t('.delete_confirm')}: #{formatted_field_capitalize(transaction.description)}?" } do %>
+                        <i class="fas fa-trash"></i>
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+            <% if @transaction_types.empty? %>
+              <tr><%= t('.no_transaction_types') %></tr>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <%= paginate @transaction_types %>
+    </div>
+  </div>
+</div>

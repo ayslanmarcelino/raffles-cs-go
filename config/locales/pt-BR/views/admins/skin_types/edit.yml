@@ -1,0 +1,7 @@
+pt-BR:
+  admins:
+    skin_types:
+      edit:
+        editing: Você está editando o tipo de skin
+        cancel: Cancelar
+        edit: Editar tipo de skin

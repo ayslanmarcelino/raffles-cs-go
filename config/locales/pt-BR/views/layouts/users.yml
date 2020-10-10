@@ -1,0 +1,19 @@
+pt-BR:
+  layouts:
+    users:
+      enterprise_instagram: '@pingo.rifas'
+      dashboard: Dashboard
+      admin: Admin
+      users: Usuários
+      categories: Categorias
+      skin_exterior: Exterior de skin
+      item_types: Tipos de item
+      skin_types: Tipos de skin
+      transaction_types: Tipos de transação
+      skins: Skins
+      exterior: Exterior
+      exit: Sair
+      copyright: Copyright
+      enterprise: Pingo Rifas
+      developed_by: Desenvolvido por
+      developer: Ayslan Marcelino

@@ -1,0 +1,41 @@
+'pt-BR':
+  activerecord:
+    models:
+      user:
+        one: Usuário
+    attributes:
+      user:
+        first_name: Primeiro nome
+        last_name: Último nome
+        nickname: Apelido
+        email: E-mail
+        password: Senha
+        password_confirmation: Confirmação da senha
+        is_admin: Administrador?
+        created_at: Criado em
+        updated_at: Atualizado em
+      skin_exterior:
+        description: Exterior de skin
+      item_type:
+        description: Nome do tipo de item
+      skin_type:
+        description: Tipo da skin
+        item_type: Tipo do item
+      transaction_type:
+        description: Tipo de transação
+      skin:
+        description: Nome da skin
+        image_skin: Imagem da skin
+        float: Float
+        price_steam: Preço da Steam
+        price_csmoney: Preço do CS.money
+        price_paid: Preço pago
+        sale_price: Valor de venda
+        is_stattrak: É stattrak
+        has_sticker: Tem sticker
+        is_available: Está disponível
+        item_type: Tipo do item
+        skin_type: Tipo da skin
+        skin_exterior: Exterior da skin
+        transaction_type: Tipo da transação
+

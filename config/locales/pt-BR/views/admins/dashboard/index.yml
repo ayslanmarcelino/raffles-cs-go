@@ -1,0 +1,14 @@
+pt-BR:
+  admins:
+    dashboard:
+      index:
+        metrics: Métricas
+        count_users: Quantidade de usuários
+        view_users: Visualizar usuários
+        count_skins_available: Quantidade de skins disponíveis
+        view_skins_available: Visualizar skins disponíveis
+        financial: Financeiro
+        price_total_steam: Valor inventário - Steam
+        price_total_csmoney: Valor inventário - CS.money
+        price_total_paid: Valor total pago
+        difference_value: Diferença de valor - Steam/Pago

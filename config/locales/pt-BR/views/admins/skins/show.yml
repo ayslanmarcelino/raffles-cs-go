@@ -1,0 +1,22 @@
+pt-BR:
+  admins:
+    skins:
+      show:
+        back: Voltar
+        image_skin: Imagem da skin
+        close: Fechar
+        view: Visualizar
+        full_name: Skin
+        description: Nome da skin
+        float: Float
+        price_steam: Preço da Steam
+        price_csmoney: Preço do CS.money
+        price_paid: Preço pago
+        sale_price: Valor de venda
+        is_stattrak: É stattrak
+        has_sticker: Tem sticker
+        is_available: Está disponível
+        item_type: Tipo do item
+        skin_type: Tipo da skin
+        skin_exterior: Exterior da skin
+        transaction_type: Tipo da transação

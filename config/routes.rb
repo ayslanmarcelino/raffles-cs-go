@@ -1,3 +1,25 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  namespace :admins do
+    get 'users/index'
+    get 'item_types/index'
+    get 'skin_types/index'
+    get 'skin_exteriors/index'
+    get 'transaction_types/index'
+    get 'skins/index'
+    get 'dashboard/index'
+
+    resources :users
+    resources :item_types
+    resources :skin_types
+    resources :skin_exteriors
+    resources :transaction_types
+    resources :skins
+  end
+
+  get 'dashboard/index'
+  devise_for :users
+
+  root to: 'dashboard#index'
 end

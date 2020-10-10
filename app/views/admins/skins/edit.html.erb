@@ -1,0 +1,22 @@
+<div class="text-center">
+  <h4><%= t('.editing') %>: <%= formatted_field_capitalize(@skin.description) %></h4>
+</div>
+<div class="row card">
+  <%= render partial: 'admins/skins/components/errors.html.erb' %>
+  <div class="col-lg-12 m-t-10">
+    <%= form_with(model: [:admins, @skin], local: true) do |form| %>
+      <%= render partial: 'admins/skins/components/form.html.erb',
+            locals: { form: form } %>
+      <div class="row btn-actions">
+        <div class="col-lg-6">
+          <%= link_to t('.cancel'), admins_skins_path, class: 'btn btn-danger btn-user btn-block' %>
+        </div>
+        <div class="col-lg-6">
+          <button class="btn btn-primary btn-user btn-block">
+            <%= t('.edit') %>
+          </button>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
