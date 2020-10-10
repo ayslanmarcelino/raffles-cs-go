@@ -14,7 +14,6 @@ module Dashboard
 
     def financial_information
       {
-        skins_available: info[:skins_available],
         price_total_steam: info[:price_total_steam],
         price_total_csmoney: info[:price_total_csmoney],
         price_total_paid: info[:price_total_paid],
@@ -24,7 +23,6 @@ module Dashboard
 
     def info
       {
-        skins_available: list_skins_available,
         price_total_steam: total_inventory_steam,
         price_total_csmoney: total_inventory_csmoney,
         price_total_paid: total_inventory_paid,
