@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admins
   class DashboardController < AdminsController
     before_action :metrics_service, only: %i[index]
