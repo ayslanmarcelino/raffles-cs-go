@@ -1,6 +1,5 @@
 module Admins
   class SkinsController < AdminsController
-    before_action :set_transaction_type, only: %w[new create edit]
     before_action :set_skin, only: %w[show edit update destroy]
 
     def index
@@ -42,17 +41,18 @@ module Admins
         inspect_url = skin['actions'].first['link'] if skin['actions'].present?
         exists_skin = Skin.find_by(id_steam: assetid)
 
-        sleep(5)
+        sleep(15)
         if exists_skin
-          exists_skin.price_steam = price_steam(skin['market_name']).present? ? price_steam(skin['market_name']).scan(/[,0-9]/).join().sub(',', '.').to_f : 0
+          exists_skin.price_steam = price_steam(skin['market_name']).scan(/[,0-9]/).join().sub(',', '.').to_f
           exists_skin.save
           next
         end
 
-        next if skin['name'].include?('Case') || skin['name'].include?('Medal') || skin['name'].include?('★') || skin['name'].include?('Graffiti')
+        next if skin['name'].include?('Case')
+        next if skin['name'].include?('Graffiti')
+        next if skin['name'].include?('Medal')
 
-        sleep(5)
-        inspect_url = skin['actions'].first['link'] if skin['actions'].present?
+        sleep(15)
 
         skin_model = Skin.new
         skin_model.id_steam = assetid
@@ -61,8 +61,8 @@ module Admins
         skin_model.exterior = skin['descriptions'].present? ? exterior(skin) : 'Nenhum'
         skin_model.image_skin = skin['actions'].present? ? image_skin(assetid, inspect_url) : ''
         skin_model.float = skin['actions'].present? ? inspect_skin(assetid, inspect_url) : 0
-        skin_model.price_steam = price_steam(skin['market_name']).present? ? price_steam(skin['market_name']).scan(/[,0-9]/).join().sub(',', '.').to_f : 0
-        skin_model.first_price_steam = price_steam(skin['market_name']).present? ? price_steam(skin['market_name']).scan(/[,0-9]/).join().sub(',', '.').to_f : 0
+        skin_model.price_steam = price_steam(skin['market_name']).scan(/[,0-9]/).join().sub(',', '.').to_f
+        skin_model.first_price_steam = price_steam(skin['market_name']).scan(/[,0-9]/).join().sub(',', '.').to_f
         skin_model.has_sticker = sticker?(skin)
         skin_model.is_stattrak = stattrak?(skin)
         skin_model.save
@@ -70,6 +70,16 @@ module Admins
     end
 
     private
+
+    def set_skin
+      @skin = Skin.find(params[:id])
+    end
+
+    def params_skin
+      params.require(:skin).permit(:description, :float, :price_steam,
+                                   :price_csmoney, :price_paid, :sale_price,
+                                   :is_stattrak, :has_sticker, :is_available)
+    end
 
     def exterior(skin)
       skin['descriptions'].each do |description|
@@ -99,7 +109,7 @@ module Admins
     end
 
     def price_steam(name)
-      name.include?('™') ? new_name = name.sub('™', '%E2%84%A2') : new_name = name.sub('\u2605', '★')
+      name.include?('™') ? new_name = name.sub('™', '%E2%84%A2') : new_name = name.sub('★', '%E2%98%85')
       url = "https://steamcommunity.com/market/priceoverview/?currency=7&appid=730&market_hash_name=#{new_name}"
       resp = RestClient.get(url)
 
@@ -107,7 +117,7 @@ module Admins
     end
 
     def inspect_skin(assetid, url)
-      steam_id = 76561198345749032
+      steam_id = 76_561_198_345_749_032
       url_fixed = 'https://api.csgofloat.com/?url=steam://rungame/730/76561202255233023/+csgo_econ_action_preview%20S'
       url_with_steamid_and_assetid = "#{steam_id}A#{assetid}"
       number_after_assetid = 'D' + url.partition('%D').last
@@ -118,7 +128,7 @@ module Admins
     end
 
     def image_skin(assetid, url)
-      steam_id = 76561198345749032
+      steam_id = 76_561_198_345_749_032
       url_fixed = 'https://api.csgofloat.com/?url=steam://rungame/730/76561202255233023/+csgo_econ_action_preview%20S'
       url_with_steamid_and_assetid = "#{steam_id}A#{assetid}"
       number_after_assetid = 'D' + url.partition('%D').last
@@ -133,20 +143,6 @@ module Admins
         return id.second['id'] if id.second['classid'] == class_id
       end
       false
-    end
-
-    def set_transaction_type
-      @transaction_types = TransactionType.all.order(:description)
-    end
-
-    def set_skin
-      @skin = Skin.find(params[:id])
-    end
-
-    def params_skin
-      params.require(:skin).permit(:description, :float, :price_steam,
-                                   :price_csmoney, :price_paid, :sale_price,
-                                   :is_stattrak, :has_sticker, :is_available)
     end
   end
 end
