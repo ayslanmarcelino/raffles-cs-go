@@ -60,26 +60,21 @@ ActiveRecord::Schema.define(version: 2020_10_09_022719) do
   end
 
   create_table "skins", force: :cascade do |t|
+    t.bigint "id_steam", null: false
     t.string "description", null: false
+    t.string "exterior"
+    t.string "image_skin"
     t.float "float", null: false
     t.float "price_steam", null: false
-    t.float "price_csmoney", null: false
-    t.float "price_paid", null: false
-    t.float "sale_price", null: false
+    t.float "price_csmoney", default: 0.0
+    t.float "price_paid", default: 0.0
+    t.float "sale_price", default: 0.0
     t.boolean "is_stattrak", default: false
     t.boolean "has_sticker", default: false
     t.boolean "is_available", default: true
-    t.bigint "item_type_id", null: false
-    t.bigint "skin_type_id", null: false
-    t.bigint "skin_exterior_id", null: false
-    t.bigint "transaction_type_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["description"], name: "index_skins_on_description", unique: true
-    t.index ["item_type_id"], name: "index_skins_on_item_type_id"
-    t.index ["skin_exterior_id"], name: "index_skins_on_skin_exterior_id"
-    t.index ["skin_type_id"], name: "index_skins_on_skin_type_id"
-    t.index ["transaction_type_id"], name: "index_skins_on_transaction_type_id"
+    t.index ["id_steam"], name: "index_skins_on_id_steam", unique: true
   end
 
   create_table "transaction_types", force: :cascade do |t|
@@ -112,8 +107,4 @@ ActiveRecord::Schema.define(version: 2020_10_09_022719) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "skin_types", "item_types"
-  add_foreign_key "skins", "item_types"
-  add_foreign_key "skins", "skin_exteriors"
-  add_foreign_key "skins", "skin_types"
-  add_foreign_key "skins", "transaction_types"
 end

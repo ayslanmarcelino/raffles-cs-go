@@ -13,6 +13,7 @@ gem 'pry'
 gem 'puma', '~> 4.1'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 gem 'rails-i18n'
+gem 'rest-client'
 gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 4.0'
 

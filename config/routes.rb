@@ -15,7 +15,11 @@ Rails.application.routes.draw do
     resources :skin_types
     resources :skin_exteriors
     resources :transaction_types
-    resources :skins
+    resources :skins do
+      collection do
+        get 'search'
+      end
+    end
   end
 
   get 'dashboard/index'

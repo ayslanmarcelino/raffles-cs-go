@@ -1,5 +1,8 @@
 <div class="text-center">
-  <h4><%= t('.registered_skins') %></h4>
+  <h4><%= t('.registered_skins') %>: <%= @skins.count %></h4>
+  <%= link_to search_admins_skins_path, class: 'btn btn-dark', method: :get, remote: true do %>
+    <i class="fas fa-refresh"></i>
+  <% end %>
 </div>
 <div class="card shadow mb-4">
   <div class="card-body">
@@ -10,7 +13,6 @@
             <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info">
               <thead>
                 <tr role="row">
-                  <th><%= t('.skin_type') %></th>
                   <th><%= t('.description') %></th>
                   <th><%= t('.price_steam') %></th>
                   <th><%= t('.price_paid') %></th>
@@ -26,8 +28,7 @@
               <tbody>
                 <% @skins.each do |skin| %>
                   <tr role="row" class="odd">
-                    <td><%= formatted_field_capitalize(skin.skin_type.description) %></td>
-                    <td><%= formatted_field_capitalize(skin.description) %></td>
+                    <td><%= skin.description %></td>
                     <td><%= number_to_currency(skin.price_steam) %></td>
                     <td><%= number_to_currency(skin.price_paid) %></td>
                     <td><%= number_to_currency(skin.sale_price) %></td>
@@ -39,7 +40,7 @@
                       <%= link_to edit_admins_skin_path(skin), class: 'btn btn-info ' do %>
                         <i class="fas fa-edit"></i>
                       <% end %>
-                      <%= link_to admins_skin_path(skin), method: :delete, class: 'btn btn-danger ', data: { confirm: "#{t('.delete_confirm')}: #{formatted_field_capitalize(skin.skin_type.description)} #{formatted_field_capitalize(skin.description)}?" } do %>
+                      <%= link_to admins_skin_path(skin), method: :delete, class: 'btn btn-danger ', data: { confirm: "#{t('.delete_confirm')}: #{skin.description}?" } do %>
                         <i class="fas fa-trash"></i>
                       <% end %>
                     </td>
