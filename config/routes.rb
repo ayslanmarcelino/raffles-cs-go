@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :skins do
       collection do
         get 'search'
+        get 'refresh_skins'
       end
     end
   end

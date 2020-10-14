@@ -1,7 +1,14 @@
 <div class="text-center">
   <h4><%= t('.registered_skins') %>: <%= @skins.count %></h4>
   <%= link_to search_admins_skins_path, class: 'btn btn-dark', method: :get, remote: true do %>
+    <%= t('.search_new_items') %>
     <i class="fas fa-refresh"></i>
+  <% end %>
+  <% if @skins.count.positive? %>
+    <%= link_to refresh_skins_admins_skins_path, class: 'btn btn-dark', method: :get, remote: true do %>
+      <%= t('.refresh_existing_items') %>
+      <i class="fas fa-refresh"></i>
+    <% end %>
   <% end %>
 </div>
 <div class="card shadow mb-4">
@@ -18,10 +25,6 @@
                   <th><%= t('.price_paid') %></th>
                   <th><%= t('.sale_price') %></th>
                   <th><%= t('.is_available') %>?</th>
-                  <th class="table-buttons">
-                    <%= link_to new_admins_skin_path(@skin), class: 'btn btn-success btn-circle' do %>
-                      <i class="fas fa-plus"></i>
-                    <% end %>
                   </th>
                 </tr>
               </thead>

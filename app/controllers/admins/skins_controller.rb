@@ -3,7 +3,7 @@ module Admins
     before_action :set_skin, only: %w[show edit update destroy]
 
     def index
-      @skins = Skin.all.order(:description)
+      @skins = Skin.all.order(price_steam: :desc)
     end
 
     def new
@@ -27,27 +27,36 @@ module Admins
     end
 
     def search
-      # criar método 2 each (atualizar e criar)
-      # tirar o include?('★') e ver uma forma de trazer o nome e valor da skin com estrela
-      # remover medalhas e caixas do inventário
+      search_skins
+    end
 
-      url = 'https://steamcommunity.com/id/ayslanmarcelino/inventory/json/730/2'
-      resp = RestClient.get(url)
-      rg_inventory = JSON.parse(resp.body)['rgInventory']
-      @skins_api = JSON.parse(resp.body)['rgDescriptions'].values
+    def refresh_skins
+      update_skins
+    end
+
+    private
+
+    def set_skin
+      @skin = Skin.find(params[:id])
+    end
+
+    def params_skin
+      params.require(:skin).permit(:description, :float, :price_steam,
+                                   :price_csmoney, :price_paid, :sale_price,
+                                   :is_stattrak, :has_sticker, :is_available)
+    end
+
+    def search_skins
+      requisition_api
 
       @skins_api.each do |skin|
-        assetid = assetid(rg_inventory, skin['classid'])
         inspect_url = skin['actions'].first['link'] if skin['actions'].present?
+        assetid = assetid(@rg_inventory, skin['classid'])
         exists_skin = Skin.find_by(id_steam: assetid)
 
         sleep(15)
-        if exists_skin
-          exists_skin.price_steam = price_steam(skin['market_name']).scan(/[,0-9]/).join().sub(',', '.').to_f
-          exists_skin.save
-          next
-        end
 
+        next if exists_skin
         next if skin['name'].include?('Case')
         next if skin['name'].include?('Graffiti')
         next if skin['name'].include?('Medal')
@@ -69,16 +78,28 @@ module Admins
       end
     end
 
-    private
+    def update_skins
+      requisition_api
 
-    def set_skin
-      @skin = Skin.find(params[:id])
+      @skins_api.each do |skin|
+        assetid = assetid(@rg_inventory, skin['classid'])
+        exists_skin = Skin.find_by(id_steam: assetid)
+        sleep(10)
+
+        if exists_skin
+          exists_skin.price_steam = price_steam(skin['market_name']).scan(/[,0-9]/).join().sub(',', '.').to_f
+          exists_skin.has_sticker = sticker?(skin)
+          exists_skin.save
+          next
+        end
+      end
     end
 
-    def params_skin
-      params.require(:skin).permit(:description, :float, :price_steam,
-                                   :price_csmoney, :price_paid, :sale_price,
-                                   :is_stattrak, :has_sticker, :is_available)
+    def requisition_api
+      url = 'https://steamcommunity.com/id/ayslanmarcelino/inventory/json/730/2'
+      resp = RestClient.get(url)
+      @rg_inventory = JSON.parse(resp.body)['rgInventory']
+      @skins_api = JSON.parse(resp.body)['rgDescriptions'].values
     end
 
     def exterior(skin)
