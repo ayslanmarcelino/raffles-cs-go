@@ -17,6 +17,30 @@
               <div class="table-responsive">
                 <table class="table">
                   <tr>
+                    <th><%= t('.image_skin') %></th>
+                    <td>
+                      <button class="btn btn-primary" data-toggle="modal" data-target="#skin">
+                        <%= t('.view') %>
+                      </button>
+                      <div id="skin" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h4 class="modal-title"><%= t('.image_skin') %>: <%= @skin.description %></h4>
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                              <%= image_tag(@skin.image_skin) %>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-dark" data-dismiss="modal"><%= t('.close') %></button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
                     <th><%= t('.description') %></th>
                     <td><%= @skin.description %></td>
                   </tr>

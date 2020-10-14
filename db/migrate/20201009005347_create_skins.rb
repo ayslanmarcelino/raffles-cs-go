@@ -3,10 +3,12 @@ class CreateSkins < ActiveRecord::Migration[6.0]
     create_table :skins do |t|
       t.bigint :id_steam, null: false
       t.string :description, null: false
+      t.string :description_color, null: false
       t.string :exterior
       t.string :image_skin
       t.float :float, null: false
-      t.float :price_steam, null: false
+      t.float :price_steam, default: 0
+      t.float :first_price_steam, default: 0
       t.float :price_csmoney, default: 0
       t.float :price_paid, default: 0
       t.float :sale_price, default: 0

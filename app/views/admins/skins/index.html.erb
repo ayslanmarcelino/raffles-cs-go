@@ -10,7 +10,7 @@
       <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
         <div class="row">
           <div class="col-sm-12">
-            <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info">
+            <table class="table table-bordered dataTable" style="background-color: #1F1F1F" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info">
               <thead>
                 <tr role="row">
                   <th><%= t('.description') %></th>
@@ -28,7 +28,9 @@
               <tbody>
                 <% @skins.each do |skin| %>
                   <tr role="row" class="odd">
-                    <td><%= skin.description %></td>
+                    <td style="color: #<%= skin.description_color %>">
+                      <%= skin.description %>
+                    </td>
                     <td><%= number_to_currency(skin.price_steam) %></td>
                     <td><%= number_to_currency(skin.price_paid) %></td>
                     <td><%= number_to_currency(skin.sale_price) %></td>
@@ -54,7 +56,6 @@
           </div>
         </div>
       </div>
-      <%= paginate @skins %>
     </div>
   </div>
 </div>
