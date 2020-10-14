@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admins
   class SkinsController < AdminsController
     before_action :set_skin, only: %w[show edit update destroy]
@@ -54,14 +56,14 @@ module Admins
         assetid = assetid(@rg_inventory, skin['classid'])
         exists_skin = Skin.find_by(id_steam: assetid)
 
-        sleep(15)
+        sleep(20)
 
         next if exists_skin
         next if skin['name'].include?('Case')
         next if skin['name'].include?('Graffiti')
         next if skin['name'].include?('Medal')
 
-        sleep(15)
+        sleep(20)
 
         skin_model = Skin.new
         skin_model.id_steam = assetid
@@ -130,6 +132,7 @@ module Admins
     end
 
     def price_steam(name)
+      sleep(5)
       name.include?('™') ? new_name = name.sub('™', '%E2%84%A2') : new_name = name.sub('★', '%E2%98%85')
       url = "https://steamcommunity.com/market/priceoverview/?currency=7&appid=730&market_hash_name=#{new_name}"
       resp = RestClient.get(url)
