@@ -4,9 +4,22 @@
     <%= t('.back') %>
   <% end %>
 </div>
-<div class="text-center">
+<div class="text-center mb-4">
   <h4><%= t('.skin') %>: <%= @skin.description %></h4>
-  <%= image_tag(@skin.image_skin) %>
+  <div>
+    <%= image_tag(@skin.image_skin) %>
+  </div>
+  <div class="col-xs-6">
+    <i class="fas fa-arrow-down" style="margin-left: <%= @skin.float * 100 %>%;"></i>
+    <div class="progress float-chart"></div>
+  </div>
+  <% if @skin.has_sticker %>
+    <div>
+      <% @skin.image_sticker.each do |sticker| %>
+        <%= image_tag(sticker) %>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 <div class="card shadow mb-4">
   <div class="card-body">
@@ -61,6 +74,12 @@
                     <th><%= t('.has_sticker') %>?</th>
                     <td><%= translate_boolean(@skin.has_sticker) %></td>
                   </tr>
+                  <% if @skin.has_sticker %>
+                    <tr>
+                      <th><%= t('.name_sticker') %></th>
+                      <td><%= @skin.name_sticker.join(', ') %></td>
+                    </tr>
+                  <% end %>
                   <tr>
                     <th><%= t('.is_available') %>?</th>
                     <td><%= translate_boolean(@skin.is_available) %></td>

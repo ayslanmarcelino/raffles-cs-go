@@ -14,11 +14,9 @@ class CreateSkins < ActiveRecord::Migration[6.0]
       t.float :sale_price, default: 0
       t.boolean :is_stattrak, default: false
       t.boolean :has_sticker, default: false
+      t.text :name_sticker, array: true, default: []
+      t.text :image_sticker, array: true, default: []
       t.boolean :is_available, default: true
-      # t.references :item_type, null: false, foreign_key: true
-      # t.references :skin_type, null: false, foreign_key: true
-      # t.references :skin_exterior, null: false, foreign_key: true
-      # t.references :transaction_type, null: true, foreign_key: true
 
       t.timestamps
     end

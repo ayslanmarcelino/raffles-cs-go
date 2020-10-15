@@ -73,6 +73,8 @@ ActiveRecord::Schema.define(version: 2020_10_09_022719) do
     t.float "sale_price", default: 0.0
     t.boolean "is_stattrak", default: false
     t.boolean "has_sticker", default: false
+    t.text "name_sticker", default: [], array: true
+    t.text "image_sticker", default: [], array: true
     t.boolean "is_available", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

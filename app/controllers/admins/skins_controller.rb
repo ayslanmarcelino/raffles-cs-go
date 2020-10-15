@@ -75,6 +75,8 @@ module Admins
         skin_model.price_steam = price_steam(skin['market_name']).scan(/[,0-9]/).join().sub(',', '.').to_f
         skin_model.first_price_steam = price_steam(skin['market_name']).scan(/[,0-9]/).join().sub(',', '.').to_f
         skin_model.has_sticker = sticker?(skin)
+        skin_model.name_sticker = name_sticker(skin)
+        skin_model.image_sticker = image_sticker(skin)
         skin_model.is_stattrak = stattrak?(skin)
         skin_model.save
       end
@@ -91,6 +93,8 @@ module Admins
         if exists_skin
           exists_skin.price_steam = price_steam(skin['market_name']).scan(/[,0-9]/).join().sub(',', '.').to_f
           exists_skin.has_sticker = sticker?(skin)
+          exists_skin.name_sticker = name_sticker(skin)
+          exists_skin.image_sticker = image_sticker(skin)
           exists_skin.save
           next
         end
@@ -120,6 +124,24 @@ module Admins
         end
       end
       false
+    end
+
+    def name_sticker(skin)
+      skin['descriptions'].each do |description|
+        if /sticker_info/.match(description['value']).present?
+          return description['value'].partition('Sticker: ').last.sub('</center></div>', '')
+        end
+      end
+      []
+    end
+
+    def image_sticker(skin)
+      skin['descriptions'].each do |description|
+        if /sticker_info/.match(description['value']).present?
+          return description['value'].scan(/https?:\/\/[\S]+?png/)
+        end
+      end
+      []
     end
 
     def stattrak?(skin)

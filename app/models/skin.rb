@@ -11,8 +11,10 @@
 #  has_sticker       :boolean          default(FALSE)
 #  id_steam          :bigint           not null
 #  image_skin        :string
+#  image_sticker     :text             default([]), is an Array
 #  is_available      :boolean          default(TRUE)
 #  is_stattrak       :boolean          default(FALSE)
+#  name_sticker      :text             default([]), is an Array
 #  price_csmoney     :float            default(0.0)
 #  price_paid        :float            default(0.0)
 #  price_steam       :float            default(0.0)
