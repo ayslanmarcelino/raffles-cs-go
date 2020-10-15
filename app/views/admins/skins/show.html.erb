@@ -18,12 +18,24 @@
               <div class="table-responsive">
                 <table class="table">
                   <tr>
+                    <th><%= t('.full_name') %></th>
+                    <td><%= @skin.description %> (<%= @skin.exterior %>)</td>
+                  </tr>
+                  <tr>
                     <th><%= t('.description') %></th>
                     <td><%= @skin.description %></td>
                   </tr>
                   <tr>
+                    <th><%= t('.exterior') %></th>
+                    <td><%= @skin.exterior %></td>
+                  </tr>
+                  <tr>
                     <th><%= t('.float') %></th>
                     <td><%= @skin.float %></td>
+                  </tr>
+                  <tr>
+                    <th><%= t('.first_price_steam') %></th>
+                    <td><%= number_to_currency(@skin.first_price_steam) %></td>
                   </tr>
                   <tr>
                     <th><%= t('.price_steam') %></th>
@@ -54,6 +66,13 @@
                     <td><%= translate_boolean(@skin.is_available) %></td>
                   </tr>
                   <tr>
+                    <th><%= t('.created_at') %></th>
+                    <td><%= l(@skin.created_at, format: '%d/%m/%Y às %H:%M') %></td>
+                  </tr>
+                  <tr>
+                    <th><%= t('.updated_at') %></th>
+                    <td><%= l(@skin.updated_at, format: '%d/%m/%Y às %H:%M') %></td>
+                  </tr>
                 </table>
               </div>
             </div>
