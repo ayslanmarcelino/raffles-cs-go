@@ -22,6 +22,7 @@
                 <tr role="row">
                   <th><%= t('.description') %></th>
                   <th><%= t('.price_steam') %></th>
+                  <th><%= t('.first_price_steam') %></th>
                   <th><%= t('.price_paid') %></th>
                   <th><%= t('.sale_price') %></th>
                   <th><%= t('.is_available') %>?</th>
@@ -34,6 +35,7 @@
                     <td style="color: #<%= skin.description_color %>">
                       <%= skin.description %>
                     </td>
+                    <td><%= number_to_currency(skin.first_price_steam) %></td>
                     <td><%= number_to_currency(skin.price_steam) %></td>
                     <td><%= number_to_currency(skin.price_paid) %></td>
                     <td><%= number_to_currency(skin.sale_price) %></td>
