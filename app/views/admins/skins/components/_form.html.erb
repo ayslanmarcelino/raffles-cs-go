@@ -1,65 +1,39 @@
 <div class="col-lg-12">
-  <%= form.label(:transaction_type) %>
-  <%= form.collection_select(:transaction_type_id, @transaction_types, :id, :transaction_type_formatted, {}, { class: 'select2_single form-control', required: true }) %>
-</div>
-<div class="col-lg-12" style="display: inline-flex;">
-  <div class="col-lg-4">
-    <%= form.label(:item_type) %>
-    <%= form.collection_select(:item_type_id, @item_types, :id, :item_type_formatted, {}, { class: 'select2_single form-control', required: true }) %>
-  </div>
-  <div class="col-lg-4">
-    <%= form.label(:skin_type) %>
-    <%= form.collection_select(:skin_type_id, @skin_types, :id, :skin_type_formatted, {}, { class: 'select2_single form-control', required: true }) %>
-  </div>
-  <div class="col-lg-4">
-  <%= form.label(:skin_exterior) %>
-  <%= form.collection_select(:skin_exterior_id, @skin_exteriors, :id, :skin_exterior_formatted, {}, { class: 'select2_single form-control', required: true }) %>
-  </div>
-</div>
-<div class="col-lg-12">
   <%= form.label(:description) %>
   <%= form.text_field(:description, class: 'form-control form-control-user', required: true) %>
-</div>
-<div class="col-lg-12">
-  <%= form.label(:image_skin) %><br>
-  <%= form.file_field(:image_skin, required: true, accept: "image/png, image/jpg, image/jpeg") %>
 </div>
 <div class="col-lg-12">
   <%= form.label(:float) %>
   <%= form.text_field(:float, class: 'form-control form-control-user', required: true) %>
 </div>
-<div class="col-lg-12" style="display: inline-flex">
-  <div class="col-lg-3">
-    <%= form.label(:price_steam) %>
-    <%= form.text_field(:price_steam, class: 'form-control form-control-user', required: true) %>
-  </div>
-  <div class="col-lg-3">
-    <%= form.label(:price_csmoney) %>
-    <%= form.text_field(:price_csmoney, class: 'form-control form-control-user', required: true) %>
-  </div>
-  <div class="col-lg-3">
-    <%= form.label(:price_paid) %>
-    <%= form.text_field(:price_paid, class: 'form-control form-control-user', required: true) %>
-  </div>
-  <div class="col-lg-3">
-    <%= form.label(:sale_price) %>
-    <%= form.text_field(:sale_price, class: 'form-control form-control-user', required: true) %>
-  </div>
+<div class="col-lg-12">
+  <%= form.label(:price_steam) %>
+  <%= form.text_field(:price_steam, class: 'form-control form-control-user') %>
 </div>
-<div class="col-lg-12" style="display: inline-flex; text-align: center;">
-  <div class="col-lg-4 custom-switch">
-    <%= form.label(:is_stattrak) %>?
-    <%= form.check_box(:is_stattrak, class: "custom-control-input", id: "is_stattrak_switch") %>
-    <label class="custom-control-label switch-user" for="is_stattrak_switch"></label>
-  </div>
-  <div class="col-lg-4 custom-switch">
-    <%= form.label(:has_sticker) %>?
-    <%= form.check_box(:has_sticker, class: "custom-control-input", id: "has_sticker_switch") %>
-    <label class="custom-control-label switch-user" for="has_sticker_switch"></label>
-  </div>
-  <div class="col-lg-4 custom-switch">
-    <%= form.label(:is_available) %>?
-    <%= form.check_box(:is_available, class: "custom-control-input", id: "is_available_switch") %>
-    <label class="custom-control-label switch-user" for="is_available_switch"></label>
-  </div>
+<div class="col-lg-12">
+  <%= form.label(:price_csmoney) %>
+  <%= form.text_field(:price_csmoney, class: 'form-control form-control-user') %>
+</div>
+<div class="col-lg-12">
+  <%= form.label(:price_paid) %>
+  <%= form.text_field(:price_paid, class: 'form-control form-control-user') %>
+</div>
+<div class="col-lg-12">
+  <%= form.label(:sale_price) %>
+  <%= form.text_field(:sale_price, class: 'form-control form-control-user') %>
+</div>
+<div class="col-lg-12 custom-switch">
+  <%= form.label(:is_stattrak) %>?
+  <%= form.check_box(:is_stattrak, class: "custom-control-input", id: "is_stattrak_switch") %>
+  <label class="custom-control-label switch-user" for="is_stattrak_switch"></label>
+</div>
+<div class="col-lg-12 custom-switch">
+  <%= form.label(:has_sticker) %>?
+  <%= form.check_box(:has_sticker, class: "custom-control-input", id: "has_sticker_switch") %>
+  <label class="custom-control-label switch-user" for="has_sticker_switch"></label>
+</div>
+<div class="col-lg-12 custom-switch">
+  <%= form.label(:is_available) %>?
+  <%= form.check_box(:is_available, class: "custom-control-input", id: "is_available_switch") %>
+  <label class="custom-control-label switch-user" for="is_available_switch"></label>
 </div>

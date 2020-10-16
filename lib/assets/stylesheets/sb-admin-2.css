@@ -201,6 +201,7 @@ figure {
 img {
   vertical-align: middle;
   border-style: none;
+  max-width: 100%;
 }
 
 svg {
@@ -9616,6 +9617,14 @@ button.bg-dark:focus {
   color: #fff !important;
 }
 
+.text-steam {
+  color: #156495 !important;
+}
+
+.text-csmoney {
+  color: #d55f92 !important;
+}
+
 .text-primary {
   color: #4e73df !important;
 }
@@ -9972,6 +9981,20 @@ a:focus {
   background-size: cover;
 }
 
+.show-skin {
+  background-color: #8f98a0;
+}
+
+.table-skins {
+  color: #B4B4B4;
+}
+
+.float-chart {
+  width: 100%;
+  border: 1px solid #000;
+  background: linear-gradient(to right, #3d818f 7%, #84b235 7%, #84b235 15%, #dfc04a 15%, #dfc04a 37%, #ef8641 37%, #ef8641 44%, #eb5757 0);
+}
+
 .svg {
   width: 20px;
   display: inline-table;
@@ -10096,6 +10119,14 @@ a:focus {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.border-left-steam {
+  border-left: 0.25rem solid #156495 !important;
+}
+
+.border-left-csmoney {
+  border-left: 0.25rem solid #d55f92 !important;
 }
 
 .border-left-primary {
