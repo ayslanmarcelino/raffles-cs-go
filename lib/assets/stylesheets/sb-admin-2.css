@@ -9617,6 +9617,14 @@ button.bg-dark:focus {
   color: #fff !important;
 }
 
+.text-steam {
+  color: #156495 !important;
+}
+
+.text-csmoney {
+  color: #d55f92 !important;
+}
+
 .text-primary {
   color: #4e73df !important;
 }
@@ -9973,6 +9981,10 @@ a:focus {
   background-size: cover;
 }
 
+.show-skin {
+  background-color: #8f98a0;
+}
+
 .table-skins {
   color: #B4B4B4;
 }
@@ -10107,6 +10119,14 @@ a:focus {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.border-left-steam {
+  border-left: 0.25rem solid #156495 !important;
+}
+
+.border-left-csmoney {
+  border-left: 0.25rem solid #d55f92 !important;
 }
 
 .border-left-primary {

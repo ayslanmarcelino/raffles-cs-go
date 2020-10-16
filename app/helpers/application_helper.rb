@@ -20,4 +20,8 @@ module ApplicationHelper
   def translate_boolean(boolean)
     boolean ? t('application.positive') : t('application.negative')
   end
+
+  def time_tradelock(date)
+    ((date.to_time - Time.now) / 1.day).round(0)
+  end
 end

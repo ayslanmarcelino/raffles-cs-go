@@ -78,6 +78,7 @@ module Admins
         skin_model.name_sticker = name_sticker(skin)
         skin_model.image_sticker = image_sticker(skin)
         skin_model.is_stattrak = stattrak?(skin)
+        skin_model.expiration_date = skin['cache_expiration'] if skin['cache_expiration']
         skin_model.save
       end
     end
@@ -129,7 +130,7 @@ module Admins
     def name_sticker(skin)
       skin['descriptions'].each do |description|
         if /sticker_info/.match(description['value']).present?
-          return description['value'].partition('Sticker: ').last.sub('</center></div>', '')
+          return description['value'].partition('Sticker:').last.sub('</center></div>', '')
         end
       end
       []

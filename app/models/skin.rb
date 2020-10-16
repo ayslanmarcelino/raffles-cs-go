@@ -5,6 +5,7 @@
 #  id                :bigint           not null, primary key
 #  description       :string           not null
 #  description_color :string           not null
+#  expiration_date   :datetime
 #  exterior          :string
 #  first_price_steam :float            default(0.0)
 #  float             :float            not null
@@ -27,11 +28,4 @@
 #  index_skins_on_id_steam  (id_steam) UNIQUE
 #
 class Skin < ApplicationRecord
-  # before_save :downcase_description
-  # paginates_per 25
-  # has_one_attached :image_skin
-
-  # def downcase_description
-  #   description.downcase!
-  # end
 end

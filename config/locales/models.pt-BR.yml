@@ -25,8 +25,8 @@
         description: Tipo de transação
       skin:
         description: Nome da skin
-        image_skin: Imagem da skin
         float: Float
+        name_sticker: Nome do sticker
         price_steam: Preço da Steam
         price_csmoney: Preço do CS.money
         price_paid: Preço pago
@@ -34,8 +34,3 @@
         is_stattrak: É stattrak
         has_sticker: Tem sticker
         is_available: Está disponível
-        item_type: Tipo do item
-        skin_type: Tipo da skin
-        skin_exterior: Exterior da skin
-        transaction_type: Tipo da transação
-

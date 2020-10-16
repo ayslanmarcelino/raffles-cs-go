@@ -6,12 +6,12 @@
 </div>
 <div class="text-center mb-4">
   <h4><%= t('.skin') %>: <%= @skin.description %></h4>
-  <div>
+  <div class="show-skin">
     <%= image_tag(@skin.image_skin) %>
-  </div>
-  <div class="col-xs-6">
-    <i class="fas fa-arrow-down" style="margin-left: <%= @skin.float * 100 %>%;"></i>
-    <div class="progress float-chart"></div>
+    <div>
+      <i class="fas fa-arrow-down" style="margin-left: <%= @skin.float * 100 %>%;"></i>
+      <div class="progress float-chart"></div>
+    </div>
   </div>
   <% if @skin.has_sticker %>
     <div>
@@ -30,6 +30,12 @@
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table">
+                  <% if @skin.expiration_date %>
+                    <tr>
+                      <th><%= t('.time_tradelock') %></th>
+                      <td><%= time_tradelock(@skin.expiration_date) %></td>
+                    </tr>
+                  <% end %>
                   <tr>
                     <th><%= t('.full_name') %></th>
                     <td><%= @skin.description %> (<%= @skin.exterior %>)</td>

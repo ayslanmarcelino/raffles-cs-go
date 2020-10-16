@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 2020_10_09_022719) do
     t.text "name_sticker", default: [], array: true
     t.text "image_sticker", default: [], array: true
     t.boolean "is_available", default: true
+    t.datetime "expiration_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["id_steam"], name: "index_skins_on_id_steam", unique: true

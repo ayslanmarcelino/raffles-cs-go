@@ -17,6 +17,7 @@ class CreateSkins < ActiveRecord::Migration[6.0]
       t.text :name_sticker, array: true, default: []
       t.text :image_sticker, array: true, default: []
       t.boolean :is_available, default: true
+      t.datetime :expiration_date
 
       t.timestamps
     end

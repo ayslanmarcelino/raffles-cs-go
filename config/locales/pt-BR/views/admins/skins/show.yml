@@ -4,6 +4,7 @@ pt-BR:
       show:
         back: Voltar
         skin: Skin
+        time_tradelock: Tempo restante de trade lock
         full_name: Nome completo da skin
         description: Nome da skin
         float: Float
@@ -15,6 +16,7 @@ pt-BR:
         sale_price: Valor de venda
         is_stattrak: É StatTrak
         has_sticker: Tem sticker
+        name_sticker: Nome do(s) Sticker(s)
         is_available: Está disponível
         created_at: Cadastrado em
         updated_at: Atualizado em
