@@ -1,0 +1,10 @@
+pt-BR:
+  admins:
+    item_types:
+      index:
+        registered_item_types: Tipos de item cadastrados
+        description: Nome do item
+        created_at: Criado em
+        updated_at: Atualizado em
+        delete_confirm: Você deseja excluir o tipo de item
+        no_item_types: Não há tipos de item cadastrados

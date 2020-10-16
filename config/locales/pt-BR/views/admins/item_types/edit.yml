@@ -1,0 +1,7 @@
+pt-BR:
+  admins:
+    item_types:
+      edit:
+        editing: Você está editando o tipo de item
+        cancel: Cancelar
+        edit: Editar tipo de item
