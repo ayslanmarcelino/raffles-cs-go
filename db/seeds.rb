@@ -18,11 +18,11 @@ User.create!(email: Faker::Internet.email,
              nickname: Faker::Name.name,
              is_admin: false)
 
-SkinExterior.create!(description: 'Factory New')
+skin_exterior = SkinExterior.create!(description: 'Factory New')
 
-TransactionType.create!(description: 'Compra')
+transaction_type = TransactionType.create!(description: 'Compra')
 
 item_type = ItemType.create!(description: 'Faca')
 
-SkinType.create!(description: 'Karambit',
+skin_type = SkinType.create!(description: 'Karambit',
                  item_type_id: item_type.id)

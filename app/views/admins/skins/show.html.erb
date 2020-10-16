@@ -1,10 +1,24 @@
-<div class="text-center">
-  <h4><%= t('.skin') %>: <%= formatted_field_capitalize(@skin.description) %></h4>
-</div>
 <div class="col-xs-12">
   <%= link_to :back, class: 'col-xs-3 btn btn-secondary btn-user' do %>
     <i class="fas fa-arrow-left"></i>
     <%= t('.back') %>
+  <% end %>
+</div>
+<div class="text-center mb-4">
+  <h4><%= t('.skin') %>: <%= @skin.description %></h4>
+  <div class="show-skin">
+    <%= image_tag(@skin.image_skin) %>
+    <div>
+      <i class="fas fa-arrow-down" style="margin-left: <%= @skin.float * 100 %>%;"></i>
+      <div class="progress float-chart"></div>
+    </div>
+  </div>
+  <% if @skin.has_sticker %>
+    <div>
+      <% @skin.image_sticker.each do |sticker| %>
+        <%= image_tag(sticker) %>
+      <% end %>
+    </div>
   <% end %>
 </div>
 <div class="card shadow mb-4">
@@ -16,57 +30,31 @@
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table">
-                  <tr>
-                    <th><%= t('.image_skin') %></th>
-                    <td>
-                        <a href="#" data-toggle="modal" data-target="#skin">
-                          <%= t('.view') %>
-                        </a>
-                        <div id="skin" class="modal fade" role="dialog">
-                          <div class="modal-dialog">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h4 class="modal-title"><%= t('.image_skin') %>: <%= @skin.description %></h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                              </div>
-                              <div class="modal-body">
-                                <%= image_tag(@skin.image_skin) %>
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-dark" data-dismiss="modal"><%= t('.close') %></button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                    </td>
-                  </tr>
+                  <% if @skin.expiration_date %>
+                    <tr>
+                      <th><%= t('.time_tradelock') %></th>
+                      <td><%= time_tradelock(@skin.expiration_date) %></td>
+                    </tr>
+                  <% end %>
                   <tr>
                     <th><%= t('.full_name') %></th>
-                    <td>
-                      <%= formatted_field_capitalize(@skin.skin_type.description) %> |
-                      <%= formatted_field_capitalize(@skin.description) %> -
-                      <%= abbreviation(@skin.skin_exterior.description) %>
-                    </td>
+                    <td><%= @skin.description %> (<%= @skin.exterior %>)</td>
                   </tr>
                   <tr>
                     <th><%= t('.description') %></th>
-                    <td><%= formatted_field_capitalize(@skin.description) %></td>
+                    <td><%= @skin.description %></td>
                   </tr>
                   <tr>
-                    <th><%= t('.item_type') %></th>
-                    <td><%= formatted_field_capitalize(@skin.item_type.description) %></td>
-                  </tr>
-                  <tr>
-                    <th><%= t('.skin_type') %></th>
-                    <td><%= formatted_field_capitalize(@skin.skin_type.description) %></td>
-                  </tr>
-                  <tr>
-                    <th><%= t('.skin_exterior') %></th>
-                    <td><%= formatted_field_capitalize(@skin.skin_exterior.description) %></td>
+                    <th><%= t('.exterior') %></th>
+                    <td><%= @skin.exterior %></td>
                   </tr>
                   <tr>
                     <th><%= t('.float') %></th>
                     <td><%= @skin.float %></td>
+                  </tr>
+                  <tr>
+                    <th><%= t('.first_price_steam') %></th>
+                    <td><%= number_to_currency(@skin.first_price_steam) %></td>
                   </tr>
                   <tr>
                     <th><%= t('.price_steam') %></th>
@@ -92,13 +80,23 @@
                     <th><%= t('.has_sticker') %>?</th>
                     <td><%= translate_boolean(@skin.has_sticker) %></td>
                   </tr>
+                  <% if @skin.has_sticker %>
+                    <tr>
+                      <th><%= t('.name_sticker') %></th>
+                      <td><%= @skin.name_sticker.join(', ') %></td>
+                    </tr>
+                  <% end %>
                   <tr>
                     <th><%= t('.is_available') %>?</th>
                     <td><%= translate_boolean(@skin.is_available) %></td>
                   </tr>
                   <tr>
-                    <th><%= t('.transaction_type') %></th>
-                    <td><%= formatted_field_capitalize(@skin.transaction_type.description) %></td>
+                    <th><%= t('.created_at') %></th>
+                    <td><%= l(@skin.created_at, format: '%d/%m/%Y às %H:%M') %></td>
+                  </tr>
+                  <tr>
+                    <th><%= t('.updated_at') %></th>
+                    <td><%= l(@skin.updated_at, format: '%d/%m/%Y às %H:%M') %></td>
                   </tr>
                 </table>
               </div>
