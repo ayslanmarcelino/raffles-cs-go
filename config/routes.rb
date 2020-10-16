@@ -3,19 +3,18 @@
 Rails.application.routes.draw do
   namespace :admins do
     get 'users/index'
-    get 'item_types/index'
-    get 'skin_types/index'
-    get 'skin_exteriors/index'
     get 'transaction_types/index'
     get 'skins/index'
     get 'dashboard/index'
 
     resources :users
-    resources :item_types
-    resources :skin_types
-    resources :skin_exteriors
     resources :transaction_types
-    resources :skins
+    resources :skins do
+      collection do
+        get 'search'
+        get 'refresh_skins'
+      end
+    end
   end
 
   get 'dashboard/index'

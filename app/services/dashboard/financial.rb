@@ -31,7 +31,7 @@ module Dashboard
     end
 
     def list_skins_available
-      Skin.all.where('is_available = true')
+      Skin.all.where(is_available: true)
     end
 
     def total_inventory_steam

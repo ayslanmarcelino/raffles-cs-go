@@ -1,5 +1,7 @@
 require_relative 'boot'
 require 'rails'
+require 'rest-client'
+require 'json'
 require 'active_model/railtie'
 require 'active_job/railtie'
 require 'active_record/railtie'
