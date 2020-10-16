@@ -5,7 +5,7 @@ module Admins
     before_action :set_skin, only: %w[show edit update destroy]
 
     def index
-      @skins = Skin.all.order(price_steam: :desc)
+      @skins = Skin.all.order(:created_at)
     end
 
     def new
