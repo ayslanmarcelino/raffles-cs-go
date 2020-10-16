@@ -1,5 +1,5 @@
 <div class="text-center">
-  <h4><%= t('.editing') %>: <%= formatted_field_capitalize(@skin.description) %></h4>
+  <h4><%= t('.editing') %>: <%= @skin.description %></h4>
 </div>
 <div class="row card">
   <%= render partial: 'admins/skins/components/errors.html.erb' %>

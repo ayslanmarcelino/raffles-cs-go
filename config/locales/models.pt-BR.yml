@@ -14,13 +14,6 @@
         is_admin: Administrador?
         created_at: Criado em
         updated_at: Atualizado em
-      skin_exterior:
-        description: Exterior de skin
-      item_type:
-        description: Nome do tipo de item
-      skin_type:
-        description: Tipo da skin
-        item_type: Tipo do item
       transaction_type:
         description: Tipo de transação
       skin:
