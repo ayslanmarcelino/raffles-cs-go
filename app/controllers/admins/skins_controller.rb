@@ -58,14 +58,10 @@ module Admins
         skin_image_url = "https://steamcommunity-a.akamaihd.net/economy/image/#{icon_url}"
         exists_skin = Skin.find_by(id_steam: assetid)
 
-        sleep(20)
-
         next if exists_skin
         next if skin['name'].include?('Case')
         next if skin['name'].include?('Graffiti')
         next if skin['name'].include?('Medal')
-
-        sleep(20)
 
         skin_model = Skin.new
         skin_model.id_steam = assetid
