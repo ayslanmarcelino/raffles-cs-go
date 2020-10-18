@@ -8,10 +8,12 @@
   <h4><%= t('.skin') %>: <%= @skin.description %></h4>
   <div class="show-skin">
     <%= image_tag(@skin.image_skin) %>
-    <div>
-      <i class="fas fa-arrow-down" style="margin-left: <%= @skin.float * 100 %>%;"></i>
-      <div class="progress float-chart"></div>
-    </div>
+    <% if @skin.float.positive? %>
+      <div>
+        <i class="fas fa-arrow-down float-left" style="margin-left: <%= @skin.float * 100 %>%;"></i>
+        <div class="progress float-chart"></div>
+      </div>
+    <% end %>
   </div>
   <% if @skin.has_sticker %>
     <div>
@@ -48,10 +50,12 @@
                     <th><%= t('.exterior') %></th>
                     <td><%= @skin.exterior %></td>
                   </tr>
-                  <tr>
-                    <th><%= t('.float') %></th>
-                    <td><%= @skin.float %></td>
-                  </tr>
+                  <% if @skin.float.positive? %>
+                    <tr>
+                      <th><%= t('.float') %></th>
+                      <td><%= @skin.float %></td>
+                    </tr>
+                  <% end %>
                   <tr>
                     <th><%= t('.first_price_steam') %></th>
                     <td><%= number_to_currency(@skin.first_price_steam) %></td>

@@ -22,6 +22,10 @@ module ApplicationHelper
   end
 
   def time_tradelock(date)
-    ((date.to_time - Time.now) / 1.day).round(0)
+    days_remaining = ((date.to_time - Time.now) / 1.day)
+    to_day_remaining = days_remaining.round(0).to_s + ' dias'
+    hours_remaining = (date.to_time.minus_with_coercion(1.second.ago) / 3600).to_i.to_s + ' horas'
+
+    days_remaining < 1 ? hours_remaining : to_day_remaining
   end
 end
