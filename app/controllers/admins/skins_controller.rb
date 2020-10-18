@@ -54,7 +54,7 @@ module Admins
       @skins_api.each do |skin|
         inspect_url = skin['actions'].first['link'] if skin['actions'].present?
         assetid = assetid(@rg_inventory, skin['classid'])
-        icon_url = skin['icon_url_large']
+        icon_url = skin['icon_url']
         skin_image_url = "https://steamcommunity-a.akamaihd.net/economy/image/#{icon_url}"
         exists_skin = Skin.find_by(id_steam: assetid)
 
@@ -90,13 +90,13 @@ module Admins
 
       @skins_api.each do |skin|
         assetid = assetid(@rg_inventory, skin['classid'])
-        icon_url = skin['icon_url_large']
+        icon_url = skin['icon_url']
         skin_image_url = "https://steamcommunity-a.akamaihd.net/economy/image/#{icon_url}"
         exists_skin = Skin.find_by(id_steam: assetid)
         sleep(10)
 
         if exists_skin
-          exists_skin.image_skin = skin_image_url if exists_skin.image_skin.nil?
+          exists_skin.image_skin = skin_image_url if exists_skin.image_skin.nil? || exists_skin.image_skin.empty?
           exists_skin.price_steam = price_steam(skin['market_name']).scan(/[,0-9]/).join.sub(',', '.').to_f
           exists_skin.has_sticker = sticker?(skin)
           exists_skin.name_sticker = name_sticker(skin)
