@@ -96,7 +96,7 @@ module Admins
         sleep(10)
 
         if exists_skin
-          exists_skin.image_skin = skin_image_url if exists_skin.image_skin.empty?
+          exists_skin.image_skin = skin_image_url if exists_skin.image_skin.nil?
           exists_skin.price_steam = price_steam(skin['market_name']).scan(/[,0-9]/).join.sub(',', '.').to_f
           exists_skin.has_sticker = sticker?(skin)
           exists_skin.name_sticker = name_sticker(skin)
