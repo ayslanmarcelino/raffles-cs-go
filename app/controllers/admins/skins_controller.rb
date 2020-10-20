@@ -62,6 +62,8 @@ module Admins
         next if skin['name'].include?('Case')
         next if skin['name'].include?('Graffiti')
         next if skin['name'].include?('Medal')
+        next if skin['name'].include?('Web Coin')
+        next if skin['name'].include?('Badge')
 
         skin_model = Skin.new
         skin_model.id_steam = assetid
