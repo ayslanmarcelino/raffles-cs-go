@@ -90,7 +90,7 @@ module Admins
         assetid = assetid(@rg_inventory, skin['classid'])
         icon_url = skin['icon_url']
         skin_image_url = "https://steamcommunity-a.akamaihd.net/economy/image/#{icon_url}"
-        exists_skin = Skin.find_by(id_steam: assetid)
+        exists_skin = Skin.find_by(id_steam: assetid, is_available: true)
         sleep(10)
 
         if exists_skin
