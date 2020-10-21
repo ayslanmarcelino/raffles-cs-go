@@ -41,7 +41,7 @@ module Dashboard
     def list_skins_without_tradelock
       Skin.all
           .where(is_available: true)
-          .where(expiration_date: [nil, 'expiration_date < ?', Time.now])
+          .where('expiration_date < ? OR expiration_date is null', Time.now)
     end
 
     def list_skins_tradelock
