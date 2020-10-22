@@ -20,14 +20,14 @@
             <table class="table table-bordered dataTable table-skins">
               <thead>
                 <tr role="row">
-                  <th><%= t('.description') %></th>
-                  <th><%= t('.exterior') %></th>
-                  <th><%= t('.first_price_steam') %></th>
-                  <th><%= t('.price_steam') %></th>
-                  <th><%= t('.price_paid') %></th>
-                  <th><%= t('.sale_price') %></th>
-                  <th><%= t('.is_available') %>?</th>
-                  </th>
+                  <th><%= sortable 'description', t('.description') %></th>
+                  <th><%= sortable 'exterior', t('.exterior') %></th>
+                  <th><%= sortable 'first_price_steam', t('.first_price_steam') %></th>
+                  <th><%= sortable 'price_steam', t('.price_steam') %></th>
+                  <th><%= sortable 'price_paid', t('.price_paid') %></th>
+                  <th><%= sortable 'sale_price', t('.sale_price') %></th>
+                  <th><%= sortable 'is_available', t('.is_available') %>?</th>
+                  <th><%= sortable 'created_at', t('.created_at') %></th>
                 </tr>
               </thead>
               <tbody>

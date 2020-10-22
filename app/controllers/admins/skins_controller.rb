@@ -3,9 +3,10 @@
 module Admins
   class SkinsController < AdminsController
     before_action :set_skin, only: %w[show edit update destroy]
+    helper_method :sort_column, :sort_direction
 
     def index
-      @skins = Skin.all.order(created_at: :desc)
+      @skins = Skin.all.order(sort_column + ' ' + sort_direction)
     end
 
     def new
@@ -46,6 +47,14 @@ module Admins
       params.require(:skin).permit(:description, :float, :price_steam,
                                    :price_csmoney, :price_paid, :sale_price,
                                    :is_stattrak, :has_sticker, :is_available)
+    end
+
+    def sort_column
+      Skin.column_names.include?(params[:sort]) ? params[:sort] : 'created_at'
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : 'desc'
     end
 
     def search_skins
