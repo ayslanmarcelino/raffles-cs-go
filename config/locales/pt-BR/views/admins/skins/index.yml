@@ -5,6 +5,7 @@ pt-BR:
         registered_skins: Skins cadastradas
         search_new_items: Buscar novos itens
         refresh_existing_items: Atualizar itens existentes
+        order_by: Ordenar por
         description: Nome do item
         exterior: Exterior
         price_steam: Preço na Steam

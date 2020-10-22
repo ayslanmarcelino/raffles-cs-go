@@ -1,15 +1,33 @@
 <div class="text-center mb-4">
   <h4><%= t('.registered_skins') %>: <%= @skins.count %></h4>
-  <%= link_to search_admins_skins_path, class: 'btn btn-dark', method: :get, remote: true do %>
-    <%= t('.search_new_items') %>
+  <%= link_to search_admins_skins_path, class: 'btn btn-dark btn-update-skins', method: :get, remote: true do %>
     <i class="fas fa-refresh"></i>
+    <%= t('.search_new_items') %>
   <% end %>
   <% if @skins.count.positive? %>
-    <%= link_to refresh_skins_admins_skins_path, class: 'btn btn-dark', method: :get, remote: true do %>
-      <%= t('.refresh_existing_items') %>
+    <%= link_to refresh_skins_admins_skins_path, class: 'btn btn-dark btn-update-skins', method: :get, remote: true do %>
       <i class="fas fa-refresh"></i>
+      <%= t('.refresh_existing_items') %>
     <% end %>
   <% end %>
+</div>
+<div class="dropdown">
+  <button class="btn btn-dark btn-sm dropdown-toggle mb-2" type="button" data-toggle="dropdown">
+    <i class="fas fa-sort-amount-down"></i>
+    <%= t('.order_by') %>
+  </button>
+  <div class="dropdown-menu">
+    <div><button class="btn w-100 text-left"><%= sortable('description', t('.description')) %></button></div>
+    <div><button class="btn w-100 text-left"><%= sortable('exterior', t('.exterior')) %></button></div>
+    <div><button class="btn w-100 text-left"><%= sortable('float', t('.float')) %></button></div>
+    <div><button class="btn w-100 text-left"><%= sortable('first_price_steam', t('.first_price_steam')) %></button></div>
+    <div><button class="btn w-100 text-left"><%= sortable('price_steam', t('.price_steam')) %></button></div>
+    <div><button class="btn w-100 text-left"><%= sortable('price_paid', t('.price_paid')) %></button></div>
+    <div><button class="btn w-100 text-left"><%= sortable('sale_price', t('.sale_price')) %></button></div>
+    <div><button class="btn w-100 text-left"><%= sortable('is_available', t('.is_available')) %></button></div>
+    <div><button class="btn w-100 text-left"><%= sortable('created_at', t('.created_at')) %></button></div>
+    <div><button class="btn w-100 text-left"><%= sortable('updated_at', t('.updated_at')) %></button></div>
+  </div>
 </div>
 <div class="card shadow mb-4" style="background-color: #1F1F1F;">
   <div class="card-body">
@@ -18,19 +36,19 @@
         <div class="row">
           <div class="col-sm-12">
             <table class="table table-bordered dataTable table-skins">
+            <input class="form-control mb-2" id="skins-table" type="text" placeholder="Digite a skin que deseja procurar">
               <thead>
                 <tr role="row">
-                  <th><%= sortable 'description', t('.description') %></th>
-                  <th><%= sortable 'exterior', t('.exterior') %></th>
-                  <th><%= sortable 'first_price_steam', t('.first_price_steam') %></th>
-                  <th><%= sortable 'price_steam', t('.price_steam') %></th>
-                  <th><%= sortable 'price_paid', t('.price_paid') %></th>
-                  <th><%= sortable 'sale_price', t('.sale_price') %></th>
-                  <th><%= sortable 'is_available', t('.is_available') %>?</th>
-                  <th><%= sortable 'created_at', t('.created_at') %></th>
+                  <th><%= t('.description') %></th>
+                  <th><%= t('.exterior') %></th>
+                  <th><%= t('.first_price_steam') %></th>
+                  <th><%= t('.price_steam') %></th>
+                  <th><%= t('.price_paid') %></th>
+                  <th><%= t('.sale_price') %></th>
+                  <th><%= t('.is_available') %>?</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="skins-table">
                 <% @skins.each do |skin| %>
                   <tr role="row" class="odd">
                     <td style="color: #<%= skin.description_color %>;">
@@ -66,3 +84,13 @@
     </div>
   </div>
 </div>
+<script>
+  $(document).ready(function(){
+    $("#skins-table").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#skins-table tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) >= 0)
+      });
+    });
+  });
+</script>

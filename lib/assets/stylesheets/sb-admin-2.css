@@ -2652,6 +2652,10 @@ fieldset:disabled a.btn {
   box-shadow: 0 0 0 0.2rem rgba(220, 221, 225, 0.5);
 }
 
+.btn-update-skins {
+  width: 250px;
+}
+
 .btn-dark {
   color: #fff;
   background-color: #5a5c69;
