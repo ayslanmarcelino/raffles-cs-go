@@ -70,7 +70,9 @@ module Admins
       @skins_api.each do |skin|
         inspect_url = skin['actions'].first['link'] if skin['actions'].present?
         assetid = assetid(@rg_inventory, skin['classid'])
-        icon_url = skin['icon_url']
+        skin_large = skin['icon_url_large']
+        skin_standard = skin['icon_url']
+        icon_url = skin_large.present? ? skin_large : skin_standard
         skin_image_url = "https://steamcommunity-a.akamaihd.net/economy/image/#{icon_url}"
         exists_skin = Skin.find_by(id_steam: assetid)
 
@@ -104,7 +106,9 @@ module Admins
 
       @skins_api.each do |skin|
         assetid = assetid(@rg_inventory, skin['classid'])
-        icon_url = skin['icon_url']
+        skin_large = skin['icon_url_large']
+        skin_standard = skin['icon_url']
+        icon_url = skin_large.present? ? skin_large : skin_standard
         skin_image_url = "https://steamcommunity-a.akamaihd.net/economy/image/#{icon_url}"
         exists_skin = Skin.find_by(id_steam: assetid, is_available: true)
         sleep(10)
