@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       collection do
         get 'search'
         get 'refresh_skins'
+        delete 'destroy_multiple'
       end
     end
   end

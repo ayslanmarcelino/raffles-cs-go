@@ -39,6 +39,7 @@
             <input class="form-control mb-2" id="skins-table" type="text" placeholder="Digite a skin que deseja procurar">
               <thead>
                 <tr role="row">
+                  <th><input type="checkbox" id="select-all"/></th>
                   <th><%= t('.description') %></th>
                   <th><%= t('.exterior') %></th>
                   <th><%= t('.first_price_steam') %></th>
@@ -49,34 +50,40 @@
                 </tr>
               </thead>
               <tbody id="skins-table">
-                <% @skins.each do |skin| %>
-                  <tr role="row" class="odd">
-                    <td style="color: #<%= skin.description_color %>;">
-                      <%= skin.description %>
-                    </td>
-                    <td><%= skin.exterior %></td>
-                    <td><%= number_to_currency(skin.first_price_steam) %></td>
-                    <td><%= number_to_currency(skin.price_steam) %></td>
-                    <td><%= number_to_currency(skin.price_paid) %></td>
-                    <td><%= number_to_currency(skin.sale_price) %></td>
-                    <td><%= translate_boolean(skin.is_available) %></td>
-                    <td class="table-buttons">
-                      <%= link_to admins_skin_path(skin), class: 'btn btn-dark' do %>
-                        <i class="fas fa-eye"></i>
-                      <% end %>
-                      <%= link_to edit_admins_skin_path(skin), class: 'btn btn-info' do %>
-                        <i class="fas fa-edit"></i>
-                      <% end %>
-                      <%= link_to admins_skin_path(skin), method: :delete, class: 'btn btn-danger', data: { confirm: "#{t('.delete_confirm')}: #{skin.description}?" } do %>
-                        <i class="fas fa-trash"></i>
-                      <% end %>
-                    </td>
-                  </tr>
+                <%= form_tag destroy_multiple_admins_skins_path, method: :delete do %>
+                  <% @skins.each do |skin| %>
+                    <tr role="row" class="odd">
+                      <td><%= check_box_tag "skins[]", skin.id %></td>
+                      <td style="color: #<%= skin.description_color %>;">
+                        <%= skin.description %>
+                      </td>
+                      <td><%= skin.exterior %></td>
+                      <td><%= number_to_currency(skin.first_price_steam) %></td>
+                      <td><%= number_to_currency(skin.price_steam) %></td>
+                      <td><%= number_to_currency(skin.price_paid) %></td>
+                      <td><%= number_to_currency(skin.sale_price) %></td>
+                      <td><%= translate_boolean(skin.is_available) %></td>
+                      <td class="table-buttons">
+                        <%= link_to admins_skin_path(skin), class: 'btn btn-dark' do %>
+                          <i class="fas fa-eye"></i>
+                        <% end %>
+                        <%= link_to edit_admins_skin_path(skin), class: 'btn btn-info' do %>
+                          <i class="fas fa-edit"></i>
+                        <% end %>
+                        <%= link_to admins_skin_path(skin), method: :delete, class: 'btn btn-danger', data: { confirm: "#{t('.delete_confirm')}: #{skin.description}?" } do %>
+                          <i class="fas fa-trash"></i>
+                        <% end %>
+                      </td>
+                    </tr>
+                  <% end %>
+                  <%= submit_tag t('.delete_selected'), class: 'btn btn-danger mb-2', id: 'delete-selected' %>
                 <% end %>
               </tbody>
             </table>
             <% if @skins.empty? %>
-              <tr><%= t('.no_skins') %></tr>
+              <tr>
+                <span class="text-white"><%= t('.no_skins') %></span>
+              </tr>
             <% end %>
           </div>
         </div>
@@ -92,5 +99,26 @@
         $(this).toggle($(this).text().toLowerCase().indexOf(value) >= 0)
       });
     });
+  });
+
+  $(function(){
+    $('#delete-selected').click(function(e){
+      if(window.confirm('Você deseja excluir as skins selecionadas?')) {
+        return true
+      }
+      e.preventDefault();
+    });
+  });
+
+  $('#select-all').click(function(event) {   
+    if(this.checked) {
+      $(':checkbox').each(function() {
+        this.checked = true;                        
+      });
+    } else {
+      $(':checkbox').each(function() {
+        this.checked = false;                       
+      });
+    }
   });
 </script>

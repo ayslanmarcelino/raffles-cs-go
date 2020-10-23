@@ -37,6 +37,13 @@ module Admins
       update_skins
     end
 
+    def destroy_multiple
+      Skin.destroy(params[:skins])
+      respond_to do |format|
+        format.html { redirect_to admins_skins_path, notice: 'Skins excluídas com sucesso' }
+      end
+    end
+
     private
 
     def set_skin
