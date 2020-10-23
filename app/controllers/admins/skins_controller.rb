@@ -3,9 +3,10 @@
 module Admins
   class SkinsController < AdminsController
     before_action :set_skin, only: %w[show edit update destroy]
+    helper_method :sort_column, :sort_direction
 
     def index
-      @skins = Skin.all.order(created_at: :desc)
+      @skins = Skin.all.order(sort_column + ' ' + sort_direction)
     end
 
     def new
@@ -36,6 +37,13 @@ module Admins
       update_skins
     end
 
+    def destroy_multiple
+      Skin.destroy(params[:skins])
+      respond_to do |format|
+        format.html { redirect_to admins_skins_path, notice: 'Skins excluídas com sucesso' }
+      end
+    end
+
     private
 
     def set_skin
@@ -48,13 +56,23 @@ module Admins
                                    :is_stattrak, :has_sticker, :is_available)
     end
 
+    def sort_column
+      Skin.column_names.include?(params[:sort]) ? params[:sort] : 'created_at'
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : 'desc'
+    end
+
     def search_skins
       requisition_api
 
       @skins_api.each do |skin|
         inspect_url = skin['actions'].first['link'] if skin['actions'].present?
         assetid = assetid(@rg_inventory, skin['classid'])
-        icon_url = skin['icon_url']
+        skin_large = skin['icon_url_large']
+        skin_standard = skin['icon_url']
+        icon_url = skin_large.present? ? skin_large : skin_standard
         skin_image_url = "https://steamcommunity-a.akamaihd.net/economy/image/#{icon_url}"
         exists_skin = Skin.find_by(id_steam: assetid)
 
@@ -88,7 +106,9 @@ module Admins
 
       @skins_api.each do |skin|
         assetid = assetid(@rg_inventory, skin['classid'])
-        icon_url = skin['icon_url']
+        skin_large = skin['icon_url_large']
+        skin_standard = skin['icon_url']
+        icon_url = skin_large.present? ? skin_large : skin_standard
         skin_image_url = "https://steamcommunity-a.akamaihd.net/economy/image/#{icon_url}"
         exists_skin = Skin.find_by(id_steam: assetid, is_available: true)
         sleep(10)
