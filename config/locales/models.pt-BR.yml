@@ -9,6 +9,7 @@
         last_name: Último nome
         nickname: Apelido
         email: E-mail
+        current_password: Senha atual
         password: Senha
         password_confirmation: Confirmação da senha
         is_admin: Administrador?
