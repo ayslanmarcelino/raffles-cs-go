@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xl-12">
       <div class="card mb-4">
-        <div class="card-header">Editar meu perfil</div>
+        <div class="card-header"><%= t('.edit_profile') %></div>
         <div class="card-body">
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
             <%= render "devise/shared/error_messages", resource: resource %>
@@ -27,16 +27,18 @@
                 <%= f.label(:password_confirmation) %>
                 <%= f.password_field(:password_confirmation, class: 'form-control form-control-user') %>
               </div>
-              <%= link_to "Cancelar", :back, class: 'btn btn-danger btn-user' %>
+              <%= link_to admins_dashboard_index_path, class: 'btn btn-danger btn-user' do %>
+                <span><%= t('.cancel') %></span>
+              <% end %>
               <button type="button" class="btn btn-primary btn-user" data-toggle="modal" data-target="#modalPassword">
-                Editar dados
+                <%= t('.edit') %>
               </button>
             </div>
             <div class="modal fade" id="modalPassword">
               <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Confirme sua senha</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle"><%= t('.confirm_password') %></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -48,7 +50,7 @@
                     </div>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><%= t('.cancel') %></button>
                     <%= f.submit 'Confirmar', class: 'btn btn-success' %>
                   </div>
                 </div>
