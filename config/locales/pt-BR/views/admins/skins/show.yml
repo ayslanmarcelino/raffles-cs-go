@@ -4,6 +4,7 @@ pt-BR:
       show:
         back: Voltar
         skin: Skin
+        inspect_in_game: Inspecionar no jogo
         time_tradelock: Tempo restante de trade lock
         full_name: Nome completo da skin
         description: Nome da skin

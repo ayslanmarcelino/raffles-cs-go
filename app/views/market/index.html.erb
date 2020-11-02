@@ -1,0 +1,76 @@
+<div class="dropdown">
+  <button class="btn btn-dark btn-sm dropdown-toggle mb-2" type="button" data-toggle="dropdown">
+    <i class="fas fa-sort-amount-down"></i>
+    <%= t('.order_by') %>
+  </button>
+  <div class="dropdown-menu">
+    <div><button class="btn w-100 text-left"><%= sortable('description', t('.description')) %></button></div>
+    <div><button class="btn w-100 text-left"><%= sortable('exterior', t('.exterior')) %></button></div>
+    <div><button class="btn w-100 text-left"><%= sortable('float', t('.float')) %></button></div>
+    <div><button class="btn w-100 text-left"><%= sortable('price_steam', t('.price_steam')) %></button></div>
+    <div><button class="btn w-100 text-left"><%= sortable('sale_price', t('.sale_price')) %></button></div>
+  </div>
+</div>
+<div class="grid-view">
+  <% @skins.each do |skin| %>
+    <div class="mb-4 mr-4 market-card">
+      <% if skin.expiration_date.present? && time_tradelock_integer(skin.expiration_date).positive? %>
+        <div class="tag-available bg-red">
+          <%= t('.releases_on') %> <%= time_tradelock(skin.expiration_date) %>
+        </div>
+      <% else %>
+        <div class="tag-available bg-green">
+          <%= t('.available') %>
+        </div>
+      <% end %>
+      <a class="btn btn-outline-light btn-sm mt-2 ml-2" href="<%= skin.inspect_url %>">
+        <%= t('.inspect_in_game') %>
+      </a>
+      <div class="col-lg-12">
+        <%= image_tag(skin.image_skin, width: 300) %>
+      </div>
+      <div class="card-body p-3">
+        <% if skin.has_sticker %>
+          <div class="market-sticker">
+            <% skin.image_sticker.each do |sticker| %>
+              <%= image_tag(sticker, width: 65) %>
+            <% end %>
+          </div>
+        <% end %>
+        <h5 class="card-title font-weight-bold fuchsia-rose-text mb-0 market-description" style="color: #<%= skin.description_color %>;">
+          <%= skin.description %>
+        </h5>
+        <p class="mb-0">
+          <% if skin.exterior != 'Nenhum' %>
+            <%= skin.exterior %>
+          <% end %>
+        </p>
+        <ul class="list-inline">
+          <% if positive_value?(skin.float) %>
+            <div>
+              <i class="fas fa-arrow-down float-left fs-10" style="margin-left: <%= skin.float * 100 %>%;"></i>
+              <div class="progress float-chart"></div>
+              <%= t('.float') %>: <%= skin.float %>
+            </div>
+          <% end %>
+        </ul>
+        <div class="chili-pepper-text mb-0 market-prices">
+          <span class="badge badge-success tag-sale">
+            <%= sale_percentage(skin.sale_price, skin.price_steam) %>% OFF
+          </span>
+        </div>
+        <div class="chili-pepper-text mb-0 market-prices">
+        <br>
+          <div>
+            <%= image_tag('logo_steam.png', width: 28) %>
+            <%= number_to_currency(skin.price_steam) %>
+          </div>
+          <div>
+            <%= image_tag('logo_without_name.png', width: 28) %>
+            <%= number_to_currency(skin.sale_price) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,13 @@
+pt-BR:
+  market:
+    index:
+      order_by: Ordenar por
+      description: Nome do item
+      exterior: Exterior
+      float: Float
+      price_steam: Preço da Steam
+      sale_price: Preço de venda
+      available: Disponível
+      releases_on: Disponível em
+      inspect_in_game: Inspecionar no jogo
+      float: Float

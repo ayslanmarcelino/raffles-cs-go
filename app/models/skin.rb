@@ -13,6 +13,7 @@
 #  id_steam          :bigint           not null
 #  image_skin        :string
 #  image_sticker     :text             default([]), is an Array
+#  inspect_url       :string
 #  is_available      :boolean          default(TRUE)
 #  is_stattrak       :boolean          default(FALSE)
 #  name_sticker      :text             default([]), is an Array
