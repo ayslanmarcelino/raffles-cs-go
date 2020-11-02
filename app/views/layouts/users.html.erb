@@ -33,6 +33,12 @@
             <span><%= t('.dashboard') %></span>
           <% end %>
         </li>
+        <li class="nav-item">
+          <%= link_to market_index_path, class: 'nav-link' do %>
+            <i class="fas fa-store"></i>
+            <span><%= t('.market') %></span>
+          <% end %>
+        </li>
         <% if current_user.is_admin %>
           <span class="text-center color-white"><%= t('.admin') %></span>
           <hr class="sidebar-divider my-0">
@@ -84,16 +90,13 @@
             </button>
             <div class="href-class">
               <a href="https://www.instagram.com/pingo.rifas/" target="_blank">
-                <i class="fab fa-instagram fa-2x icons-header"></i>
+                <i class="fab fa-instagram fa-2x fa-cog icons-header"></i>
               </a>
               <a href="https://www.twitch.tv/ayslanmarcelino" target="_blank">
-                <i class="fab fa-twitch fa-2x icons-header"></i>
+                <i class="fab fa-twitch fa-2x fa-cog icons-header"></i>
               </a>
               <a href="https://chat.whatsapp.com/EU0wmzc8Jy7Gac2XBPKQCn" target="_blank">
-                <i class="fab fa-whatsapp fa-2x icons-header"></i>
-              </a>
-              <a href="https://github.com/ayslanmarcelino" target="_blank">
-                <i class="fab fa-github fa-2x icons-header"></i>
+                <i class="fab fa-whatsapp fa-2x fa-cog icons-header"></i>
               </a>
             </div>
             <ul class="navbar-nav ml-auto">
@@ -105,6 +108,10 @@
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small"><%= current_user.email %></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                  <%= link_to edit_user_registration_path, class: 'dropdown-item' do %>
+                    <i class="fas fa-edit fa-sm fa-fw mr-2 text-gray-400"></i>
+                    <%= t('.my_profile') %>
+                  <% end %>
                   <%= link_to destroy_user_session_path, method: :delete, class: 'dropdown-item' do %>
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                     <%= t('.exit') %>

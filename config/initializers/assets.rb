@@ -14,4 +14,5 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.precompile += %w[users.js users.css
                                                  logo.png profile-avatar.png
                                                  favicon.ico .svg
-                                                 .png]
+                                                 .png logo_without_name.png
+                                                 logo_steam.png]

@@ -3,15 +3,14 @@ pt-BR:
     users:
       enterprise_instagram: '@pingo.rifas'
       dashboard: Dashboard
+      market: Loja
       admin: Admin
       users: Usuários
       categories: Categorias
-      skin_exterior: Exterior de skin
-      item_types: Tipos de item
-      skin_types: Tipos de skin
       transaction_types: Tipos de transação
       skins: Skins
       exterior: Exterior
+      my_profile: Meu perfil
       exit: Sair
       copyright: Copyright
       enterprise: Pingo Rifas

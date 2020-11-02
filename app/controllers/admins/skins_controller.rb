@@ -97,6 +97,7 @@ module Admins
         skin_model.image_sticker = image_sticker(skin)
         skin_model.is_stattrak = stattrak?(skin)
         skin_model.expiration_date = skin['cache_expiration'] if skin['cache_expiration']
+        skin_model.inspect_url = inspect_in_game(assetid, inspect_url)
         skin_model.save
       end
     end
@@ -105,6 +106,7 @@ module Admins
       requisition_api
 
       @skins_api.each do |skin|
+        inspect_url = skin['actions'].first['link'] if skin['actions'].present?
         assetid = assetid(@rg_inventory, skin['classid'])
         skin_large = skin['icon_url_large']
         skin_standard = skin['icon_url']
@@ -119,6 +121,7 @@ module Admins
           exists_skin.has_sticker = sticker?(skin)
           exists_skin.name_sticker = name_sticker(skin)
           exists_skin.image_sticker = image_sticker(skin)
+          exists_skin.inspect_url = inspect_in_game(assetid, inspect_url) if exists_skin.inspect_in_game.nil? || exists_skin.inspect_in_game.empty?
           exists_skin.save
           next
         end
@@ -202,6 +205,14 @@ module Admins
         return id.second['id'] if id.second['classid'] == class_id
       end
       false
+    end
+
+    def inspect_in_game(assetid, url)
+      steam_id = 76_561_198_345_749_032
+      url_fixed = 'steam://rungame/730/76561202255233023/+csgo_econ_action_preview%20S'
+      url_with_steamid_and_assetid = "#{steam_id}A#{assetid}"
+      number_after_assetid = 'D' + url.partition('%D').last
+      mount_url = url_fixed + url_with_steamid_and_assetid + number_after_assetid
     end
   end
 end
