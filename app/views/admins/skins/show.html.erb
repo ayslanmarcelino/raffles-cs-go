@@ -32,10 +32,9 @@
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table">
-                  <tr>
-                    <th><%= t('.inspect_in_game') %></th>
-                    <td><a class="btn btn-outline-info btn-sm" href="<%= @skin.inspect_url %>">Inspecionar no jogo</a></td>
-                  </tr>
+                  <a class="btn btn-outline-info btn-sm mb-2 pull-right" href="<%= @skin.inspect_url %>">
+                    <%= t('.inspect_in_game') %>
+                  </a>
                   <% if @skin.expiration_date.present? && time_tradelock_integer(@skin.expiration_date).positive? %>
                     <tr>
                       <th><%= t('.time_tradelock') %></th>
