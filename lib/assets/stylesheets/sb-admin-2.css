@@ -7676,6 +7676,10 @@ button.bg-dark:focus {
   height: 100vh !important;
 }
 
+.fs-10 {
+  font-size: 10px;
+}
+
 .m-0 {
   margin: 0 !important;
 }
@@ -9986,6 +9990,40 @@ a:focus {
   background-size: cover;
 }
 
+.market-card {
+  background-color: #1F1F1F;
+  color: white;
+}
+
+.tag-available {
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  text-align: center;
+  font-size: 14px
+}
+
+.market-sticker {
+  text-align: center;
+  margin-top: -40px;
+}
+
+.market-description {
+  font-size: 17px;
+  max-width: 300px
+}
+
+.market-prices {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.tag-sale {
+  float: right;
+  height: 27px;
+  text-align: center;
+  line-height: 1.5 !important;
+}
+
 .grid-view {
   display: flex;
   flex-wrap: wrap;
@@ -10017,6 +10055,14 @@ a:focus {
 
 .f-wrap {
   flex-wrap: wrap;
+}
+
+.bg-green {
+  background-color: green;
+}
+
+.bg-red {
+  background-color: #f54041;
 }
 
 .bg-steam {

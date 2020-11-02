@@ -1,0 +1,7 @@
+pt-BR:
+  market:
+    index:
+      available: Disponível
+      releases_on: Disponível em
+      inspect_in_game: Inspecionar no jogo
+      float: Float
