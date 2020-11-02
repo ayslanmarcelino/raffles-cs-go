@@ -5208,6 +5208,7 @@ a.badge-dark:focus, a.badge-dark.focus {
 .progress {
   display: flex;
   height: 1rem;
+  height: 0.6rem !important;
   overflow: hidden;
   line-height: 0;
   font-size: 0.75rem;
@@ -9983,6 +9984,16 @@ a:focus {
   background-color: #5a5c69;
   background-image: linear-gradient(180deg, #5a5c69 10%, #373840 100%);
   background-size: cover;
+}
+
+.grid-view {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto !important;
+}
+
+.fa-cog {
+  color: black !important;
 }
 
 .show-skin {

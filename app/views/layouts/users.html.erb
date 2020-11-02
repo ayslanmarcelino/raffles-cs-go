@@ -33,6 +33,12 @@
             <span><%= t('.dashboard') %></span>
           <% end %>
         </li>
+        <li class="nav-item">
+          <%= link_to market_index_path, class: 'nav-link' do %>
+            <i class="fas fa-store"></i>
+            <span><%= t('.market') %></span>
+          <% end %>
+        </li>
         <% if current_user.is_admin %>
           <span class="text-center color-white"><%= t('.admin') %></span>
           <hr class="sidebar-divider my-0">
@@ -84,16 +90,13 @@
             </button>
             <div class="href-class">
               <a href="https://www.instagram.com/pingo.rifas/" target="_blank">
-                <i class="fab fa-instagram fa-2x icons-header"></i>
+                <i class="fab fa-instagram fa-2x fa-cog icons-header"></i>
               </a>
               <a href="https://www.twitch.tv/ayslanmarcelino" target="_blank">
-                <i class="fab fa-twitch fa-2x icons-header"></i>
+                <i class="fab fa-twitch fa-2x fa-cog icons-header"></i>
               </a>
               <a href="https://chat.whatsapp.com/EU0wmzc8Jy7Gac2XBPKQCn" target="_blank">
-                <i class="fab fa-whatsapp fa-2x icons-header"></i>
-              </a>
-              <a href="https://github.com/ayslanmarcelino" target="_blank">
-                <i class="fab fa-github fa-2x icons-header"></i>
+                <i class="fab fa-whatsapp fa-2x fa-cog icons-header"></i>
               </a>
             </div>
             <ul class="navbar-nav ml-auto">
