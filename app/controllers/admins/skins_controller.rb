@@ -121,7 +121,7 @@ module Admins
           exists_skin.has_sticker = sticker?(skin)
           exists_skin.name_sticker = name_sticker(skin)
           exists_skin.image_sticker = image_sticker(skin)
-          exists_skin.inspect_url = inspect_in_game(assetid, inspect_url)
+          exists_skin.inspect_url = inspect_in_game(assetid, inspect_url) if exists_skin.inspect_in_game.nil? || exists_skin.inspect_in_game.empty?
           exists_skin.save
           next
         end

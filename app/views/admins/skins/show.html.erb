@@ -34,7 +34,7 @@
                 <table class="table">
                   <tr>
                     <th><%= t('.inspect_in_game') %></th>
-                    <td><button class="btn btn-outline-info btn-sm" type="button" href="<%= @skin.inspect_url %>">Inspecionar no jogo</button></td>
+                    <td><a class="btn btn-outline-info btn-sm" href="<%= @skin.inspect_url %>">Inspecionar no jogo</a></td>
                   </tr>
                   <% if @skin.expiration_date.present? && time_tradelock_integer(@skin.expiration_date).positive? %>
                     <tr>
