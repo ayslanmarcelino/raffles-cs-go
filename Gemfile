@@ -16,6 +16,7 @@ gem 'rails-i18n'
 gem 'rest-client'
 gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 4.0'
+gem 'whenever', require: false
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
