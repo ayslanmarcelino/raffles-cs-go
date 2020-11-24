@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     get 'transaction_types/index'
     get 'skins/index'
     get 'dashboard/index'
+    get 'available_skins/index'
 
     resources :users
     resources :transaction_types

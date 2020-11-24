@@ -1,0 +1,19 @@
+pt-BR:
+  admins:
+    available_skins:
+      index:
+        available_skins: Skins disponíveis
+        search_new_items: Buscar novos itens
+        refresh_existing_items: Atualizar itens existentes
+        order_by: Ordenar por
+        delete_selected: Deletar selecionados
+        description: Nome do item
+        exterior: Exterior
+        price_steam: Preço na Steam
+        first_price_steam: Primeiro preço da Steam
+        price_paid: Preço pago
+        sale_price: Preço de venda
+        created_at: Criado em
+        updated_at: Atualizado em
+        delete_confirm: Você deseja excluir a skin
+        no_skins: Não há skins disponíveis

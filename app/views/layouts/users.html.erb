@@ -77,6 +77,14 @@
               <span><%= t('.skins') %></span>
             <% end %>
           </li>
+          <li class="nav-item">
+            <%= link_to admins_available_skins_index_path, class: 'nav-link' do %>
+              <div class="svg">
+                <%= show_svg('hand-gun.svg') %>
+              </div>
+              <span><%= t('.available_skins') %></span>
+            <% end %>
+          </li>
         <% end %>
         <div class="text-center d-none d-md-inline">
           <button class="rounded-circle border-0" id="sidebarToggle"></button>
