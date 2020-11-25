@@ -183,6 +183,7 @@ module Admins
     def price_steam(name)
       sleep(5)
       name.include?('™') ? new_name = name.sub('™', '%E2%84%A2') : new_name = name.sub('★', '%E2%98%85')
+      new_name = name.sub('™', '%E2%84%A2').sub('★', '%E2%98%85') if name.include?('™') && name.include?('★')
       url = "https://steamcommunity.com/market/priceoverview/?currency=7&appid=730&market_hash_name=#{new_name}"
       resp = RestClient.get(url)
 
