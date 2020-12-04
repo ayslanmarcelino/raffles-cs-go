@@ -6,7 +6,10 @@ module Admins
     helper_method :sort_column, :sort_direction
 
     def index
-      @skins = Skin.all.order(sort_column + ' ' + sort_direction).where(is_available: true)
+      @skins = Skin.all
+                   .order(sort_column + ' ' + sort_direction)
+                   .where(is_available: true)
+                   .where('expiration_date < ? OR expiration_date is null', DateTime.now)                   
     end
 
     private
