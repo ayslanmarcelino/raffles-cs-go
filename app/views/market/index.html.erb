@@ -55,16 +55,29 @@
           <% end %>
         </ul>
         <div class="chili-pepper-text mb-0 market-prices">
-          <span class="badge badge-success tag-sale">
-            <%= sale_percentage(skin.sale_price, skin.price_steam) %>% OFF
-          </span>
+          <% if skin.price_steam > skin.price_csmoney %>
+            <span class="badge badge-success tag-sale">
+              <%= sale_percentage(skin.sale_price, skin.price_steam) %>% OFF
+            </span>
+          <% else %>
+            <span class="badge badge-success tag-sale">
+              <%= sale_percentage(skin.sale_price, skin.price_csmoney) %>% OFF
+            </span>
+          <% end %>
         </div>
         <div class="chili-pepper-text mb-0 market-prices">
         <br>
-          <div>
-            <%= image_tag('logo_steam.png', width: 28) %>
-            <%= number_to_currency(skin.price_steam) %>
-          </div>
+          <% if skin.price_steam > skin.price_csmoney %>
+            <div>
+              <%= image_tag('logo_steam.png', width: 28) %>
+              <%= number_to_currency(skin.price_steam) %>
+            </div>
+          <% else %>
+            <div>
+              <%= image_tag('logo_csmoney.png', width: 28) %>
+              <%= number_to_currency(skin.price_csmoney) %>
+            </div>
+          <% end %>
           <div>
             <%= image_tag('logo_without_name.png', width: 28) %>
             <%= number_to_currency(skin.sale_price) %>

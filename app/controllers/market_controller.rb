@@ -9,8 +9,8 @@ class MarketController < UsersController
 
   def skin_available_to_sale
     @skins = Skin.where(is_available: true)
-                 .where('price_steam > price_paid')
-                 .where('price_steam > sale_price')
+                 .where('price_steam > price_paid OR price_csmoney > price_paid')
+                 .where('price_steam > sale_price OR price_csmoney > sale_price')
                  .where('sale_price > 0')
                  .order(sort_column + ' ' + sort_direction)
   end
