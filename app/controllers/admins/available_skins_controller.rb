@@ -9,7 +9,7 @@ module Admins
       @skins = Skin.all
                    .order(sort_column + ' ' + sort_direction)
                    .where(is_available: true)
-                   .where('expiration_date < ?', DateTime.now)                   
+                   .where('expiration_date < ? OR expiration_date is null', DateTime.now)                   
     end
 
     private
