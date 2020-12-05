@@ -18,8 +18,14 @@
 #  fk_rails_...  (transaction_type_id => transaction_types.id)
 #
 class Transaction < ApplicationRecord
+  validates_uniqueness_of :description
+  before_save :downcase_description
   belongs_to :transaction_type
   has_many :skins
+
+  def downcase_description
+    description.downcase!
+  end
 
   def skins_descriptions
     order_descriptions = skins.order(:description)

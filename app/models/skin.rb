@@ -35,5 +35,4 @@
 #  fk_rails_...  (transaction_id => transactions.id)
 #
 class Skin < ApplicationRecord
-  belongs_to :transaction
 end

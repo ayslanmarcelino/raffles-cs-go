@@ -35,7 +35,7 @@ module Admins
     end
 
     def params_transaction_type
-      params.require(:transaction_type).permit(:description, :item_type_id)
+      params.require(:transaction_type).permit(:description)
     end
   end
 end
