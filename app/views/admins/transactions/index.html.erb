@@ -16,6 +16,7 @@
                   <th><%= t('.skins') %></th>
                   <th><%= t('.price_steam') %></th>
                   <th><%= t('.price_paid') %></th>
+                  <th><%= t('.profit') %></th>
                   <th><%= t('.created_at') %></th>
                   <th class="table-buttons">
                     <%= link_to new_admins_transaction_path(@transaction), class: 'btn btn-success btn-circle' do %>
@@ -33,6 +34,7 @@
                     <td><%= transaction.skins_descriptions.join(', ') %></td>
                     <td><%= number_to_currency(transaction.skins_price_steam) %></td>
                     <td><%= number_to_currency(transaction.skins_price_paid) %></td>
+                    <td><%= number_to_currency(transaction.price - transaction.skins_price_paid) %></td>
                     <td><%= l(transaction.created_at.to_datetime, format: :with_full_hour) %></td>
                     <td class="table-buttons">
                       <%= link_to edit_admins_transaction_path(transaction), class: 'btn btn-info btn-circle' do %>

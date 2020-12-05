@@ -4,6 +4,7 @@ module Admins
   class TransactionsController < AdminsController
     before_action :set_transaction, only: %w[edit update destroy]
     before_action :set_transaction_type, only: %w[new create edit]
+    rescue_from ActiveRecord::InvalidForeignKey, with: :invalid_foreign_key
 
     def index
       @transactions = Transaction.all.order(:description)
@@ -41,6 +42,10 @@ module Admins
 
     def params_transaction
       params.require(:transaction).permit(:description, :price, :transaction_type_id)
+    end
+
+    def invalid_foreign_key
+      redirect_to admins_transactions_index_path, notice: 'Não é possível excluir, pois a transação contém skins vinculadas.'
     end
   end
 end
