@@ -3,12 +3,10 @@ pt-BR:
     dashboard:
       index:
         metrics: Métricas
-        count_users: Quantidade de usuários
-        view_users: Visualizar usuários
-        count_skins_available: Quantidade de skins disponíveis
-        view_skins_available: Visualizar skins disponíveis
-        count_skins_without_tradelock: Quantidade de skins sem trade lock
-        count_skins_with_tradelock: Quantidade de skins com trade lock
+        count_users: Usuários cadastrados
+        skins_in_inventory: Skins no inventário
+        available_skins: Skins disponíveis
+        unavailable_skins: Skins com trade lock
         financial: Financeiro
         price_total_steam: Valor inventário - Steam
         price_total_csmoney: Valor inventário - CS.money
