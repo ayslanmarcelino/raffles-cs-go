@@ -1,0 +1,7 @@
+pt-BR:
+  admins:
+    transactions:
+      edit:
+        editing: Você está editando a transação
+        cancel: Cancelar
+        edit: Editar tipo de transação
