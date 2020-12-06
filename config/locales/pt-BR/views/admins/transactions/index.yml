@@ -1,0 +1,15 @@
+pt-BR:
+  admins:
+    transactions:
+      index:
+        registered_transactions: Tipos de transação cadastrados
+        description: Descriçāo
+        transaction_type: Tipo de transação
+        price_transaction: Preço da transação
+        skins: Skins
+        price_steam: Preço da Steam
+        price_paid: Preço pago
+        profit: Lucro
+        created_at: Criado em
+        delete_confirm: Você deseja excluir a transaçāo
+        no_transaction_types: Não há tipos de transação cadastrados

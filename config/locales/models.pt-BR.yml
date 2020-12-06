@@ -17,6 +17,10 @@
         updated_at: Atualizado em
       transaction_type:
         description: Tipo de transação
+      transaction:
+        description: Descriçāo
+        price: Preço
+        transaction_type: Tipo de transaçāo
       skin:
         description: Nome da skin
         float: Float
