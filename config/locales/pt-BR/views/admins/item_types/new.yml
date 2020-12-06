@@ -1,7 +1,0 @@
-pt-BR:
-  admins:
-    item_types:
-      new:
-        new_item_type: Novo tipo de item
-        cancel: Cancelar
-        create_new: Criar novo tipo de item

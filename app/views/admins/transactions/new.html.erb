@@ -1,39 +1,19 @@
-<h1>Cadastro de nova carga</h1>
-
-<div class="card">
-  <% if @transaction.errors.any? %>
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <ul>
-        <% @transaction.errors.full_messages.each do |message| %>
-          <li> <%= message %> </li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<div class="text-center">
+  <h4><%= t('.new_transaction') %></h4>
+</div>
+<div class="row card">
+  <%= render partial: 'admins/transactions/components/errors.html.erb' %>
   <div class="col-lg-12 m-t-10">
     <%= form_with(model: [:admins, @transaction], local: true) do |form| %>
-      <div class="col-lg-7" style="text-transform: uppercase;">
-        <%= form.label(:description) %>
-        <%= form.text_field(:description, class: 'form-control form-control-user', required: true) %>
-      </div>
-      <div class="col-lg-7">
-        <%= form.label(:price) %>
-        <%= form.text_field(:price, class: 'form-control form-control-user', required: true) %>
-      </div>
-      <div class="col-lg-7">
-        <%= form.label(:transaction_type_id) %></br>
-        <%= form.collection_select(:transaction_type_id, @transaction_types, :id, :description, {}, { class: 'select2_single form-control', required: true }) %>
-      </div>
-      <div class="row btn-actions col-lg-12">
-        <div class="col-lg-2">
-          <%= link_to 'Cancelar', admins_transactions_index_path, class: 'btn btn-danger btn-user btn-block' %>
+      <%= render partial: 'admins/transactions/components/form.html.erb',
+            locals: { form: form } %>
+      <div class="row btn-actions">
+        <div class="col-lg-6">
+          <%= link_to t('.cancel'), admins_transactions_index_path, class: 'btn btn-danger btn-user btn-block' %>
         </div>
-        <div class="col-lg-2">
+        <div class="col-lg-6">
           <button class="btn btn-success btn-user btn-block">
-            Cadastrar nova carga
+            <%= t('.create_new') %>
           </button>
         </div>
       </div>

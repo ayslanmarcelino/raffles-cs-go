@@ -7,7 +7,7 @@ module Admins
     rescue_from ActiveRecord::InvalidForeignKey, with: :invalid_foreign_key
 
     def index
-      @transactions = Transaction.all.order(:description)
+      @transactions = Transaction.all.order(created_at: :desc)
     end
 
     def new
