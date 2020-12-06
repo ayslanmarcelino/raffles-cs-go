@@ -19,7 +19,7 @@
         description: Tipo de transação
       transaction:
         description: Descriçāo
-        price: Preço
+        price: Valor da transaçāo
         transaction_type: Tipo de transaçāo
       skin:
         description: Nome da skin

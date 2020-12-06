@@ -1,0 +1,78 @@
+<div class="col-12 d-inline-flex f-wrap">
+  <div class="col-xl-3 col-md-6 mb-4 f-wrap">
+    <div class="card border-left-primary shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+              <%= t('admins.dashboard.index.count_transactions') %>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><%= @transaction_info[:transactions].count %></div>
+            </div>
+          </div>
+          <div class="col-auto">
+            <div class="col-auto">
+              <i class="fas fa-exchange-alt fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3 col-md-6 mb-4 f-wrap">
+    <div class="card border-left-secondary shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
+              <%= t('admins.dashboard.index.total_value_transactions') %>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><%= number_to_currency(@transaction_info[:value]) %></div>
+            </div>
+          </div>
+          <div class="col-auto">
+            <div class="col-auto">
+              <i class="fas fa-money fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3 col-md-6 mb-4 f-wrap">
+    <div class="card border-left-warning shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+              <%= t('admins.dashboard.index.total_price_paid_transactions') %>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><%= number_to_currency(@transaction_info[:price_paid]) %></div>
+            </div>
+          </div>
+          <div class="col-auto">
+            <div class="col-auto">
+              <i class="fas fa-money fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3 col-md-6 mb-4 f-wrap">
+    <div class="card border-left-<%= @transaction_info[:profit].positive? ? 'success' : 'danger' %> shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-<%= @transaction_info[:profit].positive? ? 'success' : 'danger' %> text-uppercase mb-1">
+              <%= t('admins.dashboard.index.profit_transactions') %>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><%= number_to_currency(@transaction_info[:profit]) %></div>
+            </div>
+          </div>
+          <div class="col-auto">
+            <div class="col-auto">
+              <i class="fas fa-money fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -12,3 +12,8 @@ pt-BR:
         price_total_csmoney: Valor inventário - CS.money
         price_total_paid: Valor total pago
         difference_value: Diferença de valor - Steam/Pago
+        transaction: Transações
+        count_transactions: Quantidade de transações
+        total_value_transactions: Valor total
+        total_price_paid_transactions: Valor total pago
+        profit_transactions: Lucro
