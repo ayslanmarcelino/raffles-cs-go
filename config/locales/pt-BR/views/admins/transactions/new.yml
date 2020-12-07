@@ -1,0 +1,7 @@
+pt-BR:
+  admins:
+    transactions:
+      new:
+        new_transaction: Nova transação
+        cancel: Cancelar
+        create_new: Criar nova transação

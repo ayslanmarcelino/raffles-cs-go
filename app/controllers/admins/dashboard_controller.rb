@@ -4,6 +4,7 @@ module Admins
   class DashboardController < AdminsController
     before_action :metrics_service, only: %i[index]
     before_action :metrics_financial, only: %i[index]
+    before_action :metrics_transaction, only: %i[index]
 
     def index; end
 
@@ -15,6 +16,10 @@ module Admins
 
     def metrics_financial
       @financial_info = Dashboard::Financial.new(@financial_info).call
+    end
+
+    def metrics_transaction
+      @transaction_info = Dashboard::Transactions.new(@transaction_info).call
     end
   end
 end

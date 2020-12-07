@@ -4,6 +4,7 @@ module Admins
   class SkinsController < AdminsController
     before_action :set_skin, only: %w[show edit update destroy]
     helper_method :sort_column, :sort_direction
+    before_action :set_transaction, only: %w[new create edit]
 
     def index
       @skins = Skin.all.order(sort_column + ' ' + sort_direction)
@@ -50,10 +51,15 @@ module Admins
       @skin = Skin.find(params[:id])
     end
 
+    def set_transaction
+      @transactions = Transaction.all.order(created_at: :desc)
+    end
+
     def params_skin
       params.require(:skin).permit(:description, :float, :price_steam,
                                    :price_csmoney, :price_paid, :sale_price,
-                                   :is_stattrak, :has_sticker, :is_available)
+                                   :is_stattrak, :has_sticker, :is_available,
+                                   :transaction_id)
     end
 
     def sort_column

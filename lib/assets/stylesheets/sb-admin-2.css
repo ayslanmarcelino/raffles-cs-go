@@ -9979,8 +9979,7 @@ a:focus {
 }
 
 .bg-gradient-pingo {
-  background-color: black;
-  background-image: linear-gradient(180deg, black 10%, #c2cbe5 100%);
+  background-color: #1F1F1F;
   background-size: cover;
 }
 

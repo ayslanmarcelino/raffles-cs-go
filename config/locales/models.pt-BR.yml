@@ -17,6 +17,10 @@
         updated_at: Atualizado em
       transaction_type:
         description: Tipo de transação
+      transaction:
+        description: Descriçāo
+        price: Valor da transaçāo
+        transaction_type: Tipo de transaçāo
       skin:
         description: Nome da skin
         float: Float
@@ -28,3 +32,4 @@
         is_stattrak: É stattrak
         has_sticker: Tem sticker
         is_available: Está disponível
+        transaction: Transaçāo
