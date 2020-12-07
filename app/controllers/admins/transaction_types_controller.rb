@@ -2,7 +2,6 @@
 
 module Admins
   class TransactionTypesController < AdminsController
-    before_action :set_item_type, only: %w[new create edit]
     before_action :set_transaction_type, only: %w[edit update destroy]
 
     def index
@@ -31,16 +30,12 @@ module Admins
 
     private
 
-    def set_item_type
-      @item_types = ItemType.all.order(:description)
-    end
-
     def set_transaction_type
       @transaction_type = TransactionType.find(params[:id])
     end
 
     def params_transaction_type
-      params.require(:transaction_type).permit(:description, :item_type_id)
+      params.require(:transaction_type).permit(:description)
     end
   end
 end

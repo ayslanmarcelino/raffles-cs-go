@@ -3,6 +3,10 @@
     <i class="fas fa-arrow-left"></i>
     <%= t('.back') %>
   <% end %>
+  <%= link_to edit_admins_skin_path(@skin), class: 'col-xs-3 btn btn-info' do %>
+    <i class="fas fa-edit"></i>
+    <%= t('.edit') %>
+  <% end %>
 </div>
 <div class="text-center mb-4">
   <h4><%= t('.skin') %>: <%= @skin.description %></h4>

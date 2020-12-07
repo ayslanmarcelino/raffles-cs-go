@@ -23,10 +23,16 @@
 #  sale_price        :float            default(0.0)
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  transaction_id    :bigint
 #
 # Indexes
 #
-#  index_skins_on_id_steam  (id_steam) UNIQUE
+#  index_skins_on_id_steam        (id_steam) UNIQUE
+#  index_skins_on_transaction_id  (transaction_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (transaction_id => transactions.id)
 #
 class Skin < ApplicationRecord
 end

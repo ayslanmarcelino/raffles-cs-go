@@ -3,6 +3,7 @@ pt-BR:
     skins:
       show:
         back: Voltar
+        edit: Editar
         skin: Skin
         inspect_in_game: Inspecionar no jogo
         time_tradelock: Tempo restante de trade lock
