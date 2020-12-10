@@ -113,6 +113,7 @@ module Admins
         skin_model.is_stattrak = stattrak?(skin)
         skin_model.expiration_date = skin['cache_expiration'] if skin['cache_expiration']
         skin_model.inspect_url = inspect_in_game(assetid, inspect_url)
+        skin_model.steam_account_id = params[:steam_account_id]
         skin_model.save
       end
     end

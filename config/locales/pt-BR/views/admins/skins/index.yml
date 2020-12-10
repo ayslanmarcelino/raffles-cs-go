@@ -15,6 +15,7 @@ pt-BR:
         first_price_steam: Primeiro preço da Steam
         price_paid: Preço pago
         sale_price: Preço de venda
+        steam_account: ID da URL Steam
         is_available: Está disponível
         created_at: Criado em
         updated_at: Atualizado em

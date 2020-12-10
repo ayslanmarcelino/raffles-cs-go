@@ -23,8 +23,8 @@
         transaction_type: Tipo de transaçāo
       steam_account:
         description: Nome da conta
-        steam_id: Steam ID
-        url: Steam ID da URL
+        steam_id: ID da conta Steam
+        url: ID da URL Steam
         user: Dono da conta
       skin:
         description: Nome da skin
