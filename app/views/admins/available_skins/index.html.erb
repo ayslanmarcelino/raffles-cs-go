@@ -1,15 +1,5 @@
 <div class="text-center mb-4">
   <h4><%= t('.available_skins') %>: <%= @skins.count %></h4>
-  <%= link_to search_admins_skins_path, class: 'btn btn-dark btn-update-skins', method: :get, remote: true do %>
-    <i class="fas fa-refresh"></i>
-    <%= t('.search_new_items') %>
-  <% end %>
-  <% if @skins.count.positive? %>
-    <%= link_to refresh_skins_admins_skins_path, class: 'btn btn-dark btn-update-skins', method: :get, remote: true do %>
-      <i class="fas fa-refresh"></i>
-      <%= t('.refresh_existing_items') %>
-    <% end %>
-  <% end %>
 </div>
 <div class="dropdown">
   <button class="btn btn-dark btn-sm dropdown-toggle mb-2" type="button" data-toggle="dropdown">

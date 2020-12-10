@@ -1,0 +1,7 @@
+pt-BR:
+  admins:
+    steam_accounts:
+      new:
+        new_steam_account: Nova conta Steam
+        cancel: Cancelar
+        create_new: Criar nova conta Steam
