@@ -8,14 +8,17 @@
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #  transaction_type_id :bigint           not null
+#  user_id             :bigint
 #
 # Indexes
 #
 #  index_transactions_on_transaction_type_id  (transaction_type_id)
+#  index_transactions_on_user_id              (user_id)
 #
 # Foreign Keys
 #
 #  fk_rails_...  (transaction_type_id => transaction_types.id)
+#  fk_rails_...  (user_id => users.id)
 #
 class Transaction < ApplicationRecord
   validates_uniqueness_of :description

@@ -7,7 +7,11 @@ module Admins
     before_action :set_transaction, only: %w[new create edit]
 
     def index
-      @skins = Skin.all.order(sort_column + ' ' + sort_direction)
+      @skins = Skin.all
+                   .joins(:steam_account)
+                   .where("steam_accounts.user_id = #{current_user.id}")
+                   .order(sort_column + ' ' + sort_direction)
+
       @steam_accounts = SteamAccount.all.where(user_id: current_user.id).order(:description)
     end
 

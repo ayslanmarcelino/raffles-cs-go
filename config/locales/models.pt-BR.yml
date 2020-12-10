@@ -21,6 +21,7 @@
         description: Descriçāo
         price: Valor da transaçāo
         transaction_type: Tipo de transaçāo
+        user: Usuário
       steam_account:
         description: Nome da conta
         steam_id: ID da conta Steam

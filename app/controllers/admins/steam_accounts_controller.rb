@@ -4,6 +4,7 @@ module Admins
   class SteamAccountsController < AdminsController
     before_action :set_steam_account, only: %w[edit update destroy]
     before_action :set_user, only: %w[new create edit]
+    rescue_from ActiveRecord::InvalidForeignKey, with: :invalid_foreign_key
 
     def index
       @steam_accounts = SteamAccount.all.where(user_id: current_user.id).order(created_at: :desc)
@@ -36,11 +37,15 @@ module Admins
     end
 
     def set_user
-      @users = User.where(id: current_user.id)
+      @user = User.where(id: current_user.id)
     end
 
     def params_steam_account
       params.require(:steam_account).permit(:description, :steam_id, :url, :user_id)
+    end
+
+    def invalid_foreign_key
+      redirect_to admins_steam_accounts_index_path, notice: 'Não é possível excluir, pois a conta da Steam contém skins vinculadas.'
     end
   end
 end
