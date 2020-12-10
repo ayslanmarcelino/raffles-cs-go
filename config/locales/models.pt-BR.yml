@@ -21,6 +21,11 @@
         description: Descriçāo
         price: Valor da transaçāo
         transaction_type: Tipo de transaçāo
+      steam_account:
+        description: Nome da conta
+        steam_id: ID da Steam
+        url: URL da Steam
+        user: Dono da conta
       skin:
         description: Nome da skin
         float: Float

@@ -32,4 +32,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :trackable, :timeoutable
   paginates_per 25
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

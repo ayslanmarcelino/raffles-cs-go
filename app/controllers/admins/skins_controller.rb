@@ -8,6 +8,7 @@ module Admins
 
     def index
       @skins = Skin.all.order(sort_column + ' ' + sort_direction)
+      @steam_accounts = SteamAccount.all.where(user_id: current_user.id).order(:description)
     end
 
     def new
@@ -31,10 +32,14 @@ module Admins
     end
 
     def search
+      @steam_account = SteamAccount.find_by(id: search_params[:steam_account_id])
+
       search_skins
     end
 
     def refresh_skins
+      @steam_account = SteamAccount.find_by(id: search_params[:steam_account_id])
+
       update_skins
     end
 
@@ -46,6 +51,10 @@ module Admins
     end
 
     private
+
+    def search_params
+      params.permit(:steam_account_id)
+    end
 
     def set_skin
       @skin = Skin.find(params[:id])
@@ -135,7 +144,7 @@ module Admins
     end
 
     def requisition_api
-      url = 'https://steamcommunity.com/id/ayslanmarcelino/inventory/json/730/2'
+      url = "https://steamcommunity.com/id/#{@steam_account.url}/inventory/json/730/2"
       resp = RestClient.get(url)
       @rg_inventory = JSON.parse(resp.body)['rgInventory']
       @skins_api = JSON.parse(resp.body)['rgDescriptions'].values
@@ -197,7 +206,7 @@ module Admins
     end
 
     def inspect_skin(assetid, url)
-      steam_id = 76_561_198_345_749_032
+      steam_id = @steam_account.steam_id
       url_fixed = 'https://api.csgofloat.com/?url=steam://rungame/730/76561202255233023/+csgo_econ_action_preview%20S'
       url_with_steamid_and_assetid = "#{steam_id}A#{assetid}"
       number_after_assetid = 'D' + url.partition('%D').last
@@ -215,7 +224,7 @@ module Admins
     end
 
     def inspect_in_game(assetid, url)
-      steam_id = 76_561_198_345_749_032
+      steam_id = @steam_account.steam_id
       url_fixed = 'steam://rungame/730/76561202255233023/+csgo_econ_action_preview%20S'
       url_with_steamid_and_assetid = "#{steam_id}A#{assetid}"
       number_after_assetid = 'D' + url.partition('%D').last
