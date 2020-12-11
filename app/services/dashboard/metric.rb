@@ -2,8 +2,9 @@
 
 module Dashboard
   class Metric
-    def initialize(metric_info)
+    def initialize(metric_info, current_user)
       @metric_info = metric_info
+      @current_user = current_user
     end
 
     def call
@@ -35,17 +36,24 @@ module Dashboard
     end
 
     def list_skins_available
-      Skin.all.where(is_available: true)
+      Skin.all
+          .joins(:steam_account)
+          .where("steam_accounts.user_id = #{@current_user.id}")
+          .where(is_available: true)
     end
 
     def list_skins_without_tradelock
       Skin.all
+          .joins(:steam_account)
+          .where("steam_accounts.user_id = #{@current_user.id}")
           .where(is_available: true)
           .where('expiration_date < ? OR expiration_date is null', Time.now)
     end
 
     def list_skins_tradelock
       Skin.all
+          .joins(:steam_account)
+          .where("steam_accounts.user_id = #{@current_user.id}")
           .where(is_available: true)
           .where('expiration_date > ?', Time.now)
     end

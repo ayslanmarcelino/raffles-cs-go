@@ -65,7 +65,9 @@ module Admins
     end
 
     def set_transaction
-      @transactions = Transaction.all.order(created_at: :desc)
+      @transactions = Transaction.all
+                      .where(user_id: current_user.id)
+                      .order(created_at: :desc)
     end
 
     def params_skin

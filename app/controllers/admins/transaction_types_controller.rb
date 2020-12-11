@@ -3,6 +3,7 @@
 module Admins
   class TransactionTypesController < AdminsController
     before_action :set_transaction_type, only: %w[edit update destroy]
+    rescue_from ActiveRecord::InvalidForeignKey, with: :invalid_foreign_key
 
     def index
       @transaction_types = TransactionType.all.order(:description).page(params[:page])
@@ -36,6 +37,10 @@ module Admins
 
     def params_transaction_type
       params.require(:transaction_type).permit(:description)
+    end
+
+    def invalid_foreign_key
+      redirect_to admins_transaction_types_path, notice: 'Não é possível excluir, pois tipo de transaçāo contém transaçāo vinculadas.'
     end
   end
 end
