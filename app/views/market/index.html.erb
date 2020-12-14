@@ -23,9 +23,11 @@
           <%= t('.available') %>
         </div>
       <% end %>
-      <a class="btn btn-outline-light btn-sm mt-2 ml-2" href="<%= skin.inspect_url %>">
-        <%= t('.inspect_in_game') %>
-      </a>
+      <% if skin.inspect_url.present? %>
+        <a class="btn btn-outline-light btn-sm mt-2 ml-2" href="<%= skin.inspect_url %>">
+          <%= t('.inspect_in_game') %>
+        </a>
+      <% end %>
       <div class="col-lg-12">
         <%= image_tag(skin.image_skin, width: 300) %>
       </div>

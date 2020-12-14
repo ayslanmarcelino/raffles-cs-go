@@ -47,6 +47,14 @@ module Admins
       update_skins
     end
 
+    def refresh_skins_job
+      SteamAccount.all.each do |skin|
+        @steam_account = SteamAccount.find_by(id: skin.id)
+      end
+
+      update_skins
+    end
+
     def destroy_multiple
       Skin.destroy(params[:skins])
       respond_to do |format|
@@ -130,20 +138,14 @@ module Admins
       @skins_api.each do |skin|
         inspect_url = skin['actions'].first['link'] if skin['actions'].present?
         assetid = assetid(@rg_inventory, skin['classid'])
-        skin_large = skin['icon_url_large']
-        skin_standard = skin['icon_url']
-        icon_url = skin_large.present? ? skin_large : skin_standard
-        skin_image_url = "https://steamcommunity-a.akamaihd.net/economy/image/#{icon_url}"
         exists_skin = Skin.find_by(id_steam: assetid, is_available: true)
         sleep(10)
 
         if exists_skin
-          exists_skin.image_skin = skin_image_url if exists_skin.image_skin.nil? || exists_skin.image_skin.empty?
           exists_skin.price_steam = price_steam(skin['market_name']).scan(/[,0-9]/).join.sub(',', '.').to_f
           exists_skin.has_sticker = sticker?(skin)
           exists_skin.name_sticker = name_sticker(skin)
           exists_skin.image_sticker = image_sticker(skin)
-          exists_skin.inspect_url = inspect_in_game(assetid, inspect_url) if exists_skin.inspect_url.nil? || exists_skin.inspect_url.empty?
           exists_skin.save
           next
         end
