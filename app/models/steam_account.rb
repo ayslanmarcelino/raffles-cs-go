@@ -12,7 +12,9 @@
 #
 # Indexes
 #
-#  index_steam_accounts_on_user_id  (user_id)
+#  index_steam_accounts_on_steam_id  (steam_id) UNIQUE
+#  index_steam_accounts_on_url       (url) UNIQUE
+#  index_steam_accounts_on_user_id   (user_id)
 #
 # Foreign Keys
 #
@@ -20,6 +22,8 @@
 #
 class SteamAccount < ApplicationRecord
   belongs_to :user
+  validates_uniqueness_of :url
+  validates_uniqueness_of :steam_id
 
   def account_formatted
     "#{url} | #{description}"
