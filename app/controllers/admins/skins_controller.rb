@@ -50,9 +50,8 @@ module Admins
     def refresh_skins_job
       SteamAccount.all.each do |skin|
         @steam_account = SteamAccount.find_by(id: skin.id)
+        update_skins
       end
-
-      update_skins
     end
 
     def destroy_multiple
