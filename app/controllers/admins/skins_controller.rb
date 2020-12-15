@@ -7,12 +7,12 @@ module Admins
     before_action :set_transaction, only: %w[new create edit]
 
     def index
-      @skins = Skin.all
-                   .joins(:steam_account)
+      @skins = Skin.joins(:steam_account)
                    .where("steam_accounts.user_id = #{current_user.id}")
                    .order(sort_column + ' ' + sort_direction)
 
-      @steam_accounts = SteamAccount.all.where(user_id: current_user.id).order(:description)
+      @steam_accounts = SteamAccount.where(user_id: current_user.id)
+                                    .order(:description)
     end
 
     def new
@@ -105,11 +105,9 @@ module Admins
         exists_skin = Skin.find_by(id_steam: assetid)
 
         next if exists_skin
-        next if skin['name'].include?('Case')
-        next if skin['name'].include?('Graffiti')
-        next if skin['name'].include?('Medal')
-        next if skin['name'].include?('Web Coin')
-        next if skin['name'].include?('Badge')
+        next if skin['type'] == 'Base Grade Container'
+        next if skin['type'] == 'Base Grade Graffiti'
+        next if skin['type'] == 'Extraordinary Collectible'
 
         skin_model = Skin.new
         skin_model.id_steam = assetid
@@ -118,14 +116,14 @@ module Admins
         skin_model.exterior = skin['descriptions'].present? ? exterior(skin) : 'Nenhum'
         skin_model.image_skin = skin_image_url
         skin_model.float = skin['actions'].present? ? inspect_skin(assetid, inspect_url) : 0
-        skin_model.price_steam = price_steam(skin['market_name']).scan(/[,0-9]/).join.sub(',', '.').to_f
-        skin_model.first_price_steam = price_steam(skin['market_name']).scan(/[,0-9]/).join.sub(',', '.').to_f
+        skin_model.price_steam = price_steam(skin['market_name'])
+        skin_model.first_price_steam = price_steam(skin['market_name'])
         skin_model.has_sticker = sticker?(skin)
         skin_model.name_sticker = name_sticker(skin)
         skin_model.image_sticker = image_sticker(skin)
         skin_model.is_stattrak = stattrak?(skin)
         skin_model.expiration_date = skin['cache_expiration'] if skin['cache_expiration']
-        skin_model.inspect_url = inspect_in_game(assetid, inspect_url)
+        skin_model.inspect_url = inspect_in_game(assetid, inspect_url) if inspect_url.present?
         skin_model.steam_account_id = params[:steam_account_id]
         skin_model.save
       end
@@ -205,12 +203,11 @@ module Admins
 
     def price_steam(name)
       sleep(5)
-      name.include?('™') ? new_name = name.sub('™', '%E2%84%A2') : new_name = name.sub('★', '%E2%98%85')
-      new_name = name.sub('™', '%E2%84%A2').sub('★', '%E2%98%85') if name.include?('™') && name.include?('★')
+      new_name = URI::escape(name)
       url = "https://steamcommunity.com/market/priceoverview/?currency=7&appid=730&market_hash_name=#{new_name}"
       resp = RestClient.get(url)
 
-      JSON.parse(resp.body)['lowest_price']
+      JSON.parse(resp.body)['lowest_price'].nil? ? 0 : JSON.parse(resp.body)['lowest_price'].scan(/[,0-9]/).join.sub(',', '.').to_f
     end
 
     def inspect_skin(assetid, url)
