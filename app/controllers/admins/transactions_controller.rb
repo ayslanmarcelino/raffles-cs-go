@@ -8,9 +8,8 @@ module Admins
     rescue_from ActiveRecord::InvalidForeignKey, with: :invalid_foreign_key
 
     def index
-      @transactions = Transaction.all
-                      .where(user_id: current_user.id)
-                      .order(created_at: :desc)
+      @transactions = Transaction.where(user_id: current_user.id)
+                                 .order(created_at: :desc)
     end
 
     def new

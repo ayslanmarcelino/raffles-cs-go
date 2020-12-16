@@ -1,38 +1,48 @@
 <div class="text-center mb-4">
   <h4><%= t('.registered_skins') %>: <%= @skins.count %></h4>
-  <%= form_with url: search_admins_skins_path, method: :post, class: 'col-md-12 mb-3' do |form| %>
-    <%= form.collection_select(:steam_account_id, @steam_accounts, :id, :account_formatted, {include_blank: t('.select_account_to_search')}, { class: 'select2_single form-control', required: true }) %>
-    <a class='btn btn-dark text-white col-md-5 mt-1'>
-      <i class="fas fa-refresh"></i>
-      <%= form.submit(t('.search_new_items'), class: 'btn text-white') %>
-    </a>
-  <% end %>
-  <% if @skins.count.positive? %>
-    <%= form_with url: refresh_skins_admins_skins_path, method: :post, class: 'col-md-12 mb-3' do |form| %>
-      <%= form.collection_select(:steam_account_id, @steam_accounts, :id, :account_formatted, {include_blank: t('.select_account_to_refresh')}, { class: 'select2_single form-control', required: true }) %>
-      <a class='btn btn-dark text-white col-md-5 mt-1'>
-        <i class="fas fa-refresh"></i>
-        <%= form.submit(t('.refresh_existing_items'), class: 'btn text-white') %>
-      </a>
-    <% end %>
-  <% end %>
 </div>
 <div class="dropdown">
-  <button class="btn btn-dark btn-sm dropdown-toggle mb-2" type="button" data-toggle="dropdown">
+  <button class="btn btn-success btn-sm dropdown-toggle col-md-2 mb-2" type="button" data-toggle="dropdown">
+    <i class="fas fa-check"></i>
+    <%= t('.actions_skins') %>
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <div class="text-center mb-4">
+      <%= form_with url: search_admins_skins_path, method: :post, class: 'col-md-12 mb-3' do |form| %>
+        <%= form.collection_select(:steam_account_id, @steam_accounts, :id, :account_formatted, {include_blank: t('.select_account_to_search')}, { class: 'select2_single form-control', required: true }) %>
+        <a class='btn btn-dark text-white col-md-7 mt-1'>
+          <i class="fas fa-refresh"></i>
+          <%= form.submit(t('.search_new_items'), class: 'btn text-white') %>
+        </a>
+      <% end %>
+      <% if @skins.count.positive? %>
+        <%= form_with url: refresh_skins_admins_skins_path, method: :post, class: 'col-md-12 mb-3' do |form| %>
+          <%= form.collection_select(:steam_account_id, @steam_accounts, :id, :account_formatted, {include_blank: t('.select_account_to_refresh')}, { class: 'select2_single form-control', required: true }) %>
+          <a class='btn btn-dark text-white col-md-7 mt-1'>
+            <i class="fas fa-refresh"></i>
+            <%= form.submit(t('.refresh_existing_items'), class: 'btn text-white') %>
+          </a>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="dropdown">
+  <button class="btn btn-dark btn-sm dropdown-toggle col-md-2 mb-2" type="button" data-toggle="dropdown">
     <i class="fas fa-sort-amount-down"></i>
     <%= t('.order_by') %>
   </button>
   <div class="dropdown-menu">
-    <div><button class="btn w-100 text-left"><%= sortable('description', t('.description')) %></button></div>
-    <div><button class="btn w-100 text-left"><%= sortable('exterior', t('.exterior')) %></button></div>
-    <div><button class="btn w-100 text-left"><%= sortable('float', t('.float')) %></button></div>
-    <div><button class="btn w-100 text-left"><%= sortable('first_price_steam', t('.first_price_steam')) %></button></div>
-    <div><button class="btn w-100 text-left"><%= sortable('price_steam', t('.price_steam')) %></button></div>
-    <div><button class="btn w-100 text-left"><%= sortable('price_paid', t('.price_paid')) %></button></div>
-    <div><button class="btn w-100 text-left"><%= sortable('sale_price', t('.sale_price')) %></button></div>
-    <div><button class="btn w-100 text-left"><%= sortable('is_available', t('.is_available')) %></button></div>
-    <div><button class="btn w-100 text-left"><%= sortable('created_at', t('.created_at')) %></button></div>
-    <div><button class="btn w-100 text-left"><%= sortable('updated_at', t('.updated_at')) %></button></div>
+    <div><button class="dropdown-item"><%= sortable('description', t('.description')) %></button></div>
+    <div><button class="dropdown-item"><%= sortable('exterior', t('.exterior')) %></button></div>
+    <div><button class="dropdown-item"><%= sortable('float', t('.float')) %></button></div>
+    <div><button class="dropdown-item"><%= sortable('first_price_steam', t('.first_price_steam')) %></button></div>
+    <div><button class="dropdown-item"><%= sortable('price_steam', t('.price_steam')) %></button></div>
+    <div><button class="dropdown-item"><%= sortable('price_paid', t('.price_paid')) %></button></div>
+    <div><button class="dropdown-item"><%= sortable('sale_price', t('.sale_price')) %></button></div>
+    <div><button class="dropdown-item"><%= sortable('is_available', t('.is_available')) %></button></div>
+    <div><button class="dropdown-item"><%= sortable('created_at', t('.created_at')) %></button></div>
+    <div><button class="dropdown-item"><%= sortable('updated_at', t('.updated_at')) %></button></div>
   </div>
 </div>
 <div class="card shadow mb-4" style="background-color: #1F1F1F;">

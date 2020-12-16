@@ -2,12 +2,13 @@ pt-BR:
   admins:
     skins:
       index:
+        actions_skins: Ações das skins
+        order_by: Ordenar por
         registered_skins: Skins cadastradas
         search_new_items: Buscar novos itens
         select_account_to_search: Selecione a conta para buscar novos itens
         refresh_existing_items: Atualizar itens existentes
         select_account_to_refresh: Selecione a conta para atualizar itens cadastrados
-        order_by: Ordenar por
         delete_selected: Deletar selecionados
         description: Nome do item
         exterior: Exterior

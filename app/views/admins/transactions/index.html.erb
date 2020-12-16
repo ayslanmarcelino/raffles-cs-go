@@ -31,7 +31,28 @@
                     <td><%= formatted_field_capitalize(transaction.description) %></td>
                     <td><%= formatted_field_capitalize(transaction.transaction_type.description) %></td>
                     <td><%= number_to_currency(transaction.price) %></td>
-                    <td><%= transaction.skins_descriptions.join(', ') %></td>
+                    <% if transaction.skins.present? %>
+                      <td>
+                        <button class="btn btn-link" style="padding: 0;" data-toggle="modal" data-target="#skinsModal">
+                          <%= t('.view') %>
+                        </button>
+                      </td>
+                      <div class="modal fade" id="skinsModal">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-body">
+                                <% transaction.skins.each do |skin| %>
+                                  <%= link_to admins_skin_path(skin.id) do %>
+                                    <li><%= skin.description %></li>
+                                  <% end %>
+                                <% end %>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <% else %>
+                      <td><%= t('.no_skins') %></td>
+                    <% end %>
                     <td><%= number_to_currency(transaction.skins_price_steam) %></td>
                     <td><%= number_to_currency(transaction.skins_price_paid) %></td>
                     <td><%= number_to_currency(transaction.price - transaction.skins_price_paid) %></td>
