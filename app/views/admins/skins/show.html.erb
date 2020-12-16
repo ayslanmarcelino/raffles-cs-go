@@ -1,5 +1,5 @@
 <div class="col-xs-12 text-center">
-  <h4><%= t('.skin') %>: <%= @skin.description %></h4>
+  <h4><%= t('.skin') %>: <%= @skin.description %> (<%= @skin.exterior %>) - *<%= number_to_currency(@skin.price_steam) %>*</h4>
 </div>
 <div class="col-xs-12 mb-2">
   <%= link_to :back, class: 'col-xs-3 btn btn-secondary btn-user' do %>
@@ -9,6 +9,10 @@
   <%= link_to edit_admins_skin_path(@skin), class: 'col-xs-3 btn btn-info' do %>
     <i class="fas fa-edit"></i>
     <%= t('.edit') %>
+  <% end %>
+  <%= link_to admins_skin_path(@skin), method: :delete, class: 'btn btn-danger', data: { confirm: "#{t('.delete_confirm')}: #{@skin.description}?" } do %>
+    <i class="fas fa-trash"></i>
+    <%= t('.delete') %>
   <% end %>
 </div>
 <div class="text-center mb-4">
@@ -48,16 +52,20 @@
                     </tr>
                   <% end %>
                   <tr>
-                    <th><%= t('.full_name') %></th>
-                    <td><%= @skin.description %> (<%= @skin.exterior %>)</td>
-                  </tr>
-                  <tr>
                     <th><%= t('.description') %></th>
                     <td><%= @skin.description %></td>
                   </tr>
                   <tr>
                     <th><%= t('.exterior') %></th>
                     <td><%= @skin.exterior %></td>
+                  </tr>
+                  <tr>
+                    <th><%= t('.type_weapon') %></th>
+                    <td><%= @skin.type_weapon %></td>
+                  </tr>
+                  <tr>
+                    <th><%= t('.type_skin') %></th>
+                    <td><%= @skin.type_skin %></td>
                   </tr>
                   <% if @skin.float.positive? %>
                     <tr>
