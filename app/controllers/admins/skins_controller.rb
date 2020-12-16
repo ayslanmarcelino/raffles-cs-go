@@ -109,6 +109,7 @@ module Admins
         next if skin['type'] == 'Base Grade Graffiti'
         next if skin['type'] == 'Extraordinary Collectible'
         next if skin['type'] == 'Base Grade Tool'
+        next if skin['type'] == 'Base Grade Pass'
 
         skin_model = Skin.new
         skin_model.id_steam = assetid
