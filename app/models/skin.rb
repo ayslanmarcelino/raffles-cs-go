@@ -21,6 +21,8 @@
 #  price_paid        :float            default(0.0)
 #  price_steam       :float            default(0.0)
 #  sale_price        :float            default(0.0)
+#  type_skin         :string
+#  type_weapon       :string
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  steam_account_id  :bigint

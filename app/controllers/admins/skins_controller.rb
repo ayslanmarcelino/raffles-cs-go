@@ -126,6 +126,8 @@ module Admins
         skin_model.expiration_date = skin['cache_expiration'] if skin['cache_expiration']
         skin_model.inspect_url = inspect_in_game(assetid, inspect_url) if inspect_url.present?
         skin_model.steam_account_id = params[:steam_account_id]
+        skin_model.type_skin = skin['tags'].first['name']
+        skin_model.type_weapon = skin['tags'].second['name']
         skin_model.save
       end
     end
@@ -178,7 +180,7 @@ module Admins
     def name_sticker(skin)
       skin['descriptions'].each do |description|
         if /sticker_info/.match(description['value']).present?
-          return description['value'].partition('Sticker:').last.sub('</center></div>', '')
+          return description['value'].partition('><br>').last.sub('</center></div>', '').sub('Sticker', '')
         end
       end
       []

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_10_220203) do
+ActiveRecord::Schema.define(version: 2020_12_16_033652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 2020_12_10_220203) do
     t.string "inspect_url"
     t.bigint "transaction_id"
     t.bigint "steam_account_id"
+    t.string "type_skin"
+    t.string "type_weapon"
     t.index ["id_steam"], name: "index_skins_on_id_steam", unique: true
     t.index ["steam_account_id"], name: "index_skins_on_steam_account_id"
     t.index ["transaction_id"], name: "index_skins_on_transaction_id"
