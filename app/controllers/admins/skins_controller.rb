@@ -146,6 +146,8 @@ module Admins
           exists_skin.has_sticker = sticker?(skin)
           exists_skin.name_sticker = name_sticker(skin)
           exists_skin.image_sticker = image_sticker(skin)
+          exists_skin.type_skin = skin['tags'].first['name']
+          exists_skin.type_weapon = skin['tags'].second['name']
           exists_skin.save
           next
         end
