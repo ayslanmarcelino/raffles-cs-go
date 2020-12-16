@@ -11,8 +11,8 @@
               <thead>
                 <tr role="row">
                   <th><%= t('.description') %></th>
-                  <th><%= t('.steam_id') %></th>
                   <th><%= t('.steam_id_url') %></th>
+                  <th><%= t('.steam_id') %></th>
                   <th class="table-buttons">
                     <%= link_to new_admins_steam_account_path(@steam_account), class: 'btn btn-success btn-circle' do %>
                       <i class="fas fa-plus"></i>
@@ -24,8 +24,8 @@
                 <% @steam_accounts.each do |steam_account| %>
                   <tr role="row" class="odd">
                     <td><%= formatted_field_capitalize(steam_account.description) %></td>
-                    <td><%= steam_account.steam_id %></td>
                     <td><%= steam_account.url %></td>
+                    <td><%= steam_account.steam_id %></td>
                     <td class="table-buttons">
                       <%= link_to edit_admins_steam_account_path(steam_account), class: 'btn btn-info btn-circle' do %>
                         <i class="fas fa-edit"></i>
