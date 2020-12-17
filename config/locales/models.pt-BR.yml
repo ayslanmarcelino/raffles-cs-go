@@ -9,8 +9,8 @@
         last_name: Último nome
         nickname: Apelido
         email: E-mail
-        ddi: DDI
-        cell_phone: Celular
+        ddi: DDI (Código internacional do país)
+        cell_phone: Celular com DDD (apenas número)
         is_whatsapp: É WhatsApp
         current_password: Senha atual
         password: Senha

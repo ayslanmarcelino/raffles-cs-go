@@ -5046,11 +5046,11 @@ a.badge-dark:hover, a.badge-dark:focus {
 
 .static-value-registration {
   position: absolute;
-  left: 20px;
+  left: 70px;
   font-weight: bold;
   font-size: 0.8em;
   color: #444;
-  top: 10px;
+  top: 272px;
 }
 
 .static-value-edit {
