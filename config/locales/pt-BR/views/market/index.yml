@@ -5,6 +5,7 @@ pt-BR:
       description: Nome do item
       exterior: Exterior
       float: Float
+      buy: Comprar
       price_steam: Preço da Steam
       sale_price: Preço de venda
       available: Disponível

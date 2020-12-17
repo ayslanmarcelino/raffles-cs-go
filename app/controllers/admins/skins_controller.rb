@@ -105,6 +105,7 @@ module Admins
         exists_skin = Skin.find_by(id_steam: assetid)
 
         next if exists_skin
+        next if skin['tradable'] == 0
         next if skin['type'] == 'Base Grade Container'
         next if skin['type'] == 'Base Grade Graffiti'
         next if skin['type'] == 'Extraordinary Collectible'

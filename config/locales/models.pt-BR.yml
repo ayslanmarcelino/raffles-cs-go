@@ -9,10 +9,13 @@
         last_name: Último nome
         nickname: Apelido
         email: E-mail
+        ddi: DDI
+        cell_phone: Celular
+        is_whatsapp: É WhatsApp
         current_password: Senha atual
         password: Senha
         password_confirmation: Confirmação da senha
-        is_admin: Administrador?
+        is_admin: Administrador
         created_at: Criado em
         updated_at: Atualizado em
       transaction_type:

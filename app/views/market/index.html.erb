@@ -66,6 +66,11 @@
               <%= sale_percentage(skin.sale_price, skin.price_csmoney) %>% OFF
             </span>
           <% end %>
+          <a href="https://api.whatsapp.com/send?phone=<%= skin.steam_account.user.ddi %><%= skin.steam_account.user.cell_phone %>
+                  &text=Ol%C3%A1%2C%20fiquei%20interessado%20na%20skin:%20<%= skin.id %> - <%= skin.description %> <%= number_to_currency(skin.price_steam) %>"
+             target="_blank" class="btn badge badge-dark tag-sale uppercase">
+            <i class="fab fa-whatsapp" style="width: 15px;"></i>
+          </a>
         </div>
         <div class="chili-pepper-text mb-0 market-prices">
         <br>
