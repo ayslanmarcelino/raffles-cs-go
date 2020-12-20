@@ -104,6 +104,7 @@ module Admins
         skin_image_url = "https://steamcommunity-a.akamaihd.net/economy/image/#{icon_url}"
         exists_skin = Skin.find_by(id_steam: assetid)
 
+        next if skin['marketable'] == 0
         next if exists_skin
         next if skin['type'] == 'Base Grade Container'
         next if skin['type'] == 'Base Grade Graffiti'
