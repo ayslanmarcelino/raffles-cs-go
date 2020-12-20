@@ -19,11 +19,11 @@ $(function(){
 $('#select-all').on('click', function() {   
   if(this.checked) {
     $(':checkbox').each(function() {
-      this.checked = true;                        
+      this.checked = true;
     });
   } else {
     $(':checkbox').each(function() {
-      this.checked = false;                       
+      this.checked = false;
     });
   }
 });

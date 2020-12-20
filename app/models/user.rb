@@ -3,12 +3,15 @@
 # Table name: users
 #
 #  id                     :bigint           not null, primary key
+#  cell_phone             :string
 #  current_sign_in_at     :datetime
 #  current_sign_in_ip     :inet
+#  ddi                    :string
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  first_name             :string           default(""), not null
 #  is_admin               :boolean          default(FALSE)
+#  is_whatsapp            :boolean          default(FALSE)
 #  last_name              :string           default(""), not null
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :inet
@@ -32,4 +35,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :trackable, :timeoutable
   paginates_per 25
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

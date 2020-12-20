@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     get 'users/index'
     get 'transaction_types/index'
     get 'transactions/index'
+    get 'steam_accounts/index'
     get 'skins/index'
     get 'dashboard/index'
     get 'available_skins/index'
@@ -12,10 +13,11 @@ Rails.application.routes.draw do
     resources :users
     resources :transaction_types
     resources :transactions
+    resources :steam_accounts
     resources :skins do
       collection do
-        get 'search'
-        get 'refresh_skins'
+        post 'search'
+        post 'refresh_skins'
         delete 'destroy_multiple'
       end
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_04_041912) do
+ActiveRecord::Schema.define(version: 2020_12_17_143941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,8 +37,24 @@ ActiveRecord::Schema.define(version: 2020_12_04_041912) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "inspect_url"
     t.bigint "transaction_id"
+    t.bigint "steam_account_id"
+    t.string "type_skin"
+    t.string "type_weapon"
     t.index ["id_steam"], name: "index_skins_on_id_steam", unique: true
+    t.index ["steam_account_id"], name: "index_skins_on_steam_account_id"
     t.index ["transaction_id"], name: "index_skins_on_transaction_id"
+  end
+
+  create_table "steam_accounts", force: :cascade do |t|
+    t.string "description"
+    t.bigint "steam_id", null: false
+    t.string "url", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["steam_id"], name: "index_steam_accounts_on_steam_id", unique: true
+    t.index ["url"], name: "index_steam_accounts_on_url", unique: true
+    t.index ["user_id"], name: "index_steam_accounts_on_user_id"
   end
 
   create_table "transaction_types", force: :cascade do |t|
@@ -54,7 +70,9 @@ ActiveRecord::Schema.define(version: 2020_12_04_041912) do
     t.bigint "transaction_type_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
     t.index ["transaction_type_id"], name: "index_transactions_on_transaction_type_id"
+    t.index ["user_id"], name: "index_transactions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -74,10 +92,16 @@ ActiveRecord::Schema.define(version: 2020_12_04_041912) do
     t.string "last_name", default: "", null: false
     t.string "nickname", default: "", null: false
     t.boolean "is_admin", default: false
+    t.string "ddi"
+    t.string "cell_phone"
+    t.boolean "is_whatsapp", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "skins", "steam_accounts"
   add_foreign_key "skins", "transactions"
+  add_foreign_key "steam_accounts", "users"
   add_foreign_key "transactions", "transaction_types"
+  add_foreign_key "transactions", "users"
 end

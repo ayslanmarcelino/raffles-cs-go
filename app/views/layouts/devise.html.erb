@@ -58,7 +58,6 @@
           <a class="sidebar-brand d-flex align-items-center justify-content-center">
             <%= image_tag('logo.png', height: 80) %>
           </a>
-          <hr class="sidebar-divider my-0">
           <li class="nav-item">
             <%= link_to dashboard_index_path, class: 'nav-link' do %>
               <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -73,7 +72,6 @@
           </li>
           <% if current_user.is_admin %>
             <span class="text-center color-white"><%= t('.admin') %></span>
-            <hr class="sidebar-divider my-0">
             <li class="nav-item">
               <%= link_to admins_dashboard_index_path, class: 'nav-link' do %>
                 <i class="fas fa-dashboard fa-tachometer-alt"></i>
@@ -84,6 +82,12 @@
               <%= link_to admins_users_index_path, class: 'nav-link' do %>
                 <i class="fas fa-users fa-tachometer-alt"></i>
                 <span><%= t('.users') %></span>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to admins_steam_accounts_index_path, class: 'nav-link' do %>
+                <i class="far fa-id-card"></i>
+                <span><%= t('.steam_accounts') %></span>
               <% end %>
             </li>
             <li class="nav-item">
