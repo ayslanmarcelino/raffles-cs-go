@@ -21,18 +21,24 @@
 #  price_paid        :float            default(0.0)
 #  price_steam       :float            default(0.0)
 #  sale_price        :float            default(0.0)
+#  type_skin         :string
+#  type_weapon       :string
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  steam_account_id  :bigint
 #  transaction_id    :bigint
 #
 # Indexes
 #
-#  index_skins_on_id_steam        (id_steam) UNIQUE
-#  index_skins_on_transaction_id  (transaction_id)
+#  index_skins_on_id_steam          (id_steam) UNIQUE
+#  index_skins_on_steam_account_id  (steam_account_id)
+#  index_skins_on_transaction_id    (transaction_id)
 #
 # Foreign Keys
 #
+#  fk_rails_...  (steam_account_id => steam_accounts.id)
 #  fk_rails_...  (transaction_id => transactions.id)
 #
 class Skin < ApplicationRecord
+  belongs_to :steam_account
 end

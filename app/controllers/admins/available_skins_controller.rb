@@ -7,6 +7,8 @@ module Admins
 
     def index
       @skins = Skin.all
+                   .joins(:steam_account)
+                   .where("steam_accounts.user_id = #{current_user.id}")
                    .order(sort_column + ' ' + sort_direction)
                    .where(is_available: true)
                    .where('expiration_date < ? OR expiration_date is null', DateTime.now)                   

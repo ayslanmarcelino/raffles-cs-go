@@ -5023,6 +5023,45 @@ a.badge-dark:hover, a.badge-dark:focus {
   background-color: #42444e;
 }
 
+.uppercase {
+  text-transform: uppercase;
+}
+
+.form-text{ 
+	position: relative;
+}
+
+.input-ddi {
+	padding: 5px 5px 5px 25px !important;
+}
+
+.static-value {
+	position: absolute;
+	left: 10px;
+	font-weight: bold;
+	font-size: 0.8em;
+	color: #444;
+  top: 41px;
+}
+
+.static-value-registration {
+  position: absolute;
+  left: 70px;
+  font-weight: bold;
+  font-size: 0.8em;
+  color: #444;
+  top: 272px;
+}
+
+.static-value-edit {
+  position: absolute;
+  left: 10px;
+  font-weight: bold;
+  font-size: 0.8em;
+  color: #444;
+  top: 36px;
+}
+
 a.badge-dark:focus, a.badge-dark.focus {
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(90, 92, 105, 0.5);

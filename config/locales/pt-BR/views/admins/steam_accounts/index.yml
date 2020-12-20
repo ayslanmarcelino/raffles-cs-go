@@ -1,0 +1,10 @@
+pt-BR:
+  admins:
+    steam_accounts:
+      index:
+        registered_steam_accounts: Contas da Steam cadastrados
+        description: Conta da Steam
+        steam_id: ID da Steam
+        steam_id_url: ID da URL Steam
+        delete_confirm: Você deseja excluir a conta da Steam
+        no_steam_accounts: Não há contas da Steam cadastrados

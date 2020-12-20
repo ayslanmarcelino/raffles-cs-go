@@ -19,12 +19,26 @@
                 <%= f.label :nickname, class: 'small mb-1' %>
                 <%= f.text_field :nickname, class: 'form-control', autofocus: true, autocomplete: "nickname" %>
               </div>
+              <div class="form-group col-md-3">
+                <%= f.label(:ddi, class: 'small mb-1') %>
+                <%= f.label('+', class: 'static-value-edit') %>
+                <%= f.number_field(:ddi, class: 'form-control form-control-user input-ddi', autocomplete: "ddi") %>
+              </div>
+              <div class="form-group col-md-9">
+                <%= f.label :cell_phone, class: 'small mb-1' %>
+                <%= f.number_field :cell_phone, class: 'form-control', autofocus: true, autocomplete: "cell_phone" %>
+              </div>
+              <div class="form-group col-md-12 custom-switch">
+                <%= f.label(:is_whatsapp, class: 'small mb-1') %>?
+                <%= f.check_box(:is_whatsapp, class: "custom-control-input", id: "is_whatsapp_switch") %>
+                <label class="custom-control-label switch-user" for="is_whatsapp_switch"></label>
+              </div>
               <div class="form-group col-md-6">
-                <%= f.label('Nova senha') %>
+                <%= f.label('Nova senha', class: 'small mb-1') %>
                 <%= f.password_field(:password, class: 'form-control form-control-user') %>
               </div>
               <div class="form-group col-md-6">
-                <%= f.label(:password_confirmation) %>
+                <%= f.label(:password_confirmation, class: 'small mb-1') %>
                 <%= f.password_field(:password_confirmation, class: 'form-control form-control-user') %>
               </div>
               <%= link_to dashboard_index_path, class: 'btn btn-danger btn-user' do %>

@@ -39,7 +39,7 @@ module Admins
 
     def params_user
       params.require(:user)
-            .permit(:first_name, :last_name, :nickname, :email, :is_admin, :password, :password_confirmation)
+            .permit(:first_name, :last_name, :nickname, :email, :ddi, :cell_phone, :is_whatsapp, :is_admin, :password, :password_confirmation)
     end
 
     def verify_password

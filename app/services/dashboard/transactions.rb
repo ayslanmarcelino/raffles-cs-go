@@ -2,8 +2,9 @@
 
 module Dashboard
   class Transactions
-    def initialize(transaction_info)
+    def initialize(transaction_info, current_user)
       @transaction_info = transaction_info
+      @current_user = current_user
     end
 
     def call
@@ -51,6 +52,7 @@ module Dashboard
 
     def list_transactions
       Transaction.all
+                 .where(user_id: @current_user.id)
     end
   end
 end

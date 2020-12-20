@@ -23,9 +23,11 @@
           <%= t('.available') %>
         </div>
       <% end %>
-      <a class="btn btn-outline-light btn-sm mt-2 ml-2" href="<%= skin.inspect_url %>">
-        <%= t('.inspect_in_game') %>
-      </a>
+      <% if skin.inspect_url.present? %>
+        <a class="btn btn-outline-light btn-sm mt-2 ml-2" href="<%= skin.inspect_url %>">
+          <%= t('.inspect_in_game') %>
+        </a>
+      <% end %>
       <div class="col-lg-12">
         <%= image_tag(skin.image_skin, width: 300) %>
       </div>
@@ -66,7 +68,12 @@
           <% end %>
         </div>
         <div class="chili-pepper-text mb-0 market-prices">
-        <br>
+          <br>
+          <a href="https://api.whatsapp.com/send?phone=<%= skin.steam_account.user.ddi %><%= skin.steam_account.user.cell_phone %>
+                   &text=Ol%C3%A1%2C%20fiquei%20interessado%20na%20skin:%20<%= skin.id %> - <%= skin.description %> <%= number_to_currency(skin.price_steam) %>"
+             target="_blank" class=" badge badge-dark uppercase" style="float: right; margin-top: 15px;">
+            <i class="fab fa-whatsapp" style="font-size: 30px;"></i>
+          </a>
           <% if skin.price_steam > skin.price_csmoney %>
             <div>
               <%= image_tag('logo_steam.png', width: 28) %>

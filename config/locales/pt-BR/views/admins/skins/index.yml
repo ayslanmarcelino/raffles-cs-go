@@ -2,10 +2,13 @@ pt-BR:
   admins:
     skins:
       index:
+        actions_skins: Ações das skins
+        order_by: Ordenar por
         registered_skins: Skins cadastradas
         search_new_items: Buscar novos itens
+        select_account_to_search: Selecione a conta para buscar novos itens
         refresh_existing_items: Atualizar itens existentes
-        order_by: Ordenar por
+        select_account_to_refresh: Selecione a conta para atualizar itens cadastrados
         delete_selected: Deletar selecionados
         description: Nome do item
         exterior: Exterior
@@ -13,6 +16,7 @@ pt-BR:
         first_price_steam: Primeiro preço da Steam
         price_paid: Preço pago
         sale_price: Preço de venda
+        steam_account: ID da URL Steam
         is_available: Está disponível
         created_at: Criado em
         updated_at: Atualizado em

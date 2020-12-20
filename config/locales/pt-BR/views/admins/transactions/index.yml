@@ -7,6 +7,8 @@ pt-BR:
         transaction_type: Tipo de transação
         price_transaction: Valor da transação
         skins: Skins
+        view: Visualizar as skins
+        no_skins: Não há skins nesta transação
         price_steam: Preço da Steam
         price_paid: Preço pago
         profit: Lucro

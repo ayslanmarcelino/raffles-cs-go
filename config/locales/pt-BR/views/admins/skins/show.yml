@@ -4,11 +4,14 @@ pt-BR:
       show:
         back: Voltar
         edit: Editar
+        delete: Deletar
+        delete_confirm: Você deseja excluir a skinF
         skin: Skin
         inspect_in_game: Inspecionar no jogo
         time_tradelock: Tempo restante de trade lock
-        full_name: Nome completo da skin
         description: Nome da skin
+        type_weapon: Categoria da arma
+        type_skin: Categoria da Skin
         float: Float
         exterior: Exterior
         first_price_steam: Primeiro preço da Steam

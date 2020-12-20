@@ -37,6 +37,18 @@
               <div class="form-group">
                 <%= form.email_field(:email, class: 'form-control form-control-user', placeholder: t('.email'), required: true) %>
               </div>
+              <div class="form-group">
+                <%= form.label('+', class: 'static-value-registration') %>
+                <%= form.number_field(:ddi, class: 'form-control form-control-user input-ddi', placeholder: t('.ddi')) %>
+              </div>
+              <div class="form-group">
+                <%= form.number_field(:cell_phone, class: 'form-control form-control-user', placeholder: t('.cell_phone')) %>
+              </div>
+              <div class="col-lg-12 custom-switch text-center">
+                <%= form.label(:is_whatsapp) %>?
+                <%= form.check_box(:is_whatsapp, class: "custom-control-input", id: "is_whatsapp_switch") %>
+                <label class="custom-control-label switch-user" for="is_whatsapp_switch"></label>
+              </div>
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                   <%= form.password_field(:password, class: 'form-control form-control-user', placeholder: t('.password')) %>
