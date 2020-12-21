@@ -6,6 +6,7 @@ ruby '2.5.1'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
 gem 'faker'
+gem 'groupdate'
 gem 'jbuilder', '~> 2.7'
 gem 'kaminari'
 gem 'pg', '>= 0.18', '< 2.0'

@@ -1,0 +1,8 @@
+<div class="card text-center" style="width: 50%;">
+  <h4><%= t('admins.dashboard.index.chart_transactions') %></h4>
+  <canvas id="myChart" style="width: 65%; height: 65%"></canvas>
+  <div id="values"
+       data-labels="<%= @transaction_info[:transactions_by_month_keys] %>"
+       data-values="<%= @transaction_info[:transactions_by_month_values] %>">
+  </div>
+</div>
