@@ -28,21 +28,24 @@ var chartTransactions = new Chart(ctx, {
     datasets: [{
       data: values,
       backgroundColor: "rgba(0,0,0,0)",
-      borderColor: "#bae755",
-      pointBackgroundColor: "#55bae7",
-      pointBorderColor: "#55bae7",
-      pointHoverBackgroundColor: "#55bae7",
-      pointHoverBorderColor: "#55bae7",
+      borderColor: "#dddfeb",
+      pointBackgroundColor: "#28a745",
+      pointBorderColor: "#28a745",
+      pointHoverBackgroundColor: "#28a745",
+      pointHoverBorderColor: "#28a745",
     }]
   },
-  options: { 
-    plugins: {
-      labels: {
-        render: () => {}
-      }
-    },
+  options: {
     legend: {
       display: false
+    },
+    tooltips: {
+      callbacks: {
+        label: function(t) {
+          var yLabel = 'R$ ' + t.yLabel;
+          return yLabel;
+        }
+      }
     }
   }
 });
