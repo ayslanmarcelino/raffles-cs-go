@@ -19,15 +19,20 @@ var get_random_color = function(){
   return color;
 }
 
-var ctx = document.getElementById('myChart');
+var ctx = document.getElementById('chartTransactions');
 
-var myChart = new Chart(ctx, {
-  type: 'bar',
+var chartTransactions = new Chart(ctx, {
+  type: 'line',
   data: {
     labels: labels,
     datasets: [{
       data: values,
-        backgroundColor: colors(count_labels),
+      backgroundColor: "rgba(0,0,0,0)",
+      borderColor: "#bae755",
+      pointBackgroundColor: "#55bae7",
+      pointBorderColor: "#55bae7",
+      pointHoverBackgroundColor: "#55bae7",
+      pointHoverBorderColor: "#55bae7",
     }]
   },
   options: { 
@@ -39,5 +44,37 @@ var myChart = new Chart(ctx, {
     legend: {
       display: false
     }
+  }
+});
+
+var labels = $('#valuesPie').data('labels')
+var values = $('#valuesPie').data('values')
+var count_labels = labels.length
+
+var ctx = document.getElementById('myChart');
+
+var myChart = new Chart(ctx, {
+  type: 'pie',
+  data: {
+    labels: labels,
+    datasets: [{
+      data: values,
+        backgroundColor: colors(count_labels),
+    }]
+  },
+  options: {
+    plugins: {
+      labels: [
+        {
+          render: 'label',
+          position: 'outside'
+        },
+        {
+          render: 'percentage',
+          fontColor: 'white'
+        }
+      ]
+    },
+    legend: false
   }
 });

@@ -1,3 +1,5 @@
+//= require jquery
+//= require jquery_ujs
 //= require jquery/dist/jquery
 //= require bootstrap/dist/js/bootstrap
 //= require metismenu/dist/metisMenu

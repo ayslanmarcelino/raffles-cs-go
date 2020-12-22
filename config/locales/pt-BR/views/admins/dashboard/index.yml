@@ -12,7 +12,8 @@ pt-BR:
         price_total_csmoney: Valor inventário - CS.money
         price_total_paid: Valor total pago
         difference_value: Diferença de valor - Steam/Pago
-        chart_transactions: R$ em transações - Mensal
+        chart_transactions: Lucro - Mensal
+        chart_pie_by_transactions_in: Tipo de transações em
         transaction: Transações
         count_transactions: Quantidade de transações
         total_value_transactions: Valor total

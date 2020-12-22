@@ -20,7 +20,9 @@ module Dashboard
         price_paid: info[:price_paid],
         profit: info[:profit],
         transactions_by_month_keys: info[:transactions_keys],
-        transactions_by_month_values: info[:transactions_values]
+        transactions_by_month_values: info[:transactions_values],
+        transactions_by_type_keys: info[:transactions_by_type_keys],
+        transactions_by_type_values: info[:transactions_by_type_values]
       }
     end
 
@@ -31,7 +33,9 @@ module Dashboard
         price_paid: total_price_paid,
         profit: profit,
         transactions_keys: transactions_by_month_keys,
-        transactions_values: transactions_by_month_values
+        transactions_values: transactions_by_month_values,
+        transactions_by_type_keys: transactions_by_type_keys,
+        transactions_by_type_values: transactions_by_type_values
       }
     end
 
@@ -61,11 +65,35 @@ module Dashboard
     def transactions_by_month_values
       transactions_by_month.values
     end
+  
+    def transactions_by_type_keys
+      transactions_by_type.map { | k,v | k.description.capitalize }
+    end
+  
+    def transactions_by_type_values
+      transactions_by_type.values
+    end
+
+    def transactions_by_type
+      list_transactions.where('created_at > ? AND created_at < ?', Time.now.beginning_of_month, Time.now.end_of_month)
+                       .group(:transaction_type)
+                       .sum(:price)
+    end
 
     def transactions_by_month
+      transactions_values_by_month.merge(skins_price_paid_by_month) { |months, transactions, price_paid| transactions - price_paid }
+    end
+
+    def transactions_values_by_month
       list_transactions.where('created_at > ? AND created_at < ?', Time.now.beginning_of_year, Time.now.end_of_year)
                        .group_by_month(:created_at, format: "%b/%Y")
                        .sum(:price)
+    end
+
+    def skins_price_paid_by_month
+      list_transactions.joins(:skins)
+                       .group_by_month(:created_at, format: "%b/%Y")
+                       .sum(:price_paid)
     end
 
     def list_transactions

@@ -1,8 +1,20 @@
-<div class="card text-center" style="width: 50%;">
-  <h4><%= t('admins.dashboard.index.chart_transactions') %></h4>
-  <canvas id="myChart" style="width: 65%; height: 65%"></canvas>
-  <div id="values"
-       data-labels="<%= @transaction_info[:transactions_by_month_keys] %>"
-       data-values="<%= @transaction_info[:transactions_by_month_values] %>">
+<% if @transaction_info[:transactions_by_month_values].present? %>
+  <div class="card text-center" style="width: 100%;">
+    <h4><%= t('admins.dashboard.index.chart_transactions') %></h4>
+    <canvas id="chartTransactions" style="width: 50%; height: 50%"></canvas>
+    <div id="values"
+        data-labels="<%= @transaction_info[:transactions_by_month_keys] %>"
+        data-values="<%= @transaction_info[:transactions_by_month_values] %>">
+    </div>
   </div>
-</div>
+<% end %>
+<% if @transaction_info[:transactions_by_type_values].present? %>
+  <div class="card text-center">
+    <h4><%= t('admins.dashboard.index.chart_pie_by_transactions_in') %>: <%= Date.today.strftime('%m/%Y') %></h4>
+    <canvas id="myChart" style="width: 50%; height: 50%"></canvas>
+    <div id="valuesPie"
+        data-labels="<%= @transaction_info[:transactions_by_type_keys] %>"
+        data-values="<%= @transaction_info[:transactions_by_type_values] %>">
+    </div>
+  </div>
+<% end%>
