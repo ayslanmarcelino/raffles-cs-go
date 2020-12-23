@@ -42,7 +42,7 @@ var chartTransactions = new Chart(ctx, {
     tooltips: {
       callbacks: {
         label: function(t) {
-          var yLabel = 'R$ ' + t.yLabel;
+          var yLabel = 'R$ ' + t.yLabel.toFixed(2);
           return yLabel;
         }
       }
