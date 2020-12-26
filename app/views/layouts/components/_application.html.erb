@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title><%= current_user.enterprise.description %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application' %>
+    <%= stylesheet_link_tag 'users' %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/emn178/chartjs-plugin-labels/src/chartjs-plugin-labels.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  </head>
+  <body id="page-top">
+    <div id="wrapper">
+      <ul class="navbar-nav sidebar sidebar-dark accordion" style="background-color: <%= current_user.enterprise.primary_color %>" id="accordionSidebar">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center">
+          <%= image_tag(current_user.enterprise.logo, height: 80) if current_user.enterprise.logo.attached? %>
+        </a>
+        <li class="nav-item">
+          <%= link_to dashboard_index_path, class: 'nav-link' do %>
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span><%= t('layouts.users.dashboard') %></span>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to market_index_path, class: 'nav-link' do %>
+            <i class="fas fa-store"></i>
+            <span><%= t('layouts.users.market') %></span>
+          <% end %>
+        </li>
+        <% if current_user.is_super_admin %>
+          <span class="text-center text-white"><%= t('layouts.users.super_admin') %></span>
+          <li class="nav-item">
+            <%= link_to super_admins_enterprises_index_path, class: 'nav-link' do %>
+              <i class="fas fa-building"></i>
+              <span><%= t('layouts.users.company') %></span>
+            <% end %>
+          </li>
+        <% end %>
+        <% if current_user.is_super_admin || current_user.is_admin %>
+          <span class="text-center text-white"><%= t('layouts.users.admin') %></span>
+          <li class="nav-item">
+            <%= link_to admins_dashboard_index_path, class: 'nav-link' do %>
+              <i class="fas fa-dashboard fa-tachometer-alt"></i>
+              <span><%= t('layouts.users.dashboard') %></span>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to admins_users_index_path, class: 'nav-link' do %>
+              <i class="fas fa-users fa-tachometer-alt"></i>
+              <span><%= t('layouts.users.users') %></span>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to admins_steam_accounts_index_path, class: 'nav-link' do %>
+              <i class="far fa-id-card"></i>
+              <span><%= t('layouts.users.steam_accounts') %></span>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+              <i class="fas fa-fw fa-list-alt"></i>
+              <span><%= t('layouts.users.categories') %></span>
+            </a>
+            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+              <div class="bg-white py-2 collapse-inner rounded">
+                <a>
+                  <%= link_to admins_transaction_types_index_path, class: 'collapse-item' do %>
+                    <span><%= t('layouts.users.transaction_types') %></span>
+                  <% end %>
+                </a>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <%= link_to admins_transactions_index_path, class: 'nav-link' do %>
+              <i class="fas fa-exchange-alt"></i>
+              <span><%= t('layouts.users.transactions') %></span>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to admins_skins_index_path, class: 'nav-link' do %>
+              <div class="svg">
+                <%= show_svg('hand-gun.svg') %>
+              </div>
+              <span><%= t('layouts.users.skins') %></span>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to admins_available_skins_index_path, class: 'nav-link' do %>
+              <div class="svg">
+                <%= show_svg('hand-gun.svg') %>
+              </div>
+              <span><%= t('layouts.users.available_skins') %></span>
+            <% end %>
+          </li>
+        <% end %>
+        <div class="text-center d-none d-md-inline">
+          <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+      </ul>
+      <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+          <nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow">
+            <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+              <i class="fa fa-bars"></i>
+            </button>
+            <div class="href-class">
+              <% if current_user.enterprise.instagram.present? %>
+                <a href="https://www.instagram.com/<%= current_user.enterprise.instagram %>" target="_blank">
+                  <i class="fab fa-instagram fa-2x icons-header" style="color: <%= current_user.enterprise.secondary_color %> !important;"></i>
+                </a>
+              <% end %>
+              <% if current_user.enterprise.twitch.present? %>
+                <a href="https://www.twitch.tv/<%= current_user.enterprise.twitch %>" target="_blank">
+                  <i class="fab fa-twitch fa-2x icons-header" style="color: <%= current_user.enterprise.secondary_color%> !important;"></i>
+                </a>
+              <% end %>
+              <% if current_user.enterprise.whatsapp_group.present? %>
+                <a href="https://chat.whatsapp.com/<%= current_user.enterprise.whatsapp_group %>" target="_blank">
+                  <i class="fab fa-whatsapp fa-2x icons-header" style="color: <%= current_user.enterprise.secondary_color%> !important;"></i>
+                </a>
+              <% end %>
+            </div>
+            <ul class="navbar-nav ml-auto">
+              <div class="topbar-divider d-none d-sm-block"></div>
+              <li class="nav-item dropdown no-arrow">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <%= image_tag('profile-avatar.png', width: 30, height: 30) %>
+                  <span class="mr-2 d-none d-lg-inline small" style="color: <%= current_user.enterprise.secondary_color%>"><%= current_user.email %></span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                  <%= link_to edit_user_registration_path, class: 'dropdown-item' do %>
+                    <i class="fas fa-edit fa-sm fa-fw mr-2 text-gray-400"></i>
+                    <%= t('layouts.users.my_profile') %>
+                  <% end %>
+                  <%= link_to edit_admins_enterprise_path(current_user.enterprise), class: 'dropdown-item' do %>
+                    <i class="fas fa-building fa-sm fa-fw mr-2 text-gray-400"></i>
+                    <%= t('layouts.users.my_enterprise') %>
+                  <% end %>
+                  <%= link_to destroy_user_session_path, method: :delete, class: 'dropdown-item' do %>
+                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                    <%= t('layouts.users.exit') %>
+                  <% end %>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <div class="container-fluid">
+            <%= yield %>
+          </div>
+        </div>
+        <footer class="sticky-footer bg-white">
+          <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+              <span><%= t('layouts.users.copyright') %> &copy; <a href="https://www.instagram.com/<%= current_user.enterprise.instagram %>" target="_blank"> <%= current_user.enterprise.description %>.</a></span>
+              <span><%= t('layouts.users.developed_by') %>: <a href="https://www.instagram.com/ayslanmarcelino" target="_blank"> <%= t('layouts.users.developer') %></a></span>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.0.4/popper.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+    <%= javascript_pack_tag 'application' %>
+    <%= javascript_include_tag 'users' %>
+    <% if notice %>
+      <script>
+        $.bootstrapGrowl('<%= notice %>', {
+          type: 'success',
+          stackup_spacing: 10,
+          width: '100%'
+        });
+      </script>
+    <% end %>
+  </body>
+</html>

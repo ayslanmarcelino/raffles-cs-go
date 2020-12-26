@@ -11,6 +11,7 @@
 #  encrypted_password     :string           default(""), not null
 #  first_name             :string           default(""), not null
 #  is_admin               :boolean          default(FALSE)
+#  is_super_admin         :boolean          default(FALSE)
 #  is_whatsapp            :boolean          default(FALSE)
 #  last_name              :string           default(""), not null
 #  last_sign_in_at        :datetime
@@ -22,11 +23,17 @@
 #  sign_in_count          :integer          default(0), not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  enterprise_id          :bigint
 #
 # Indexes
 #
 #  index_users_on_email                 (email) UNIQUE
+#  index_users_on_enterprise_id         (enterprise_id)
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#
+# Foreign Keys
+#
+#  fk_rails_...  (enterprise_id => enterprises.id)
 #
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
@@ -35,6 +42,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :trackable, :timeoutable
   paginates_per 25
+  belongs_to :enterprise
 
   def full_name
     "#{first_name} #{last_name}"

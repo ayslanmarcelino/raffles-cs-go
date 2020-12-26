@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  namespace :super_admins do
+    get 'enterprises/index'
+
+    resources :enterprises
+  end
+
   namespace :admins do
     get 'users/index'
     get 'transaction_types/index'
@@ -9,11 +15,13 @@ Rails.application.routes.draw do
     get 'skins/index'
     get 'dashboard/index'
     get 'available_skins/index'
+    get 'enterprises/index'
 
     resources :users
     resources :transaction_types
     resources :transactions
     resources :steam_accounts
+    resources :enterprises
     resources :skins do
       collection do
         post 'search'
@@ -25,6 +33,7 @@ Rails.application.routes.draw do
 
   get 'dashboard/index'
   get 'market/index'
+
   devise_for :users
 
   root to: 'dashboard#index'

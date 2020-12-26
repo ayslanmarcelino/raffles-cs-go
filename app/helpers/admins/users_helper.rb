@@ -9,12 +9,16 @@ module Admins
       humanize_full_name.split.map { |x| x[0].upcase + x[1..-1] }.join(' ')
     end
 
-    def admin_color?(admin)
-      admin ? 'success' : 'primary'
+    def admin_color?(admin, super_admin)
+      return 'primary' if !admin && !super_admin
+      return 'success' if admin && !super_admin
+      return 'dark' if super_admin
     end
 
-    def admin?(admin)
-      admin ? t('admins.users.index.admin') : t('admins.users.index.user')
+    def admin?(admin, super_admin)
+      return t('admins.users.index.user') if !admin && !super_admin
+      return t('admins.users.index.admin') if admin && !super_admin
+      return t('admins.users.index.super_admin') if super_admin
     end
 
     def last_sign_in_user(date)
