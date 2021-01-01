@@ -85,8 +85,7 @@ module Dashboard
     end
 
     def transactions_values_by_month
-      list_transactions.where('created_at > ? AND created_at < ?', Time.now.beginning_of_year, Time.now.end_of_year)
-                       .group_by_month(:created_at, format: "%b/%Y")
+      list_transactions.group_by_month(:created_at, format: "%b/%Y")
                        .sum(:price)
     end
 
