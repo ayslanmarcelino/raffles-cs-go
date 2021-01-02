@@ -1,7 +1,9 @@
 pt-BR:
   market:
     index:
-      order_by: Ordenar por
+      filter: Filtrar
+      clear: Limpar filtros
+      search: Buscar
       description: Nome do item
       exterior: Exterior
       float: Float
