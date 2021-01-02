@@ -41,4 +41,10 @@
 #
 class Skin < ApplicationRecord
   belongs_to :steam_account
+  paginates_per 20
+
+  def status_skins
+    return 'StatTrak' if is_stattrak
+    return 'Tem adesivo' if has_sticker
+  end
 end
