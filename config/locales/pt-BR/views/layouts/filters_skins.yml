@@ -1,0 +1,6 @@
+pt-BR:
+  layouts:
+    filters_skins:
+      filter: Filtrar
+      clear: Limpar filtros
+      search: Buscar

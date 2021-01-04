@@ -6,22 +6,22 @@ module MarketHelper
   end
 
   def type_weapon_collection
-    Skin.where(is_available: true)
-        .pluck(:type_weapon)
+    Skin.pluck(:type_weapon)
+        .compact
         .sort
         .uniq
   end
 
   def type_skin_collection
-    Skin.where(is_available: true)
-        .pluck(:type_skin)
+    Skin.pluck(:type_skin)
+        .compact
         .sort
         .uniq
   end
 
   def exterior_collection
-    Skin.where(is_available: true)
-        .pluck(:exterior)
+    Skin.pluck(:exterior)
+        .compact
         .sort
         .uniq
   end

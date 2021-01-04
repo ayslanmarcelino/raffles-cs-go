@@ -3,14 +3,17 @@
 module Admins
   class SkinsController < AdminsController
     before_action :set_skin, only: %w[show edit update destroy]
-    helper_method :sort_column, :sort_direction
     before_action :set_transaction, only: %w[new create edit]
 
     def index
-      @skins = Skin.joins(:steam_account)
-                   .where("steam_accounts.user_id = #{current_user.id}")
-                   .order(sort_column + ' ' + sort_direction)
+      @q = Skin.joins(:steam_account)
+               .where("steam_accounts.user_id = #{current_user.id}")
+               .page(params[:page])
+               .ransack(params[:q])
 
+      @skins = @q.result(distinct: true)
+      @all_skins = Skin.all
+      @available_skins = Skin.where(is_available: true)
       @steam_accounts = SteamAccount.where(user_id: current_user.id)
                                     .order(:description)
     end
@@ -82,14 +85,6 @@ module Admins
                                    :price_csmoney, :price_paid, :sale_price,
                                    :is_stattrak, :has_sticker, :is_available,
                                    :transaction_id)
-    end
-
-    def sort_column
-      Skin.column_names.include?(params[:sort]) ? params[:sort] : 'created_at'
-    end
-
-    def sort_direction
-      %w[asc desc].include?(params[:direction]) ? params[:direction] : 'desc'
     end
 
     def search_skins
