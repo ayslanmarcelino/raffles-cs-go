@@ -7,22 +7,22 @@ module MarketHelper
 
   def type_weapon_collection
     Skin.pluck(:type_weapon)
-        .sort_by
-        .uniq
         .compact
+        .sort
+        .uniq
   end
 
   def type_skin_collection
     Skin.pluck(:type_skin)
-        .sort_by
-        .uniq
         .compact
+        .sort
+        .uniq
   end
 
   def exterior_collection
     Skin.pluck(:exterior)
-        .sort_by
-        .uniq
         .compact
+        .sort
+        .uniq
   end
 end
