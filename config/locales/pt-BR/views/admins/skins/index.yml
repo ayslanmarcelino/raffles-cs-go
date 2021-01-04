@@ -5,6 +5,7 @@ pt-BR:
         actions_skins: Ações das skins
         order_by: Ordenar por
         registered_skins: Skins cadastradas
+        available_skins: Skins disponíveis
         search_new_items: Buscar novos itens
         select_account_to_search: Selecione a conta para buscar novos itens
         refresh_existing_items: Atualizar itens existentes
