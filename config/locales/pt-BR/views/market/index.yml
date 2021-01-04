@@ -1,9 +1,6 @@
 pt-BR:
   market:
     index:
-      filter: Filtrar
-      clear: Limpar filtros
-      search: Buscar
       description: Nome do item
       exterior: Exterior
       float: Float
