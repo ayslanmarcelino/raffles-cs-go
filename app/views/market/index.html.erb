@@ -1,6 +1,6 @@
 <%= render partial: 'layouts/filters_skins', locals: { redirect_path: market_index_path } %>
 <div class="grid-view">
-  <% @skins.each do |skin| %>
+  <% @skins.order(created_at: :desc).each do |skin| %>
     <div class="mb-3 mr-3 market-card">
       <% if skin.expiration_date.present? && time_tradelock_integer(skin.expiration_date).positive? %>
         <div class="tag-available bg-red">

@@ -17,7 +17,7 @@
         <% @skins.pluck(:is_available).each do |is_available| %>
           <% if is_available %>
             <%= check_box_tag('q[is_available_in][]', is_available) %>
-            <%= f.label(:is_available) %>?<br>
+            <%= f.label(:only_available) %><br>
           <% end %>
         <% end %>
       <% end %>
