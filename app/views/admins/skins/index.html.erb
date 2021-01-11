@@ -52,7 +52,7 @@
               </thead>
               <tbody id="skins-table">
                 <%= form_tag destroy_multiple_admins_skins_path, method: :delete do %>
-                  <% @skins.each do |skin| %>
+                  <% @skins.order(created_at: :desc).each do |skin| %>
                     <tr role="row" class="odd">
                       <td><%= check_box_tag "skins[]", skin.id %></td>
                       <td style="color: #<%= skin.description_color %>;">
