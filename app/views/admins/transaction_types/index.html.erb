@@ -49,6 +49,7 @@
   $(document).ready(function(){
     $.fn.dataTable.moment('DD/MM/YYYY [às] HH:mm:ss');
     $('#table').DataTable({
+      "order": [],
       "columnDefs": [{
         "targets": 'no-sort',
         "orderable": false,
