@@ -9,12 +9,12 @@
           <table id="table" class="table table-striped table-bordered">
             <thead>
               <tr>
-                  <th><%= t('.name') %></th>
-                  <th><%= t('.email') %></th>
-                  <th><%= t('.user_type') %></th>
-                  <th><%= t('.last_sign_in') %>:</th>
-                  <th><%= t('.cell_phone') %></th>
-                  <th><%= t('.sign_in_count') %></th>
+                <th><%= t('.name') %></th>
+                <th><%= t('.email') %></th>
+                <th><%= t('.user_type') %></th>
+                <th><%= t('.last_sign_in') %>:</th>
+                <th><%= t('.cell_phone') %></th>
+                <th><%= t('.sign_in_count') %></th>
                 <th class="no-sort table-buttons">
                   <%= link_to new_admins_user_path(@user), class: 'btn btn-success btn-circle' do %>
                     <i class="fas fa-plus"></i>
@@ -63,7 +63,9 @@
         "orderable": false,
       }],
       "language": {
-        "url": "//cdn.datatables.net/plug-ins/1.10.22/i18n/Portuguese-Brasil.json"
+        "url": "//cdn.datatables.net/plug-ins/1.10.22/i18n/Portuguese-Brasil.json",
+        "decimal": ",",
+        "thousands": "."
       }
     });
   });
