@@ -45,7 +45,7 @@
                 <th><%= t('.sale_price') %></th>
                 <th><%= t('.steam_account') %></th>
                 <th><%= t('.is_available') %>?</th>
-                <th><%= t('.updated_at') %></th>
+                <th><%= t('.created_at') %></th>
                 <th class="no-sort table-buttons"></th>
               </tr>
             </thead>
@@ -63,7 +63,7 @@
                     <td><%= number_to_currency(skin.sale_price) %></td>
                     <td><%= skin.steam_account.url %></td>
                     <td><%= translate_boolean(skin.is_available) %></td>
-                    <td><%= l(skin.updated_at, format: :with_full_hour) %></td>
+                    <td><%= l(skin.created_at, format: :with_full_hour) %></td>
                     <td class="table-buttons">
                       <%= link_to admins_skin_path(skin), class: 'btn btn-dark' do %>
                         <i class="fas fa-eye"></i>
@@ -94,6 +94,7 @@
   $(document).ready(function(){
     $.fn.dataTable.moment('DD/MM/YYYY [às] HH:mm:ss');
     $('#table').DataTable({
+      "order": [],
       "columnDefs": [{
         "targets": 'no-sort',
         "orderable": false,
