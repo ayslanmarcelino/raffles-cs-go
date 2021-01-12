@@ -25,16 +25,16 @@
             <tbody>
               <% @users.each do |user| %>
                 <tr>
-                    <td><%= full_name_formatted(user) %></td>
-                    <td><%= user.email %></td>
-                    <td>
-                      <span class="badge-type badge-<%= admin_color?(user.is_admin) %>">
-                        <%= admin?(user.is_admin) %>
-                      </span>
-                    </td>
-                    <td><%= last_sign_in_user(user.last_sign_in_at) %></td>
-                    <td><%= user.cell_phone %></td>
-                    <td><%= user.sign_in_count %></td>
+                  <td><%= full_name_formatted(user) %></td>
+                  <td><%= user.email %></td>
+                  <td>
+                    <span class="badge-type badge-<%= admin_color?(user.is_admin) %>">
+                      <%= admin?(user.is_admin) %>
+                    </span>
+                  </td>
+                  <td><%= last_sign_in_user(user.last_sign_in_at) %></td>
+                  <td><%= user.cell_phone %></td>
+                  <td><%= user.sign_in_count %></td>
                   <td class="table-buttons">
                     <%= link_to edit_admins_user_path(user), class: 'btn btn-info btn-circle' do %>
                       <i class="fas fa-edit"></i>
