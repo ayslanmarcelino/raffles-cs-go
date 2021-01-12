@@ -17,7 +17,7 @@
                 <th><%= t('.price_paid') %></th>
                 <th><%= t('.profit') %></th>
                 <th><%= t('.created_at') %></th>
-                <th class="table-buttons">
+                <th class="no-sort table-buttons">
                   <%= link_to new_admins_transaction_path(@transaction), class: 'btn btn-success btn-circle' do %>
                     <i class="fas fa-plus"></i>
                   <% end %>
@@ -67,6 +67,7 @@
 </div>
 <script>
   $(document).ready(function(){
+    $.fn.dataTable.moment('DD/MM/YYYY [às] HH:mm:ss');
     $('#table').DataTable({
       "columnDefs": [{
         "targets": 'no-sort',
