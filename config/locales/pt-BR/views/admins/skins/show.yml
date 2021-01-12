@@ -13,6 +13,7 @@ pt-BR:
         type_weapon: Categoria da arma
         type_skin: Categoria da Skin
         float: Float
+        inspect_url: Link de inspecionar
         exterior: Exterior
         first_price_steam: Primeiro preço da Steam
         price_steam: Preço da Steam
@@ -21,6 +22,8 @@ pt-BR:
         sale_price: Valor de venda
         is_stattrak: É StatTrak
         has_sticker: Tem sticker
+        has_name_tag: Tem etiqueta de nome (Name tag)
+        description_name_tag: Etiqueta de nome (Name tag)
         name_sticker: Nome do(s) Sticker(s)
         is_available: Está disponível
         created_at: Cadastrado em

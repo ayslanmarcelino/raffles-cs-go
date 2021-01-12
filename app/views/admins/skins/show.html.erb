@@ -74,6 +74,10 @@
                     </tr>
                   <% end %>
                   <tr>
+                      <th><%= t('.inspect_url') %></th>
+                      <td><%= @skin.inspect_url %></td>
+                    </tr>
+                  <tr>
                     <th><%= t('.first_price_steam') %></th>
                     <td><%= number_to_currency(@skin.first_price_steam) %></td>
                   </tr>
@@ -105,6 +109,16 @@
                     <tr>
                       <th><%= t('.name_sticker') %></th>
                       <td><%= @skin.name_sticker.join(', ') %></td>
+                    </tr>
+                  <% end %>
+                  <% if @skin.has_name_tag %>
+                    <tr>
+                      <th><%= t('.has_name_tag') %>?</th>
+                      <td><%= translate_boolean(@skin.has_name_tag) %></td>
+                    </tr>
+                    <tr>
+                      <th><%= t('.description_name_tag') %></th>
+                      <td><%= @skin.description_name_tag %></td>
                     </tr>
                   <% end %>
                   <tr>
