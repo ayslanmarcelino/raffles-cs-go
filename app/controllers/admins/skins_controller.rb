@@ -8,7 +8,6 @@ module Admins
     def index
       @q = Skin.joins(:steam_account)
                .where("steam_accounts.user_id = #{current_user.id}")
-               .page(params[:page])
                .ransack(params[:q])
 
       @skins = @q.result(distinct: true)

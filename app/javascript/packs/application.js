@@ -7,7 +7,7 @@ require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
 
-import "../views/admins/skins/index"
+import "../stylesheets/application"
 import "../views/admins/dashboard/index"
 
 // Uncomment to copy all static images under ../images to the output folder and reference
