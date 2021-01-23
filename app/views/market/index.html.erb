@@ -27,18 +27,6 @@
             <% end %>
           </div>
         <% end %>
-        <div class="text-center">
-          <% if skin.is_stattrak %>
-            <div class="d-inline-flex">
-              <%= image_tag('stattrak.png', height: 50) %>
-            </div>
-          <% end %>
-          <% if skin.has_name_tag %>
-            <div class="d-inline-flex">
-              <%= image_tag('nametag.png', height: 50) %>
-            </div>
-          <% end %>
-        </div>
         <h5 class="card-title font-weight-bold fuchsia-rose-text mb-0 market-description" style="color: #<%= skin.description_color %>;">
           <%= skin.description %>
         </h5>
