@@ -124,6 +124,8 @@ module Admins
         skin_model.steam_account_id = params[:steam_account_id]
         skin_model.type_skin = skin['tags'].first['name']
         skin_model.type_weapon = skin['tags'].second['name']
+        skin_model.has_name_tag = true if skin['fraudwarnings'].present?
+        skin_model.description_name_tag = skin['fraudwarnings'].present? ? description_name_tag(skin['fraudwarnings']) : '' 
         skin_model.save
       end
     end
@@ -132,7 +134,6 @@ module Admins
       requisition_api
 
       @skins_api.each do |skin|
-        inspect_url = skin['actions'].first['link'] if skin['actions'].present?
         assetid = assetid(@rg_inventory, skin['classid'])
         exists_skin = Skin.find_by(id_steam: assetid, is_available: true)
         sleep(10)
@@ -142,8 +143,8 @@ module Admins
           exists_skin.has_sticker = sticker?(skin)
           exists_skin.name_sticker = name_sticker(skin)
           exists_skin.image_sticker = image_sticker(skin)
-          exists_skin.type_skin = skin['tags'].first['name']
-          exists_skin.type_weapon = skin['tags'].second['name']
+          exists_skin.has_name_tag = true if skin['fraudwarnings'].present?
+          exists_skin.description_name_tag = skin['fraudwarnings'].present? ? description_name_tag(skin['fraudwarnings']) : '' 
           exists_skin.save
           next
         end
@@ -239,6 +240,10 @@ module Admins
       url_with_steamid_and_assetid = "#{steam_id}A#{assetid}"
       number_after_assetid = 'D' + url.partition('%D').last
       mount_url = url_fixed + url_with_steamid_and_assetid + number_after_assetid
+    end
+
+    def description_name_tag(name_tag)
+      name_tag.to_s.partition("Name Tag: ''").last.sub("''\"]", '')
     end
   end
 end
