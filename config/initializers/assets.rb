@@ -15,5 +15,4 @@ Rails.application.config.assets.precompile += %w[users.js users.css
                                                  logo.png profile-avatar.png
                                                  favicon.ico .svg
                                                  .png logo_without_name.png
-                                                 logo_steam.png logo_csmoney.png
-                                                 stattrak.png nametag.png]
+                                                 logo_steam.png logo_csmoney.png]
