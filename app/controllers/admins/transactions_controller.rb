@@ -8,7 +8,9 @@ module Admins
     rescue_from ActiveRecord::InvalidForeignKey, with: :invalid_foreign_key
 
     def index
-      @transactions = Transaction.where(user_id: current_user.id)
+      @transactions = Transaction.includes(:skins)
+                                 .includes(:transaction_type)
+                                 .where(user_id: current_user.id)
                                  .order(created_at: :desc)
     end
 
@@ -39,7 +41,7 @@ module Admins
     end
 
     def set_transaction_type
-      @transaction_types = TransactionType.all.order(:description)
+      @transaction_types = TransactionType.order(:description)
     end
 
     def params_transaction

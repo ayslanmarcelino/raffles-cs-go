@@ -6,7 +6,8 @@ module Admins
     before_action :set_transaction, only: %w[new create edit]
 
     def index
-      @q = Skin.joins(:steam_account)
+      @q = Skin.includes(:steam_account)
+               .joins(:steam_account)
                .where("steam_accounts.user_id = #{current_user.id}")
                .ransack(params[:q])
 
@@ -74,9 +75,8 @@ module Admins
     end
 
     def set_transaction
-      @transactions = Transaction.all
-                      .where(user_id: current_user.id)
-                      .order(created_at: :desc)
+      @transactions = Transaction.where(user_id: current_user.id)
+                                 .order(created_at: :desc)
     end
 
     def params_skin
@@ -148,6 +148,10 @@ module Admins
           next
         end
       end
+    end
+
+    def update_one_skin
+      
     end
 
     def requisition_api

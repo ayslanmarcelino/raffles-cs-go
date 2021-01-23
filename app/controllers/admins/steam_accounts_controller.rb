@@ -7,7 +7,7 @@ module Admins
     rescue_from ActiveRecord::InvalidForeignKey, with: :invalid_foreign_key
 
     def index
-      @steam_accounts = SteamAccount.all.where(user_id: current_user.id).order(created_at: :desc)
+      @steam_accounts = SteamAccount.where(user_id: current_user.id).order(created_at: :desc)
     end
 
     def new
