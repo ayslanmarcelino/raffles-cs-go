@@ -26,5 +26,5 @@ Rails.application.routes.draw do
   get 'market/index'
   devise_for :users
 
-  root to: 'dashboard#index'
+  root to: 'market#index'
 end
