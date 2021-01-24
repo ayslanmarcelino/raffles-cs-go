@@ -36,23 +36,20 @@ module Dashboard
     end
 
     def list_skins_available
-      Skin.all
-          .joins(:steam_account)
+      Skin.joins(:steam_account)
           .where("steam_accounts.user_id = #{@current_user.id}")
           .where(is_available: true)
     end
 
     def list_skins_without_tradelock
-      Skin.all
-          .joins(:steam_account)
+      Skin.joins(:steam_account)
           .where("steam_accounts.user_id = #{@current_user.id}")
           .where(is_available: true)
           .where('expiration_date < ? OR expiration_date is null', Time.now)
     end
 
     def list_skins_tradelock
-      Skin.all
-          .joins(:steam_account)
+      Skin.joins(:steam_account)
           .where("steam_accounts.user_id = #{@current_user.id}")
           .where(is_available: true)
           .where('expiration_date > ?', Time.now)
