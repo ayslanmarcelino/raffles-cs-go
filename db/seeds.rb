@@ -15,4 +15,4 @@ transaction_type = TransactionType.create!(description: 'Rifa')
 SteamAccount.create!(description: 'Ayslan',
                      url: 'ayslanmarcelino',
                      steam_id: 76561198345749032,
-                     user_id: user)
+                     user_id: user.id)
