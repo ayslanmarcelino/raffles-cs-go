@@ -1,7 +1,6 @@
 pt-BR:
   market:
     index:
-      order_by: Ordenar por
       description: Nome do item
       exterior: Exterior
       float: Float
@@ -12,3 +11,4 @@ pt-BR:
       releases_on: Disponível em
       inspect_in_game: Inspecionar no jogo
       float: Float
+      no_skins_available: No momento não temos skins disponíveis para venda

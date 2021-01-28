@@ -8,7 +8,9 @@ module Admins
     rescue_from ActiveRecord::InvalidForeignKey, with: :invalid_foreign_key
 
     def index
-      @transactions = Transaction.where(user_id: current_user.id)
+      @transactions = Transaction.includes(:skins)
+                                 .includes(:transaction_type)
+                                 .where(user_id: current_user.id)
                                  .order(created_at: :desc)
     end
 
@@ -35,17 +37,21 @@ module Admins
     private
 
     def set_transaction
-      @transaction = Transaction.find(params[:id])
+      if current_user.transaction_ids.include?(Transaction.find(params[:id]).id)
+        @transaction = Transaction.find(params[:id])
+      else
+        redirect_to root_path, notice: 'Você não tem permissão para manipular esta transação.'
+      end
     end
 
     def set_transaction_type
-      @transaction_types = TransactionType.all.order(:description)
+      @transaction_types = TransactionType.order(:description)
     end
 
     def params_transaction
       params.require(:transaction).permit(:description, :price, :transaction_type_id, :user_id)
     end
-    
+
     def set_user
       @user = User.where(id: current_user.id)
     end

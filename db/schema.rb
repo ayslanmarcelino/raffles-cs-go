@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_25_225757) do
+ActiveRecord::Schema.define(version: 2021_01_12_044256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,8 @@ ActiveRecord::Schema.define(version: 2020_12_25_225757) do
     t.bigint "steam_account_id"
     t.string "type_skin"
     t.string "type_weapon"
+    t.boolean "has_name_tag", default: false
+    t.string "description_name_tag", default: ""
     t.index ["id_steam"], name: "index_skins_on_id_steam", unique: true
     t.index ["steam_account_id"], name: "index_skins_on_steam_account_id"
     t.index ["transaction_id"], name: "index_skins_on_transaction_id"

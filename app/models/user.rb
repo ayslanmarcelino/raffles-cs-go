@@ -43,6 +43,8 @@ class User < ApplicationRecord
          :trackable, :timeoutable
   paginates_per 25
   belongs_to :enterprise
+  has_many :steam_account
+  has_many :transactions
 
   def full_name
     "#{first_name} #{last_name}"

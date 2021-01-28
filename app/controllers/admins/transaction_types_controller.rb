@@ -6,7 +6,7 @@ module Admins
     rescue_from ActiveRecord::InvalidForeignKey, with: :invalid_foreign_key
 
     def index
-      @transaction_types = TransactionType.all.order(:description).page(params[:page])
+      @transaction_types = TransactionType.order(:description)
     end
 
     def new

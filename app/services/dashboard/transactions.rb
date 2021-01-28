@@ -81,24 +81,22 @@ module Dashboard
     end
 
     def transactions_by_month
-      transactions_values_by_month.merge(skins_price_paid_by_month) { |months, transactions, price_paid| transactions - price_paid }
+      transactions_values_by_month.merge(skins_price_paid_by_month) { |_, transactions, price_paid| transactions - price_paid }
     end
 
     def transactions_values_by_month
-      list_transactions.where('created_at > ? AND created_at < ?', Time.now.beginning_of_year, Time.now.end_of_year)
-                       .group_by_month(:created_at, format: "%b/%Y")
+      list_transactions.group_by_month(:created_at, format: '%b/%Y')
                        .sum(:price)
     end
 
     def skins_price_paid_by_month
       list_transactions.joins(:skins)
-                       .group_by_month(:created_at, format: "%b/%Y")
+                       .group_by_month(:created_at, format: '%b/%Y')
                        .sum(:price_paid)
     end
 
     def list_transactions
-      Transaction.all
-                 .where(user_id: @current_user.id)
+      Transaction.where(user_id: @current_user.id)
     end
   end
 end

@@ -3,14 +3,17 @@
 module Admins
   class SkinsController < AdminsController
     before_action :set_skin, only: %w[show edit update destroy]
-    helper_method :sort_column, :sort_direction
     before_action :set_transaction, only: %w[new create edit]
 
     def index
-      @skins = Skin.joins(:steam_account)
-                   .where("steam_accounts.user_id = #{current_user.id}")
-                   .order(sort_column + ' ' + sort_direction)
+      @q = Skin.includes(:steam_account)
+               .joins(:steam_account)
+               .where("steam_accounts.user_id = #{current_user.id}")
+               .ransack(params[:q])
 
+      @skins = @q.result(distinct: true)
+      @all_skins = Skin.all
+      @available_skins = Skin.where(is_available: true)
       @steam_accounts = SteamAccount.where(user_id: current_user.id)
                                     .order(:description)
     end
@@ -68,13 +71,16 @@ module Admins
     end
 
     def set_skin
-      @skin = Skin.find(params[:id])
+      if current_user.steam_account_ids.include?(Skin.find(params[:id]).steam_account.id)
+        @skin = Skin.find(params[:id])
+      else
+        redirect_to root_path, notice: 'Você não tem permissão para manipular esta skin.'
+      end
     end
 
     def set_transaction
-      @transactions = Transaction.all
-                      .where(user_id: current_user.id)
-                      .order(created_at: :desc)
+      @transactions = Transaction.where(user_id: current_user.id)
+                                 .order(created_at: :desc)
     end
 
     def params_skin
@@ -82,14 +88,6 @@ module Admins
                                    :price_csmoney, :price_paid, :sale_price,
                                    :is_stattrak, :has_sticker, :is_available,
                                    :transaction_id)
-    end
-
-    def sort_column
-      Skin.column_names.include?(params[:sort]) ? params[:sort] : 'created_at'
-    end
-
-    def sort_direction
-      %w[asc desc].include?(params[:direction]) ? params[:direction] : 'desc'
     end
 
     def search_skins
@@ -130,6 +128,8 @@ module Admins
         skin_model.steam_account_id = params[:steam_account_id]
         skin_model.type_skin = skin['tags'].first['name']
         skin_model.type_weapon = skin['tags'].second['name']
+        skin_model.has_name_tag = true if skin['fraudwarnings'].present?
+        skin_model.description_name_tag = skin['fraudwarnings'].present? ? description_name_tag(skin['fraudwarnings']) : '' 
         skin_model.save
       end
     end
@@ -138,7 +138,6 @@ module Admins
       requisition_api
 
       @skins_api.each do |skin|
-        inspect_url = skin['actions'].first['link'] if skin['actions'].present?
         assetid = assetid(@rg_inventory, skin['classid'])
         exists_skin = Skin.find_by(id_steam: assetid, is_available: true)
         sleep(10)
@@ -148,8 +147,8 @@ module Admins
           exists_skin.has_sticker = sticker?(skin)
           exists_skin.name_sticker = name_sticker(skin)
           exists_skin.image_sticker = image_sticker(skin)
-          exists_skin.type_skin = skin['tags'].first['name']
-          exists_skin.type_weapon = skin['tags'].second['name']
+          exists_skin.has_name_tag = true if skin['fraudwarnings'].present?
+          exists_skin.description_name_tag = skin['fraudwarnings'].present? ? description_name_tag(skin['fraudwarnings']) : '' 
           exists_skin.save
           next
         end
@@ -159,8 +158,8 @@ module Admins
     def requisition_api
       url = "https://steamcommunity.com/id/#{@steam_account.url}/inventory/json/730/2"
       resp = RestClient.get(url)
-      @rg_inventory = JSON.parse(resp.body)['rgInventory']
-      @skins_api = JSON.parse(resp.body)['rgDescriptions'].values
+      @rg_inventory = JSON.parse(resp.body)['rgInventory'].reverse_each.to_a
+      @skins_api = JSON.parse(resp.body)['rgDescriptions'].values.reverse
     end
 
     def exterior(skin)
@@ -241,6 +240,10 @@ module Admins
       url_with_steamid_and_assetid = "#{steam_id}A#{assetid}"
       number_after_assetid = 'D' + url.partition('%D').last
       mount_url = url_fixed + url_with_steamid_and_assetid + number_after_assetid
+    end
+
+    def description_name_tag(name_tag)
+      name_tag.to_s.partition("Name Tag: ''").last.sub("''\"]", '')
     end
   end
 end

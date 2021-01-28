@@ -14,7 +14,6 @@ Rails.application.routes.draw do
     get 'steam_accounts/index'
     get 'skins/index'
     get 'dashboard/index'
-    get 'available_skins/index'
     get 'enterprises/index'
 
     resources :users
@@ -36,5 +35,5 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  root to: 'dashboard#index'
+  root to: 'market#index'
 end

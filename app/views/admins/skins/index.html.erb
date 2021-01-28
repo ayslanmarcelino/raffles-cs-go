@@ -1,5 +1,6 @@
 <div class="text-center mb-4">
-  <h4><%= t('.registered_skins') %>: <%= @skins.count %></h4>
+  <h4><%= t('.registered_skins') %>: <%= @all_skins.count %></h4>
+  <h4><%= t('.available_skins') %>: <%= @available_skins.count %></h4>
 </div>
 <div class="dropdown">
   <button class="btn btn-success btn-sm dropdown-toggle col-md-2 mb-2" type="button" data-toggle="dropdown">
@@ -12,7 +13,7 @@
         <%= form.collection_select(:steam_account_id, @steam_accounts, :id, :account_formatted, {include_blank: t('.select_account_to_search')}, { class: 'select2_single form-control', required: true }) %>
         <a class='btn btn-dark text-white col-md-7 mt-1'>
           <i class="fas fa-refresh"></i>
-          <%= form.submit(t('.search_new_items'), class: 'btn text-white') %>
+          <%= form.submit(t('.search_new_items'), class: 'btn text-white', data: { disable_with: "Buscando novas skins..." }) %>
         </a>
       <% end %>
       <% if @skins.count.positive? %>
@@ -20,92 +21,84 @@
           <%= form.collection_select(:steam_account_id, @steam_accounts, :id, :account_formatted, {include_blank: t('.select_account_to_refresh')}, { class: 'select2_single form-control', required: true }) %>
           <a class='btn btn-dark text-white col-md-7 mt-1'>
             <i class="fas fa-refresh"></i>
-            <%= form.submit(t('.refresh_existing_items'), class: 'btn text-white') %>
+            <%= form.submit(t('.refresh_existing_items'), class: 'btn text-white', data: { disable_with: "Atualizando skins..." }) %>
           </a>
         <% end %>
       <% end %>
     </div>
   </div>
 </div>
-<div class="dropdown">
-  <button class="btn btn-dark btn-sm dropdown-toggle col-md-2 mb-2" type="button" data-toggle="dropdown">
-    <i class="fas fa-sort-amount-down"></i>
-    <%= t('.order_by') %>
-  </button>
-  <div class="dropdown-menu">
-    <div><button class="dropdown-item"><%= sortable('description', t('.description')) %></button></div>
-    <div><button class="dropdown-item"><%= sortable('exterior', t('.exterior')) %></button></div>
-    <div><button class="dropdown-item"><%= sortable('float', t('.float')) %></button></div>
-    <div><button class="dropdown-item"><%= sortable('first_price_steam', t('.first_price_steam')) %></button></div>
-    <div><button class="dropdown-item"><%= sortable('price_steam', t('.price_steam')) %></button></div>
-    <div><button class="dropdown-item"><%= sortable('price_paid', t('.price_paid')) %></button></div>
-    <div><button class="dropdown-item"><%= sortable('sale_price', t('.sale_price')) %></button></div>
-    <div><button class="dropdown-item"><%= sortable('is_available', t('.is_available')) %></button></div>
-    <div><button class="dropdown-item"><%= sortable('created_at', t('.created_at')) %></button></div>
-    <div><button class="dropdown-item"><%= sortable('updated_at', t('.updated_at')) %></button></div>
-  </div>
-</div>
-<div class="card shadow mb-4" style="background-color: #1F1F1F;">
+<%= render partial: 'layouts/filters_skins', locals: { redirect_path: admins_skins_index_path } %>
+<div class="card shadow mb-4">
   <div class="card-body">
     <div class="table-responsive">
-      <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-        <div class="row">
-          <div class="col-sm-12">
-            <table class="table table-bordered dataTable table-skins">
-              <input class="form-control mb-2" id="skins-table" type="text" placeholder="Digite a skin que deseja procurar">
-              <thead>
-                <tr role="row">
-                  <th><input type="checkbox" id="select-all"/></th>
-                  <th><%= t('.description') %></th>
-                  <th><%= t('.exterior') %></th>
-                  <th><%= t('.first_price_steam') %></th>
-                  <th><%= t('.price_steam') %></th>
-                  <th><%= t('.price_paid') %></th>
-                  <th><%= t('.sale_price') %></th>
-                  <th><%= t('.steam_account') %></th>
-                  <th><%= t('.is_available') %>?</th>
-                </tr>
-              </thead>
-              <tbody id="skins-table">
-                <%= form_tag destroy_multiple_admins_skins_path, method: :delete do %>
-                  <% @skins.each do |skin| %>
-                    <tr role="row" class="odd">
-                      <td><%= check_box_tag "skins[]", skin.id %></td>
-                      <td style="color: #<%= skin.description_color %>;">
-                        <%= skin.description %>
-                      </td>
-                      <td><%= skin.exterior %></td>
-                      <td><%= number_to_currency(skin.first_price_steam) %></td>
-                      <td><%= number_to_currency(skin.price_steam) %></td>
-                      <td><%= number_to_currency(skin.price_paid) %></td>
-                      <td><%= number_to_currency(skin.sale_price) %></td>
-                      <td><%= skin.steam_account.url %></td>
-                      <td><%= translate_boolean(skin.is_available) %></td>
-                      <td class="table-buttons">
-                        <%= link_to admins_skin_path(skin), class: 'btn btn-dark' do %>
-                          <i class="fas fa-eye"></i>
-                        <% end %>
-                        <%= link_to edit_admins_skin_path(skin), class: 'btn btn-info' do %>
-                          <i class="fas fa-edit"></i>
-                        <% end %>
-                        <%= link_to admins_skin_path(skin), method: :delete, class: 'btn btn-danger', data: { confirm: "#{t('.delete_confirm')}: #{skin.description}?" } do %>
-                          <i class="fas fa-trash"></i>
-                        <% end %>
-                      </td>
-                    </tr>
-                  <% end %>
-                  <%= submit_tag t('.delete_selected'), class: 'btn btn-danger mb-2', id: 'delete-selected' %>
-                <% end %>
-              </tbody>
-            </table>
-            <% if @skins.empty? %>
+      <div class="row">
+        <div class="col-sm-12">
+          <table id="table" class="table table-striped table-bordered">
+            <thead>
               <tr>
-                <span class="text-white"><%= t('.no_skins') %></span>
+                <th><%= t('.description') %></th>
+                <th><%= t('.exterior') %></th>
+                <th><%= t('.first_price_steam') %></th>
+                <th><%= t('.price_steam') %></th>
+                <th><%= t('.price_paid') %></th>
+                <th><%= t('.sale_price') %></th>
+                <th><%= t('.steam_account') %></th>
+                <th><%= t('.is_available') %>?</th>
+                <th><%= t('.created_at') %></th>
+                <th class="no-sort table-buttons"></th>
               </tr>
-            <% end %>
-          </div>
+            </thead>
+            <tbody id="skins-table">
+              <%= form_tag destroy_multiple_admins_skins_path, method: :delete do %>
+                <% @skins.order(created_at: :desc).each do |skin| %>
+                  <tr role="row" class="odd">
+                    <td style="background-color: #1F1F1F; color: #<%= skin.description_color %>;">
+                      <%= skin.description %>
+                    </td>
+                    <td><%= skin.exterior %></td>
+                    <td><%= number_to_currency(skin.first_price_steam) %></td>
+                    <td><%= number_to_currency(skin.price_steam) %></td>
+                    <td><%= number_to_currency(skin.price_paid) %></td>
+                    <td><%= number_to_currency(skin.sale_price) %></td>
+                    <td><%= skin.steam_account.url %></td>
+                    <td><%= translate_boolean(skin.is_available) %></td>
+                    <td><%= l(skin.created_at, format: :with_full_hour) %></td>
+                    <td class="table-buttons">
+                      <%= link_to admins_skin_path(skin), class: 'btn btn-dark' do %>
+                        <i class="fas fa-eye"></i>
+                      <% end %>
+                      <%= link_to edit_admins_skin_path(skin), class: 'btn btn-info' do %>
+                        <i class="fas fa-edit"></i>
+                      <% end %>
+                      <%= link_to admins_skin_path(skin), method: :delete, class: 'btn btn-danger', data: { confirm: "#{t('.delete_confirm')}: #{skin.description}?" } do %>
+                        <i class="fas fa-trash"></i>
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              <% end %>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
   </div>
 </div>
+<script>
+  $(document).ready(function(){
+    $.fn.dataTable.moment('DD/MM/YYYY [às] HH:mm:ss');
+    $('#table').DataTable({
+      "order": [],
+      "columnDefs": [{
+        "targets": 'no-sort',
+        "orderable": false,
+      }],
+      "language": {
+        "url": "//cdn.datatables.net/plug-ins/1.10.22/i18n/Portuguese-Brasil.json",
+        "decimal": ",",
+        "thousands": "."
+      }
+    });
+  });
+</script>
