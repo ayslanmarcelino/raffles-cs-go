@@ -158,8 +158,8 @@ module Admins
     def requisition_api
       url = "https://steamcommunity.com/id/#{@steam_account.url}/inventory/json/730/2"
       resp = RestClient.get(url)
-      @rg_inventory = JSON.parse(resp.body)['rgInventory']
-      @skins_api = JSON.parse(resp.body)['rgDescriptions'].values
+      @rg_inventory = JSON.parse(resp.body)['rgInventory'].reverse_each.to_a
+      @skins_api = JSON.parse(resp.body)['rgDescriptions'].values.reverse
     end
 
     def exterior(skin)
