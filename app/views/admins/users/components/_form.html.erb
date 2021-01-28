@@ -44,8 +44,17 @@
 </div>
 <% if current_user.present? %>
   <div class="col-lg-12 custom-switch">
+    <%= form.label(:is_owner) %>?
+    <%= form.check_box(:is_owner, class: "custom-control-input", id: "is_owner_switch") %>
+    <label class="custom-control-label switch-user" for="is_owner_switch"></label>
+  </div>
+  <div class="col-lg-12 custom-switch">
     <%= form.label(:is_admin) %>?
     <%= form.check_box(:is_admin, class: "custom-control-input", id: "is_admin_switch") %>
     <label class="custom-control-label switch-user" for="is_admin_switch"></label>
   </div>
 <% end %>
+<div class="col-lg-12">
+  <%= form.label(:enterprise) %></br>
+  <%= form.collection_select(:enterprise_id, @enterprise, :id, :description, {}, { class: 'select2_single form-control', required: true }) %>
+</div>

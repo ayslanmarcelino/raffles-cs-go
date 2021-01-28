@@ -11,6 +11,7 @@
 #  encrypted_password     :string           default(""), not null
 #  first_name             :string           default(""), not null
 #  is_admin               :boolean          default(FALSE)
+#  is_owner               :boolean          default(FALSE)
 #  is_super_admin         :boolean          default(FALSE)
 #  is_whatsapp            :boolean          default(FALSE)
 #  last_name              :string           default(""), not null

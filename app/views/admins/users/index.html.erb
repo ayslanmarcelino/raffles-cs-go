@@ -28,8 +28,8 @@
                   <td><%= full_name_formatted(user) %></td>
                   <td><%= user.email %></td>
                   <td>
-                    <span class="badge-type badge-<%= admin_color?(user.is_admin, user.is_super_admin) %>">
-                      <%= admin?(user.is_admin, user.is_super_admin) %>
+                    <span class="badge-type badge-<%= role_color?(user.is_admin, user.is_super_admin, user.is_owner) %>">
+                      <%= role?(user.is_admin, user.is_super_admin, user.is_owner) %>
                     </span>
                   </td>
                   <td><%= last_sign_in_user(user.last_sign_in_at) %></td>

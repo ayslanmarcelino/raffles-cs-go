@@ -131,6 +131,7 @@ ActiveRecord::Schema.define(version: 2021_01_12_044256) do
     t.boolean "is_whatsapp", default: false
     t.bigint "enterprise_id"
     t.boolean "is_super_admin", default: false
+    t.boolean "is_owner", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["enterprise_id"], name: "index_users_on_enterprise_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

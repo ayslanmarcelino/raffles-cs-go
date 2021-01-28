@@ -3,8 +3,8 @@
 default_password = 123_456
 
 enterprise = Enterprise.create!(description: 'Pingo rifas',
-                                primary_color: '#1F1F1F',
-                                secondary_color: '#FFF')
+                                primary_color: '#1f1f1f',
+                                secondary_color: '#e5e1e1')
 
 user = User.create!(email: 'superadmin@gmail.com',
                     password: default_password,
@@ -13,6 +13,7 @@ user = User.create!(email: 'superadmin@gmail.com',
                     last_name: Faker::Name.last_name,
                     nickname: Faker::Name.name,
                     is_admin: true,
+                    is_owner: true,
                     is_super_admin: true,
                     enterprise_id: enterprise.id)
 

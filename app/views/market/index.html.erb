@@ -1,7 +1,7 @@
 <% if @skins.empty? %>
   <div class="text-center" style="margin: 0 auto !important">
     <div>
-      <%= image_tag('logo_without_name.png', width: 250) %>
+      <%= image_tag(current_user.enterprise.logo, width: 250) if current_user.enterprise.logo.present? %>
     </div>
     <h2>
       <%= t('.no_skins_available') %>

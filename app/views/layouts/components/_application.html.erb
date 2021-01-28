@@ -132,7 +132,9 @@
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="fas fa-user mr-2 text-gray-400"></i>
-                  <span class="mr-2 d-none d-lg-inline small" style="color: <%= current_user.enterprise.secondary_color%>"><%= current_user.email %></span>
+                  <span class="mr-2 d-none d-lg-inline small" style="color: <%= current_user.enterprise.secondary_color %>">
+                    <%= current_user.email %>
+                  </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                   <%= link_to edit_user_registration_path, class: 'dropdown-item' do %>
