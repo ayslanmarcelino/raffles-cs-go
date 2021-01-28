@@ -42,6 +42,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :trackable, :timeoutable
   paginates_per 25
+  has_many :steam_account
+  has_many :transactions
 
   def full_name
     "#{first_name} #{last_name}"
