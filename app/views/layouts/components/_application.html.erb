@@ -10,7 +10,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'users' %>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
@@ -18,12 +18,21 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+    <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="http://momentjs.com/downloads/moment.min.js"></script>
+    <script src="https://cdn.datatables.net/plug-ins/1.10.16/sorting/datetime-moment.js"></script>
+    <%= favicon_link_tag asset_path('favicon.ico') %>
   </head>
   <body id="page-top">
     <div id="wrapper">
-      <ul class="navbar-nav sidebar sidebar-dark accordion" style="background-color: <%= current_user.enterprise.primary_color %>" id="accordionSidebar">
+      <ul class="navbar-nav sidebar sidebar-dark accordion" 
+          style="background-color: <%= current_user.enterprise.primary_color %>;
+                 border-right: 1px solid white;"
+          id="accordionSidebar">
         <a class="sidebar-brand d-flex align-items-center justify-content-center">
-          <%= image_tag(current_user.enterprise.logo, height: 80) if current_user.enterprise.logo.attached? %>
+          <%= image_tag(current_user.enterprise.logo, class: 'img-responsive') if current_user.enterprise.logo.attached? %>
         </a>
         <li class="nav-item">
           <%= link_to dashboard_index_path, class: 'nav-link' do %>
@@ -95,14 +104,6 @@
               <span><%= t('layouts.users.skins') %></span>
             <% end %>
           </li>
-          <li class="nav-item">
-            <%= link_to admins_available_skins_index_path, class: 'nav-link' do %>
-              <div class="svg">
-                <%= show_svg('hand-gun.svg') %>
-              </div>
-              <span><%= t('layouts.users.available_skins') %></span>
-            <% end %>
-          </li>
         <% end %>
         <div class="text-center d-none d-md-inline">
           <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -110,7 +111,7 @@
       </ul>
       <div id="content-wrapper" class="d-flex flex-column">
         <div id="content">
-          <nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow">
+          <nav class="navbar navbar-expand topbar mb-4 static-top shadow" style="background-color: <%= current_user.enterprise.primary_color %> !important;">
             <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
               <i class="fa fa-bars"></i>
             </button>
@@ -125,17 +126,12 @@
                   <i class="fab fa-twitch fa-2x icons-header" style="color: <%= current_user.enterprise.secondary_color%> !important;"></i>
                 </a>
               <% end %>
-              <% if current_user.enterprise.whatsapp_group.present? %>
-                <a href="https://chat.whatsapp.com/<%= current_user.enterprise.whatsapp_group %>" target="_blank">
-                  <i class="fab fa-whatsapp fa-2x icons-header" style="color: <%= current_user.enterprise.secondary_color%> !important;"></i>
-                </a>
-              <% end %>
             </div>
             <ul class="navbar-nav ml-auto">
               <div class="topbar-divider d-none d-sm-block"></div>
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <%= image_tag('profile-avatar.png', width: 30, height: 30) %>
+                  <i class="fas fa-user mr-2 text-gray-400"></i>
                   <span class="mr-2 d-none d-lg-inline small" style="color: <%= current_user.enterprise.secondary_color%>"><%= current_user.email %></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -167,11 +163,17 @@
             </div>
           </div>
         </footer>
+        <% if current_user.enterprise.whatsapp_group.present? %>
+          <a class="icon-whatsapp"
+             href="https://chat.whatsapp.com/<%= current_user.enterprise.whatsapp_group %>"
+             style="background-color: <%= current_user.enterprise.primary_color %> !important;"
+             target="_blank">
+            <i style="margin-top: 15px; margin-left: 2px; color: <%= current_user.enterprise.secondary_color %> !important;" class="fab fa-whatsapp fa-cog"></i>
+          </a>
+        <% end %>
       </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.0.4/popper.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
-    <%= javascript_pack_tag 'application' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'users' %>
     <% if notice %>
       <script>

@@ -24,12 +24,12 @@
             </thead>
             <tbody>
               <% @users.each do |user| %>
-                <tr>
+                <tr role="row" class="odd">
                   <td><%= full_name_formatted(user) %></td>
                   <td><%= user.email %></td>
                   <td>
-                    <span class="badge-type badge-<%= admin_color?(user.is_admin) %>">
-                      <%= admin?(user.is_admin) %>
+                    <span class="badge-type badge-<%= admin_color?(user.is_admin, user.is_super_admin) %>">
+                      <%= admin?(user.is_admin, user.is_super_admin) %>
                     </span>
                   </td>
                   <td><%= last_sign_in_user(user.last_sign_in_at) %></td>
@@ -39,10 +39,7 @@
                     <%= link_to edit_admins_user_path(user), class: 'btn btn-info btn-circle' do %>
                       <i class="fas fa-edit"></i>
                     <% end %>
-                    <%= link_to admins_user_path(user),
-                        method: :delete,
-                        class: 'btn btn-danger btn-circle',
-                        data: { confirm: "#{t('.delete_confirm')}: #{user.first_name} #{user.last_name}?" } do %>
+                    <%= link_to admins_user_path(user), method: :delete, class: 'btn btn-danger btn-circle', data: { confirm: "#{t('.delete_confirm')}: #{user.email}?" } do %>
                       <i class="fas fa-trash"></i>
                     <% end %>
                   </td>
@@ -50,6 +47,9 @@
               <% end %>
             </tbody>
           </table>
+          <% if @users.empty? %>
+            <tr><%= t('.no_user') %></tr>
+          <% end %>
         </div>
       </div>
     </div>

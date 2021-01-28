@@ -1,5 +1,7 @@
 <p>
-  <a class="btn btn-dark"
+  <a class="btn"
+     style="background-color: <%= current_user.enterprise.primary_color %>;
+            color: <%= current_user.enterprise.secondary_color %>;"
      data-toggle="collapse"
      href="#filter"
      role="button"
