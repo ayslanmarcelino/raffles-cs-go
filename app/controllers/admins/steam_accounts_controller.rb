@@ -33,7 +33,11 @@ module Admins
     private
 
     def set_steam_account
-      @steam_account = SteamAccount.find(params[:id])
+      if current_user.steam_account_ids.include?(SteamAccount.find(params[:id]).id)
+        @steam_account = SteamAccount.find(params[:id])
+      else
+        redirect_to root_path, notice: 'Você não tem permissão para manipular esta conta da Steam.'
+      end
     end
 
     def set_user

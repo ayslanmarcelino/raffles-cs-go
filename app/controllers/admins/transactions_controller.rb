@@ -37,7 +37,11 @@ module Admins
     private
 
     def set_transaction
-      @transaction = Transaction.find(params[:id])
+      if current_user.transaction_ids.include?(Transaction.find(params[:id]).id)
+        @transaction = Transaction.find(params[:id])
+      else
+        redirect_to root_path, notice: 'Você não tem permissão para manipular esta transação.'
+      end
     end
 
     def set_transaction_type
@@ -47,7 +51,7 @@ module Admins
     def params_transaction
       params.require(:transaction).permit(:description, :price, :transaction_type_id, :user_id)
     end
-    
+
     def set_user
       @user = User.where(id: current_user.id)
     end
