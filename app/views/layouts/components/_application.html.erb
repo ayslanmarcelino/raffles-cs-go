@@ -32,7 +32,7 @@
                  border-right: 1px solid white;"
           id="accordionSidebar">
         <a class="sidebar-brand d-flex align-items-center justify-content-center">
-          <%= image_tag(current_user.enterprise.logo, class: 'img-responsive') if current_user.enterprise.logo.attached? %>
+          <%= image_tag(current_user.enterprise.logo, class: 'img-responsive', style: 'max-width: 80px') if current_user.enterprise.logo.attached? %>
         </a>
         <li class="nav-item">
           <%= link_to dashboard_index_path, class: 'nav-link' do %>
@@ -55,7 +55,7 @@
             <% end %>
           </li>
         <% end %>
-        <% if current_user.is_super_admin || current_user.is_admin %>
+        <% if current_user.is_super_admin || current_user.is_owner || current_user.is_admin %>
           <span class="text-center text-white"><%= t('layouts.users.admin') %></span>
           <li class="nav-item">
             <%= link_to admins_dashboard_index_path, class: 'nav-link' do %>
@@ -141,9 +141,11 @@
                     <i class="fas fa-edit fa-sm fa-fw mr-2 text-gray-400"></i>
                     <%= t('layouts.users.my_profile') %>
                   <% end %>
-                  <%= link_to edit_admins_enterprise_path(current_user.enterprise), class: 'dropdown-item' do %>
-                    <i class="fas fa-building fa-sm fa-fw mr-2 text-gray-400"></i>
-                    <%= t('layouts.users.my_enterprise') %>
+                  <% if current_user.is_owner %>
+                    <%= link_to edit_owners_enterprise_path(current_user.enterprise), class: 'dropdown-item' do %>
+                      <i class="fas fa-building fa-sm fa-fw mr-2 text-gray-400"></i>
+                      <%= t('layouts.users.my_enterprise') %>
+                    <% end %>
                   <% end %>
                   <%= link_to destroy_user_session_path, method: :delete, class: 'dropdown-item' do %>
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>

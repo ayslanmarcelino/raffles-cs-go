@@ -7,6 +7,12 @@ Rails.application.routes.draw do
     resources :enterprises
   end
 
+  namespace :owners do
+    get 'enterprises/index'
+
+    resources :enterprises
+  end
+
   namespace :admins do
     get 'users/index'
     get 'transaction_types/index'
@@ -14,13 +20,11 @@ Rails.application.routes.draw do
     get 'steam_accounts/index'
     get 'skins/index'
     get 'dashboard/index'
-    get 'enterprises/index'
 
     resources :users
     resources :transaction_types
     resources :transactions
     resources :steam_accounts
-    resources :enterprises
     resources :skins do
       collection do
         post 'search'

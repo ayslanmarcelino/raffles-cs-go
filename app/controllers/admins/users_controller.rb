@@ -7,7 +7,8 @@ module Admins
     before_action :set_enterprise, only: %w[new edit update destroy]
 
     def index
-      @users = User.order(last_sign_in_at: :desc)
+      @users = User.where(enterprise_id: current_user.enterprise_id)
+                   .order(:first_name)
     end
 
     def new

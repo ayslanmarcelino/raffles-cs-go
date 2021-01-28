@@ -24,9 +24,9 @@
 </div>
 <div class="col-lg-12">
   <%= form.label(:logo) %><br>
-  <%= form.file_field(:logo) %>
+  <%= form.file_field(:logo, accept: 'image/png, image/jpeg, image/jpg') %>
 </div>
 <div class="col-lg-12">
   <%= form.label(:favicon) %><br>
-  <%= form.file_field(:favicon) %>
+  <%= form.file_field(:favicon, accept: 'image/png, image/jpeg, image/jpg') %>
 </div>

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module Admins
-  class EnterprisesController < AdminsController
+module Owners
+  class EnterprisesController < OwnersController
     before_action :set_enterprise, only: %w[edit update]
 
     def edit; end
