@@ -1,0 +1,13 @@
+pt-BR:
+  super_admins:
+    enterprises:
+      edit:
+        editing: Você está editando a empresa
+        cancel: Cancelar
+        edit: Editar
+        description: Descrição
+        instagram: Instagram
+        twitch: Twitch
+        whatsapp_group: Grupo do WhatsApp
+        created_at: Criado em
+        updated_at: Atualizado em

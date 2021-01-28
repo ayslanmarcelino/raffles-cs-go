@@ -4,6 +4,8 @@ pt-BR:
       welcome: Bem-vindo(a)
       dashboard: Dashboard
       market: Loja
+      super_admin: Super Admin
+      company: Empresas
       admin: Admin
       users: Usuários
       steam_accounts: Contas da Steam
@@ -14,6 +16,7 @@ pt-BR:
       available_skins: Skins disponíveis
       exterior: Exterior
       my_profile: Meu perfil
+      my_enterprise: Minha empresa
       exit: Sair
       copyright: Copyright
       enterprise: Pingo Rifas

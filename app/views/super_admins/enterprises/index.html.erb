@@ -13,6 +13,8 @@
                 <th><%= t('.instagram') %></th>
                 <th><%= t('.twitch') %></th>
                 <th><%= t('.whatsapp_group') %></th>
+                <th><%= t('.primary_color') %></th>
+                <th><%= t('.secondary_color') %></th>
                 <th><%= t('.created_at') %></th>
                 <th><%= t('.updated_at') %></th>
                 <th class="table-buttons">
@@ -29,6 +31,16 @@
                   <td><%= enterprise.instagram %></td>
                   <td><%= enterprise.twitch %></td>
                   <td><%= enterprise.whatsapp_group %></td>
+                  <td class="text-center">
+                    <span class="badge" style="background-color: <%= enterprise.primary_color %>">
+                      <%= enterprise.primary_color %>
+                    </span>
+                  </td>
+                  <td class="text-center">
+                    <span class="badge" style="background-color: <%= enterprise.primary_color %>; color: <%= enterprise.secondary_color %>">
+                      <%= enterprise.secondary_color %>
+                    </span>
+                  </td>
                   <td><%= l(enterprise.created_at.to_datetime, format: :with_full_hour) %></td>
                   <td><%= l(enterprise.updated_at.to_datetime, format: :with_full_hour) %></td>
                   <td class="table-buttons">

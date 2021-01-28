@@ -1,0 +1,14 @@
+pt-BR:
+  super_admins:
+    enterprises:
+      index:
+        registered_enterprises: Empresas cadastradas
+        description: Descrição
+        instagram: Instagram
+        twitch: Twitch
+        whatsapp_group: Grupo do WhatsApp
+        primary_color: Cor primária
+        secondary_color: Cor secundária
+        created_at: Criado em
+        updated_at: Atualizado em
+        delete_confirm: Você deseja excluir a empresa

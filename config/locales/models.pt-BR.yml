@@ -18,6 +18,15 @@
         is_admin: Administrador
         created_at: Criado em
         updated_at: Atualizado em
+      enterprise:
+        description: Descrição
+        instagram: Instagram
+        twitch: Twitch
+        whatsapp_group: Grupo do WhatsApp
+        primary_color: Cor primária
+        secondary_color: Cor secundária
+        logo: Logo
+        favicon: Favicon
       transaction_type:
         description: Tipo de transação
       transaction:

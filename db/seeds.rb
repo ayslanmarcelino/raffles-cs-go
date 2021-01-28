@@ -16,7 +16,7 @@ user = User.create!(email: 'superadmin@gmail.com',
                     is_super_admin: true,
                     enterprise_id: enterprise.id)
 
-transaction_type = TransactionType.create!(description: 'Rifa')
+TransactionType.create!(description: 'Rifa')
 
 SteamAccount.create!(description: 'Ayslan',
                      url: 'ayslanmarcelino',
