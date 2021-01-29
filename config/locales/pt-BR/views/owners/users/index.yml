@@ -10,6 +10,7 @@ pt-BR:
         cell_phone: Celular
         sign_in_count: Qtd. de login
         delete_confirm: Você tem certeza que deseja excluir o usuário
+        disabled: Desativado
         super_admin: Super Admin
         owner: Proprietário
         admin: Administrador

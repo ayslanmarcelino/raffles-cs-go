@@ -9,14 +9,16 @@ module Admins
       humanize_full_name.split.map { |x| x[0].upcase + x[1..-1] }.join(' ')
     end
 
-    def role_color?(admin, super_admin, owner)
+    def role_color?(admin, super_admin, owner, is_active)
+      return 'danger' unless is_active
       return 'dark' if super_admin
       return 'secondary' if owner
       return 'success' if admin
       return 'primary' if !admin && !super_admin
     end
 
-    def role?(admin, super_admin, owner)
+    def role?(admin, super_admin, owner, is_active)
+      return t('owners.users.index.disabled') unless is_active
       return t('owners.users.index.super_admin') if super_admin
       return t('owners.users.index.owner') if owner
       return t('owners.users.index.admin') if admin

@@ -12,8 +12,11 @@ module Admins
                .ransack(params[:q])
 
       @skins = @q.result(distinct: true)
-      @all_skins = Skin.all
-      @available_skins = Skin.where(is_available: true)
+      @all_skins = Skin.joins(:steam_account)
+                       .where("steam_accounts.user_id = #{@current_user.id}")
+      @available_skins = Skin.joins(:steam_account)
+                             .where(is_available: true)
+                             .where("steam_accounts.user_id = #{@current_user.id}")
       @steam_accounts = SteamAccount.where(user_id: current_user.id)
                                     .order(:description)
     end

@@ -2,7 +2,7 @@ pt-BR:
   admins:
     steam_accounts:
       index:
-        registered_steam_accounts: Contas da Steam cadastrados
+        registered_steam_accounts: Contas da Steam cadastradas
         description: Conta da Steam
         steam_id: ID da Steam
         steam_id_url: ID da URL Steam

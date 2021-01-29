@@ -15,6 +15,7 @@
         current_password: Senha atual
         password: Senha
         password_confirmation: Confirmação da senha
+        is_active: Ativo
         is_admin: Administrador
         is_owner: Proprietário
         created_at: Criado em

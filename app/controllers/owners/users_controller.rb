@@ -50,7 +50,7 @@ module Owners
     def params_user
       params.require(:user)
             .permit(:first_name, :last_name, :nickname, :email, :ddi, :cell_phone, :is_whatsapp, :is_admin, :password,
-                    :password_confirmation, :is_owner, :enterprise_id)
+                    :password_confirmation, :is_owner, :enterprise_id, :is_active)
     end
 
     def verify_password
