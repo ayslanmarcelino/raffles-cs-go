@@ -18,6 +18,7 @@
         is_active: Ativo
         is_admin: Administrador
         is_owner: Proprietário
+        enterprise: Empresa
         created_at: Criado em
         updated_at: Atualizado em
       enterprise:
