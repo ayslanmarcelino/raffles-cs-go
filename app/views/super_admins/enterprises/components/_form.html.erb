@@ -27,6 +27,10 @@
   <%= form.file_field(:logo, accept: 'image/png, image/jpeg, image/jpg') %>
 </div>
 <div class="col-lg-12">
+  <%= form.label(:logo_without_name) %><br>
+  <%= form.file_field(:logo_without_name, accept: 'image/png, image/jpeg, image/jpg') %>
+</div>
+<div class="col-lg-12">
   <%= form.label(:favicon) %><br>
   <%= form.file_field(:favicon, accept: 'image/png, image/jpeg, image/jpg') %>
 </div>

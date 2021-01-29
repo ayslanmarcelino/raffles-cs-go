@@ -14,6 +14,7 @@
 #
 class Enterprise < ApplicationRecord
   has_one_attached :logo
+  has_one_attached :logo_without_name
   has_one_attached :favicon
   has_many :user
 end

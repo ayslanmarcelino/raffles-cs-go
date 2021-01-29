@@ -21,7 +21,8 @@ module Owners
     end
 
     def params_enterprise
-      params.require(:enterprise).permit(:description, :instagram, :twitch, :whatsapp_group, :primary_color, :secondary_color, :logo, :favicon)
+      params.require(:enterprise).permit(:description, :instagram, :twitch, :whatsapp_group, :primary_color,
+                                         :secondary_color, :logo, :logo_without_name, :favicon)
     end
   end
 end

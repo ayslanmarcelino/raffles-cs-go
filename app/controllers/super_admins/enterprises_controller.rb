@@ -36,7 +36,8 @@ module SuperAdmins
     end
 
     def params_enterprise
-      params.require(:enterprise).permit(:description, :instagram, :twitch, :whatsapp_group, :primary_color, :secondary_color, :logo, :favicon)
+      params.require(:enterprise).permit(:description, :instagram, :twitch, :whatsapp_group, :primary_color,
+                                         :secondary_color, :logo, :logo_without_name, :favicon)
     end
 
     def invalid_foreign_key
@@ -44,4 +45,3 @@ module SuperAdmins
     end
   end
 end
-  
