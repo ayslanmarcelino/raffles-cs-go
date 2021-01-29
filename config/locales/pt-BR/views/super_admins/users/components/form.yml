@@ -1,0 +1,7 @@
+pt-BR:
+  super_admins:
+    users:
+      components:
+        form:
+          negative: Não
+          positive: Sim

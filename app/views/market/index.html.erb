@@ -89,7 +89,7 @@
               </div>
             <% end %>
             <div>
-              <%= image_tag('logo_without_name.png', width: 28) %>
+              <%= image_tag(current_user.enterprise.logo, width: 28) if current_user.enterprise.logo.present? %>
               <%= number_to_currency(skin.sale_price) %>
             </div>
           </div>

@@ -1,0 +1,19 @@
+pt-BR:
+  super_admins:
+    users:
+      index:
+        registered_users: Usuários cadastrados
+        name: Nome completo
+        email: E-mail
+        user_type: Tipo de usuário
+        last_sign_in: Logado pela última vez em
+        cell_phone: Celular
+        enterprise: Empresa
+        sign_in_count: Qtd. de login
+        delete_confirm: Você tem certeza que deseja excluir o usuário
+        disabled: Desativado
+        super_admin: Super Admin
+        owner: Proprietário
+        admin: Administrador
+        user: Usuário
+        no_access: Usuário ainda não acessou o sistema
