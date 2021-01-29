@@ -17,14 +17,14 @@ module Admins
     end
 
     def role?(admin, super_admin, owner)
-      return t('admins.users.index.super_admin') if super_admin
-      return t('admins.users.index.owner') if owner
-      return t('admins.users.index.admin') if admin
-      return t('admins.users.index.user') if !owner && !admin && !super_admin
+      return t('owners.users.index.super_admin') if super_admin
+      return t('owners.users.index.owner') if owner
+      return t('owners.users.index.admin') if admin
+      return t('owners.users.index.user') if !owner && !admin && !super_admin
     end
 
     def last_sign_in_user(date)
-      date.present? ? l(date, format: :with_full_hour) : t('admins.users.index.no_access')
+      date.present? ? l(date, format: :with_full_hour) : t('owners.users.index.no_access')
     end
   end
 end

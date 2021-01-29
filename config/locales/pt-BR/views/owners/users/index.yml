@@ -1,5 +1,5 @@
 pt-BR:
-  admins:
+  owners:
     users:
       index:
         registered_users: Usuários cadastrados
@@ -11,7 +11,7 @@ pt-BR:
         sign_in_count: Qtd. de login
         delete_confirm: Você tem certeza que deseja excluir o usuário
         super_admin: Super Admin
-        owner: Dono
+        owner: Proprietário
         admin: Administrador
         user: Usuário
         no_access: Usuário ainda não acessou o sistema

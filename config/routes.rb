@@ -9,19 +9,19 @@ Rails.application.routes.draw do
 
   namespace :owners do
     get 'enterprises/index'
+    get 'users/index'
 
     resources :enterprises
+    resources :users
   end
 
   namespace :admins do
-    get 'users/index'
     get 'transaction_types/index'
     get 'transactions/index'
     get 'steam_accounts/index'
     get 'skins/index'
     get 'dashboard/index'
 
-    resources :users
     resources :transaction_types
     resources :transactions
     resources :steam_accounts

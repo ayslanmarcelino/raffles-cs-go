@@ -16,7 +16,7 @@
                 <th><%= t('.cell_phone') %></th>
                 <th><%= t('.sign_in_count') %></th>
                 <th class="no-sort table-buttons">
-                  <%= link_to new_admins_user_path(@user), class: 'btn btn-success btn-circle' do %>
+                  <%= link_to new_owners_user_path(@user), class: 'btn btn-success btn-circle' do %>
                     <i class="fas fa-plus"></i>
                   <% end %>
                 </th>
@@ -36,10 +36,10 @@
                   <td><%= user.cell_phone %></td>
                   <td><%= user.sign_in_count %></td>
                   <td class="table-buttons">
-                    <%= link_to edit_admins_user_path(user), class: 'btn btn-info btn-circle' do %>
+                    <%= link_to edit_owners_user_path(user), class: 'btn btn-info btn-circle' do %>
                       <i class="fas fa-edit"></i>
                     <% end %>
-                    <%= link_to admins_user_path(user), method: :delete, class: 'btn btn-danger btn-circle', data: { confirm: "#{t('.delete_confirm')}: #{user.email}?" } do %>
+                    <%= link_to owners_user_path(user), method: :delete, class: 'btn btn-danger btn-circle', data: { confirm: "#{t('.delete_confirm')}: #{user.email}?" } do %>
                       <i class="fas fa-trash"></i>
                     <% end %>
                   </td>

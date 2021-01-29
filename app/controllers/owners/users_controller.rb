@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module Admins
-  class UsersController < AdminsController
+module Owners
+  class UsersController < OwnersController
     before_action :verify_password, only: %w[update]
     before_action :set_user, only: %w[edit update destroy]
     before_action :set_enterprise, only: %w[new edit update destroy]
@@ -20,17 +20,17 @@ module Admins
     def create
       @user = User.new(params_user)
 
-      @user.save ? (redirect_to admins_users_path, notice: 'Usuário cadastrado com sucesso') : (render :new)
+      @user.save ? (redirect_to owners_users_path, notice: 'Usuário cadastrado com sucesso') : (render :new)
     end
 
     def edit; end
 
     def update
-      @user.update(params_user) ? (redirect_to admins_users_path, notice: 'Usuário atualizado com sucesso') : (render :edit)
+      @user.update(params_user) ? (redirect_to owners_users_path, notice: 'Usuário atualizado com sucesso') : (render :edit)
     end
 
     def destroy
-      @user.destroy ? (redirect_to admins_users_path, notice: 'Usuário excluído com sucesso') : (render :index)
+      @user.destroy ? (redirect_to owners_users_path, notice: 'Usuário excluído com sucesso') : (render :index)
     end
 
     private

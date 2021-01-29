@@ -22,6 +22,7 @@
 #
 class SteamAccount < ApplicationRecord
   belongs_to :user
+  has_many :skins
   validates_uniqueness_of :url
   validates_uniqueness_of :steam_id
 

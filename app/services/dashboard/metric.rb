@@ -32,7 +32,7 @@ module Dashboard
     end
 
     def list_users
-      User.all
+      User.where(enterprise_id: @current_user.enterprise_id)
     end
 
     def list_skins_available
