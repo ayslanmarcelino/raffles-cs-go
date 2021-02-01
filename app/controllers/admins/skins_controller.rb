@@ -71,7 +71,11 @@ module Admins
     end
 
     def set_skin
-      @skin = Skin.find(params[:id])
+      if current_user.steam_account_ids.include?(Skin.find(params[:id]).steam_account.id)
+        @skin = Skin.find(params[:id])
+      else
+        redirect_to root_path, notice: 'Você não tem permissão para manipular esta skin.'
+      end
     end
 
     def set_transaction
@@ -149,10 +153,6 @@ module Admins
           next
         end
       end
-    end
-
-    def update_one_skin
-      
     end
 
     def requisition_api
