@@ -15,6 +15,7 @@
     </head>
 
     <body>
+      <%= render partial: 'layouts/components/environment_banner' %>
       <%= yield %>
     </body>
     <%= javascript_pack_tag 'application' %>
@@ -53,6 +54,7 @@
       <%= favicon_link_tag asset_path('favicon.ico') %>
     </head>
     <body id="page-top">
+      <%= render partial: 'layouts/components/environment_banner' %>
       <div id="wrapper">
         <ul class="navbar-nav bg-gradient-pingo sidebar sidebar-dark accordion" id="accordionSidebar">
           <a class="sidebar-brand d-flex align-items-center justify-content-center">

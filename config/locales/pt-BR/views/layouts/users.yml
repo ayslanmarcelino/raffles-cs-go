@@ -1,7 +1,11 @@
 pt-BR:
   layouts:
     users:
+<<<<<<< Updated upstream
       enterprise_instagram: '@pingo.rifas'
+=======
+      welcome: Bem-vindo(a) ao @pingo.rifas
+>>>>>>> Stashed changes
       dashboard: Dashboard
       market: Loja
       admin: Admin
@@ -16,6 +20,6 @@ pt-BR:
       my_profile: Meu perfil
       exit: Sair
       copyright: Copyright
-      enterprise: Pingo Rifas
+      enterprise: Pingo Rifas e Skins
       developed_by: Desenvolvido por
       developer: Ayslan Marcelino
