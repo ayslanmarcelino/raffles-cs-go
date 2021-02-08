@@ -1,11 +1,7 @@
 pt-BR:
   layouts:
     users:
-<<<<<<< Updated upstream
-      enterprise_instagram: '@pingo.rifas'
-=======
       welcome: Bem-vindo(a) ao @pingo.rifas
->>>>>>> Stashed changes
       dashboard: Dashboard
       market: Loja
       admin: Admin
