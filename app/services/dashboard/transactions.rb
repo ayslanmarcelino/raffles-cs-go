@@ -97,8 +97,14 @@ module Dashboard
     end
 
     def net_profit
-      transactions_values_by_month.merge(skins_purchased_per_month) do |_, transactions, price_paid|
+      profit = transactions_values_by_month.merge(skins_price_paid_by_month) do |_, transactions, price_paid|
         transactions - price_paid
+      end
+
+      skins_purchased_formatted = skins_purchased_per_month.transform_values { |v| v * -1 }
+
+      skins_purchased_formatted.merge(profit) do |_, transactions, price_paid|
+        (transactions + price_paid)
       end
     end
 
