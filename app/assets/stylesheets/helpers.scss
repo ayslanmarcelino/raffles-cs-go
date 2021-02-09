@@ -1,0 +1,22 @@
+.environment-banner {
+  line-height: 12px;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  width: 100%;
+  z-index: 110000;
+  border-top: 5px solid #cc5b3b;
+
+  .environment-label {
+    background-color: #cc5b3b;
+    border-radius: 0 0 5px 5px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 18px;
+    letter-spacing: .01em;
+    padding: 3px 16px 12px 16px;
+    text-transform: uppercase;
+    user-select: none;
+  }
+}

@@ -22,7 +22,9 @@ module Dashboard
         transactions_by_month_keys: info[:transactions_keys],
         transactions_by_month_values: info[:transactions_values],
         transactions_by_type_keys: info[:transactions_by_type_keys],
-        transactions_by_type_values: info[:transactions_by_type_values]
+        transactions_by_type_values: info[:transactions_by_type_values],
+        net_profit_keys: info[:net_profit_keys],
+        net_profit_values: info[:net_profit_values]
       }
     end
 
@@ -35,7 +37,9 @@ module Dashboard
         transactions_keys: transactions_by_month_keys,
         transactions_values: transactions_by_month_values,
         transactions_by_type_keys: transactions_by_type_keys,
-        transactions_by_type_values: transactions_by_type_values
+        transactions_by_type_values: transactions_by_type_values,
+        net_profit_keys: net_profit_keys,
+        net_profit_values: net_profit_values
       }
     end
 
@@ -65,11 +69,11 @@ module Dashboard
     def transactions_by_month_values
       transactions_by_month.values
     end
-  
+
     def transactions_by_type_keys
-      transactions_by_type.map { | k,v | k.description.capitalize }
+      transactions_by_type.map { |k, _| k.description.capitalize }
     end
-  
+
     def transactions_by_type_values
       transactions_by_type.values
     end
@@ -84,6 +88,26 @@ module Dashboard
       transactions_values_by_month.merge(skins_price_paid_by_month) { |_, transactions, price_paid| transactions - price_paid }
     end
 
+    def net_profit_keys
+      net_profit.keys
+    end
+
+    def net_profit_values
+      net_profit.values
+    end
+
+    def net_profit
+      profit = transactions_values_by_month.merge(skins_price_paid_by_month) do |_, transactions, price_paid|
+        transactions - price_paid
+      end
+
+      skins_purchased_formatted = skins_purchased_per_month.transform_values { |v| v * -1 }
+
+      skins_purchased_formatted.merge(profit) do |_, transactions, price_paid|
+        (transactions + price_paid)
+      end
+    end
+
     def transactions_values_by_month
       list_transactions.group_by_month(:created_at, format: '%b/%Y')
                        .sum(:price)
@@ -95,8 +119,19 @@ module Dashboard
                        .sum(:price_paid)
     end
 
+    def skins_purchased_per_month
+      list_skins.group_by_month(:created_at, format: '%b/%Y')
+                .sum(:price_paid)
+    end
+
     def list_transactions
       Transaction.where(user_id: @current_user.id)
+    end
+
+    def list_skins
+      Skin.includes(:steam_account)
+          .joins(:steam_account)
+          .where("steam_accounts.user_id = #{@current_user.id}")
     end
   end
 end

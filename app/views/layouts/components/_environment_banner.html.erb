@@ -1,0 +1,6 @@
+<% env = ENV['DEPLOY_ENV'].presence || Rails.env %>
+<% if env != 'production' %>
+  <div class="environment-banner <%= env %>" onclick="this.remove()" title="Clique aqui para remover">
+    <div class="environment-label">Env: <%= env %></div>
+  </div>
+<% end %>
