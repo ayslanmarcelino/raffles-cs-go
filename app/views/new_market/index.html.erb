@@ -1,0 +1,96 @@
+<% if @skins.empty? %>
+  <div class="text-center" style="margin: 0 auto !important">
+    <div>
+      <%= image_tag('logo_without_name.png', width: 250) %>
+    </div>
+    <h2>
+      <%= t('.no_skins_available') %>
+    </h2>
+  </div>
+<% else %>
+  <main class="main-content">
+    <div class="container">
+      <div class="page">
+        <section>
+          <header>
+          </header>
+          <div class="product-list">
+            <% @skins.order(created_at: :desc).each do |skin| %>
+              <div class="product">
+                <div class="chili-pepper-text market-prices market-card">
+                  <% if skin.price_steam > skin.price_csmoney %>
+                    <span class="badge badge-success tag-sale">
+                      <%= sale_percentage(skin.sale_price, skin.price_steam) %>% OFF
+                    </span>
+                  <% else %>
+                    <span class="badge badge-success tag-sale">
+                      <%= sale_percentage(skin.sale_price, skin.price_csmoney) %>% OFF
+                    </span>
+                  <% end %>
+                </div>
+                <% if current_user && current_user.is_admin %>
+                  <%= link_to edit_admins_skin_path(skin), class: 'btn btn-dark btn-sm pull-left' do %>
+                    <i class="fas fa-edit"></i>
+                  <% end %>
+                <% end %>
+                <div class="inner-product market-card">
+                  <% if skin.inspect_url.present? %>
+                    <a class="btn btn-outline-light btn-sm mb-2" href="<%= skin.inspect_url %>" style="font-size: 10px">
+                      <%= t('.inspect_in_game') %>
+                    </a>
+                  <% end %>
+                  <div class="figure-image">
+                    <%= image_tag(skin.image_skin, width: 300) %>
+                  </div>
+                  <h3 class="product-title" style="height: 45px">
+                    <a style="color: #<%= skin.description_color %>;">
+                      <%= skin.description %>
+                    </a>
+                  </h3>
+                  <% if skin.expiration_date.present? && time_tradelock_integer(skin.expiration_date).positive? %>
+                    <div class="tag-available bg-red text-center">
+                      <%= t('.releases_on') %> <%= time_tradelock(skin.expiration_date) %>
+                    </div>
+                  <% else %>
+                    <div class="tag-available"></div>
+                  <% end %>
+                  <% if positive_value?(skin.float) %>
+                    <div style="height: 50px;">
+                      <i class="fas fa-arrow-down float-left fs-10" style="margin-left: <%= skin.float * 100 %>%;"></i>
+                      <div class="progress float-chart"></div>
+                      <%= t('.float') %>: <%= skin.float %>
+                    </div>
+                  <% else %>
+                    <div style="height: 50px;">
+                    </div>
+                  <% end %>
+                  <small class="price">
+                    <% if skin.price_steam > skin.price_csmoney %>
+                      <div>
+                        <%= image_tag('logo_steam.png', width: 28) %>
+                        <%= number_to_currency(skin.price_steam) %>
+                      </div>
+                    <% else %>
+                      <div>
+                        <%= image_tag('logo_csmoney.png', width: 28) %>
+                        <%= number_to_currency(skin.price_csmoney) %>
+                      </div>
+                    <% end %>
+                    <div>
+                      <%= image_tag('logo_without_name.png', width: 28) %>
+                      <%= number_to_currency(skin.sale_price) %>
+                    </div>
+                  </small>
+                  <%# <button class="button">
+                    <i class="fas fa-shopping-cart"></i>
+                  </button> %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <%= paginate @skins %>
+        </section>
+      </div>
+    </div>
+  </main>
+<% end %>
