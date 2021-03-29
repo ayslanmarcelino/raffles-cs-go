@@ -27,9 +27,9 @@
       })();
     </script>
   <% end %>
-	<body class="slider-collapse">
+	<body class="slider-collapse" style="background-color: #333333;">
     <%= render partial: 'layouts/components/environment_banner' %>
-		<div id="site-content" style="margin-bottom: 10px !important;">
+		<div id="site-content" style="margin-bottom: 10px !important; background-color: 333333;">
 			<div class="site-header">
 				<div class="container">
           <%= search_form_for @q, url: root_path do |f| %>
@@ -53,7 +53,7 @@
               <% end %>
             </div>
             <div class="search-form">
-              <%= f.text_field :description_cont, placeholder: 'Buscar skin', class: 'form-control col-md-12 mb-2' %>
+              <%= f.text_field :description_cont, placeholder: 'Digite sua busca', class: 'form-control col-md-12 mb-2' %>
             </div>
 					  <div class="main-navigation">
               <div class="dropdown">
@@ -65,7 +65,9 @@
                 </div>
               </div>
               <div class="dropdown">
-                <button class="btn">Tipo de arma</button>
+                <button class="btn">
+                  Tipo de arma
+                </button>
                 <div class="dropdown-content">
                   <% type_weapon_collection.each do |type| %>
                     <%= link_to type, q: {type_weapon_eq: type} %>
