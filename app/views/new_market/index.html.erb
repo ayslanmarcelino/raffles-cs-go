@@ -40,6 +40,20 @@
                     </a>
                   <% end %>
                   <div class="figure-image">
+                    <% if skin.expiration_date.present? && time_tradelock_integer(skin.expiration_date).positive? %>
+                      <div class="tag-available">
+                        <i class="fas fa-lock"></i> <%= time_tradelock(skin.expiration_date) %>
+                      </div>
+                    <% else %>
+                      <div class="tag-available"></div>
+                    <% end %>
+                    <div class="market-sticker">
+                      <% if skin.has_sticker %>
+                        <% skin.image_sticker.each do |sticker| %>
+                          <%= image_tag(sticker, width: 40) %>
+                        <% end %>
+                      <% end %>
+                    </div>
                     <%= image_tag(skin.image_skin, width: 300) %>
                   </div>
                   <h3 class="product-title" style="height: 45px">
@@ -47,13 +61,6 @@
                       <%= skin.description %>
                     </a>
                   </h3>
-                  <% if skin.expiration_date.present? && time_tradelock_integer(skin.expiration_date).positive? %>
-                    <div class="tag-available bg-red text-center">
-                      <%= t('.releases_on') %> <%= time_tradelock(skin.expiration_date) %>
-                    </div>
-                  <% else %>
-                    <div class="tag-available"></div>
-                  <% end %>
                   <% if positive_value?(skin.float) %>
                     <div style="height: 50px;">
                       <i class="fas fa-arrow-down float-left fs-10" style="margin-left: <%= skin.float * 100 %>%;"></i>
@@ -66,19 +73,19 @@
                   <% end %>
                   <small class="price">
                     <% if skin.price_steam > skin.price_csmoney %>
-                      <div>
-                        <%= image_tag('logo_steam.png', width: 28) %>
-                        <%= number_to_currency(skin.price_steam) %>
+                      <div class="d-flex" style="height: 30px;">
+                        <div><%= image_tag('logo_steam.png', width: 28) %></div>
+                        <div style="margin-left: 10px; margin-top: 7px;"><%= number_to_currency(skin.price_steam) %></div>
                       </div>
                     <% else %>
-                      <div>
-                        <%= image_tag('logo_csmoney.png', width: 28) %>
-                        <%= number_to_currency(skin.price_csmoney) %>
+                      <div class="d-flex" style="height: 30px;">
+                        <div style="margin-top: 7px;"><%= image_tag('logo_csmoney.png', width: 28) %></div>
+                        <div style="margin-left: 10px; margin-top: 7px;"><%= number_to_currency(skin.price_csmoney) %></div>
                       </div>
                     <% end %>
-                    <div>
-                      <%= image_tag('logo_without_name.png', width: 28) %>
-                      <%= number_to_currency(skin.sale_price) %>
+                    <div class="d-flex">
+                      <div><%= image_tag('logo_without_name.png', width: 28) %></div>
+                      <div style="margin-left: 10px; margin-top: 7px;"><%= number_to_currency(skin.sale_price) %></div>
                     </div>
                   </small>
                   <%# <button class="button">
