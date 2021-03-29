@@ -1,0 +1,14 @@
+pt-BR:
+  new_market:
+    index:
+      description: Nome do item
+      exterior: Exterior
+      float: Float
+      buy: Comprar
+      price_steam: Preço da Steam
+      sale_price: Preço de venda
+      available: Disponível
+      releases_on: Disponível em
+      inspect_in_game: Inspecionar no jogo
+      float: Float
+      no_skins_available: No momento não temos skins disponíveis para venda

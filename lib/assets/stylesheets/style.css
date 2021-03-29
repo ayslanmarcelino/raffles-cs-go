@@ -371,11 +371,19 @@ form textarea {
   color: white;
   margin-bottom: 2px;
   height: 18px;
+  margin-top: 4px;
 }
 
 .market-card {
   background-color: #1F1F1F !important;
   color: white;
+}
+
+.market-sticker {
+  position: relative;
+  float: right;
+  height: 0;
+  width: 42px;
 }
 
 .bg-green {
