@@ -2092,9 +2092,7 @@ form textarea {
 }
 
 .main-navigation {
-  *zoom: 1;
   margin-top: 30px;
-  position: relative;
   z-index: 999;
   clear: both;
   width: 100%;
@@ -2211,10 +2209,8 @@ form textarea {
 
 .search-form {
   float: right;
-  position: absolute;
+  position: relative;
   right: 0;
-  top: 0;
-  bottom: 0;
   width: 300px;
 }
 @media screen and (max-width: 480px) {

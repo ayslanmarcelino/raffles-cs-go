@@ -21,27 +21,30 @@
 		<div id="site-content" style="margin-bottom: 10px !important;">
 			<div class="site-header">
 				<div class="container">
-					<a href="<%= root_path %>" id="branding">
-						<div class="logo-text">
-							<%= image_tag('logo.png', height: 100) %>
-						</div>
-					</a>
-				  <div class="right-section pull-right">
-						<%# <a href="cart.html" class="cart"><i class="icon-cart"></i> 0 items in cart</a> %>
-            <% if current_user %>
-              <%= link_to market_index_path, class: 'btn' do %>
-                <i class="fas fa-sign-in-alt"></i>
-                <%= current_user.email %>
+          <%= search_form_for @q, url: root_path do |f| %>
+            <a href="<%= root_path %>" id="branding">
+              <div class="logo-text">
+                <%= image_tag('logo.png', height: 100) %>
+              </div>
+            </a>
+            <div class="right-section pull-right">
+              <%# <a href="cart.html" class="cart"><i class="icon-cart"></i> 0 items in cart</a> %>
+              <% if current_user %>
+                <%= link_to market_index_path, class: 'btn' do %>
+                  <i class="fas fa-sign-in-alt"></i>
+                  <%= current_user.email %>
+                <% end %>
+              <% else %>
+                <%= link_to new_user_session_path, class: 'btn' do %>
+                  <i class="fas fa-sign-in-alt"></i>
+                  Login
+                <% end %>
               <% end %>
-            <% else %>
-              <%= link_to new_user_session_path, class: 'btn' do %>
-                <i class="fas fa-sign-in-alt"></i>
-                Login
-              <% end %>
-            <% end %>
-					</div>
-					<div class="main-navigation">
-            <%= search_form_for @q, url: root_path do |f| %>
+            </div>
+            <div class="search-form">
+              <%= f.text_field :description_cont, placeholder: 'Buscar skin', class: 'form-control col-md-12 mb-2' %>
+            </div>
+					  <div class="main-navigation">
               <div class="dropdown">
                 <button class="btn">Tipo de skin</button>
                 <div class="dropdown-content">
@@ -66,12 +69,9 @@
                   <% end %>
                 </div>
               </div>
-              <div class="search-form">
-                <%= f.text_field :description_cont, placeholder: 'Buscar skin', class: 'form-control col-md-12 mb-2' %>
-              </div>
-            <% end %>
 						<div class="mobile-navigation"></div>
-					</div>
+					  </div>
+          <% end %>
 				</div>
 			</div>
 			<%# <div class="home-slider">
