@@ -36,6 +36,7 @@ module MarketHelper
   def knifes_type_collection
     Skin.pluck(:type_skin)
         .uniq
+        .compact
         .map! { |types| types['Knife'] }
         .compact
   end
@@ -52,6 +53,7 @@ module MarketHelper
   def gloves_type_collection
     Skin.pluck(:type_skin)
         .uniq
+        .compact
         .map! { |types| types['Gloves'] }
         .compact
   end
@@ -68,6 +70,7 @@ module MarketHelper
   def rifles_type_collection
     Skin.pluck(:type_skin)
         .uniq
+        .compact
         .map! { |types| types['Rifle'] }
         .compact
   end
@@ -84,6 +87,7 @@ module MarketHelper
   def pistols_type_collection
     Skin.pluck(:type_skin)
         .uniq
+        .compact
         .map! { |types| types['Pistol'] }
         .compact
   end
@@ -100,6 +104,7 @@ module MarketHelper
   def shotguns_type_collection
     Skin.pluck(:type_skin)
         .uniq
+        .compact
         .map! { |types| types['Shotgun'] }
         .compact
   end
@@ -116,6 +121,7 @@ module MarketHelper
   def smgs_type_collection
     Skin.pluck(:type_skin)
         .uniq
+        .compact
         .map! { |types| types['SMG'] }
         .compact
   end
