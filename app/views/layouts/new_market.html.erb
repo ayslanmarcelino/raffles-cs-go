@@ -29,7 +29,7 @@
   <% end %>
 	<body class="slider-collapse" style="background-color: #333333;">
     <%= render partial: 'layouts/components/environment_banner' %>
-		<div id="site-content" style="margin-bottom: 10px !important; background-color: 333333;">
+		<div id="site-content" style="margin-bottom: 10px !important; background-color: #333333;">
 			<div class="site-header">
         <%= search_form_for @q, url: root_path do |f| %>
           <a href="<%= root_path %>" id="branding">
@@ -55,99 +55,111 @@
             <%= f.text_field :description_cont, placeholder: 'Digite o que você procura', class: 'form-control mb-2' %>
           </div>
           <div class="main-navigation">
-            <% if knifes_collection.present? %>
-              <div class="dropdown">
-                <button class="btn menu-items" style="color: #eeeeee">
-                  <%= image_tag('knife.png', height: 30) %>
-                  <%= t('.knifes') %>
-                  <i class="fas fa-chevron-down" style="font-size: 10px;"></i>
-                </button>
-                <div class="dropdown-content">
-                  <% knifes_collection.each do |knife| %>
-                    <%= link_to knife, q: {type_weapon_eq: knife} %>
-                  <% end %>
-                </div>
+            <div class="dropdown">
+              <button class="btn menu-items" style="color: #eeeeee">
+                <%= image_tag('knife.png', height: 30) %>
+                <%= t('.knifes') %>
+                <i class="fas fa-chevron-down" style="font-size: 10px;"></i>
+              </button>
+              <div class="dropdown-content">
+                <% knifes_collection.each do |knife| %>
+                  <%= link_to knife, q: {type_weapon_eq: knife} %>
+                <% end %>
               </div>
-            <% end %>
-            <% if gloves_collection.present? %>
-              <div class="dropdown">
-                <button class="btn menu-items" style="color: #eeeeee">
-                  <%= image_tag('gloves.png', height: 30) %>
-                  <%= t('.gloves') %>
-                  <i class="fas fa-chevron-down" style="font-size: 10px;"></i>
-                </button>
-                <div class="dropdown-content">
-                  <% gloves_collection.each do |glove| %>
-                    <%= link_to glove, q: {type_weapon_eq: glove} %>
-                  <% end %>
-                </div>
+            </div>
+            <div class="dropdown">
+              <button class="btn menu-items" style="color: #eeeeee">
+                <%= image_tag('gloves.png', height: 30) %>
+                <%= t('.gloves') %>
+                <i class="fas fa-chevron-down" style="font-size: 10px;"></i>
+              </button>
+              <div class="dropdown-content">
+                <% gloves_collection.each do |glove| %>
+                  <%= link_to glove, q: {type_weapon_eq: glove} %>
+                <% end %>
               </div>
-            <% end %>
-            <% if rifles_collection.present? %>
-              <div class="dropdown">
-                <button class="btn menu-items" style="color: #eeeeee">
-                  <%= image_tag('rifle.png', height: 30) %>
-                  <%= t('.rifles') %>
-                  <i class="fas fa-chevron-down" style="font-size: 10px;"></i>
-                </button>
-                <div class="dropdown-content">
-                  <% rifles_collection.each do |rifle| %>
-                    <%= link_to rifle, q: {type_weapon_eq: rifle} %>
-                  <% end %>
-                </div>
+            </div>
+            <div class="dropdown">
+              <button class="btn menu-items" style="color: #eeeeee">
+                <%= image_tag('rifle.png', height: 30) %>
+                <%= t('.rifles') %>
+                <i class="fas fa-chevron-down" style="font-size: 10px;"></i>
+              </button>
+              <div class="dropdown-content">
+                <% rifles_collection.each do |rifle| %>
+                  <%= link_to rifle, q: {type_weapon_eq: rifle} %>
+                <% end %>
               </div>
-            <% end %>
-            <% if pistols_collection.present? %>
-              <div class="dropdown">
-                <button class="btn menu-items" style="color: #eeeeee">
-                  <%= image_tag('pistol.png', height: 30) %>
-                  <%= t('.pistols') %>
-                  <i class="fas fa-chevron-down" style="font-size: 10px;"></i>
-                </button>
-                <div class="dropdown-content">
-                  <% pistols_collection.each do |pistol| %>
-                    <%= link_to pistol, q: {type_weapon_eq: pistol} %>
-                  <% end %>
-                </div>
+            </div>
+            <div class="dropdown">
+              <button class="btn menu-items" style="color: #eeeeee">
+                <%= image_tag('pistol.png', height: 30) %>
+                <%= t('.pistols') %>
+                <i class="fas fa-chevron-down" style="font-size: 10px;"></i>
+              </button>
+              <div class="dropdown-content">
+                <% pistols_collection.each do |pistol| %>
+                  <%= link_to pistol, q: {type_weapon_eq: pistol} %>
+                <% end %>
               </div>
-            <% end %>
-            <% if shotguns_collection.present? %>
-              <div class="dropdown">
-                <button class="btn menu-items" style="color: #eeeeee">
-                  <%= image_tag('shotgun.png', height: 30) %>
-                  <%= t('.shotguns') %>
-                  <i class="fas fa-chevron-down" style="font-size: 10px;"></i>
-                </button>
-                <div class="dropdown-content">
-                  <% shotguns_collection.each do |shotgun| %>
-                    <%= link_to shotgun, q: {type_weapon_eq: shotgun} %>
-                  <% end %>
-                </div>
+            </div>
+            <div class="dropdown">
+              <button class="btn menu-items" style="color: #eeeeee">
+                <%= image_tag('shotgun.png', height: 30) %>
+                <%= t('.shotguns') %>
+                <i class="fas fa-chevron-down" style="font-size: 10px;"></i>
+              </button>
+              <div class="dropdown-content">
+                <% shotguns_collection.each do |shotgun| %>
+                  <%= link_to shotgun, q: {type_weapon_eq: shotgun} %>
+                <% end %>
               </div>
-            <% end %>
-            <% if smgs_collection.present? %>
-              <div class="dropdown">
-                <button class="btn menu-items" style="color: #eeeeee">
-                  <%= image_tag('smg.png', height: 30) %>
-                  <%= t('.smgs') %>
-                  <i class="fas fa-chevron-down" style="font-size: 10px;"></i>
-                </button>
-                <div class="dropdown-content">
-                  <% smgs_collection.each do |smg| %>
-                    <%= link_to smg, q: {type_weapon_eq: smg} %>
-                  <% end %>
-                </div>
+            </div>
+            <div class="dropdown">
+              <button class="btn menu-items" style="color: #eeeeee">
+                <%= image_tag('smg.png', height: 30) %>
+                <%= t('.smgs') %>
+                <i class="fas fa-chevron-down" style="font-size: 10px;"></i>
+              </button>
+              <div class="dropdown-content">
+                <% smgs_collection.each do |smg| %>
+                  <%= link_to smg, q: {type_weapon_eq: smg} %>
+                <% end %>
               </div>
-            <% end %>
-            <%# <div class="dropdown">
-              <button class="btn" style="color: #eeeeee">
+            </div>
+            <div class="dropdown">
+              <button class="btn menu-items" style="color: #eeeeee">
                 <%= image_tag('sticker.png', height: 30) %>
-                <%# stickers_collection.each do |sticker| %>
-                  <%#= link_to sticker, q: {type_skin_eq: sticker} %>
-                <%# end %>
-              <%# </button>
-            </div> %>
-          <div class="mobile-navigation"></div>
+                <% stickers_type_collection.each do |sticker| %>
+                  <%= link_to t('.sticker'), q: {type_skin_eq: sticker} %>
+                <% end %>
+              </button>
+            </div>
+            <div class="dropdown">
+              <button class="btn menu-items" style="color: #eeeeee">
+                <%= image_tag('agent.png', height: 30) %>
+                <% agents_type_collection.each do |agent| %>
+                  <%= link_to t('.agent'), q: {type_skin_eq: agent} %>
+                <% end %>
+              </button>
+            </div>
+            <div class="dropdown">
+              <button class="btn menu-items" style="color: #eeeeee">
+                <%= image_tag('music_kit.png', height: 30) %>
+                <% music_kits_type_collection.each do |music_kit| %>
+                  <%= link_to t('.music_kit'), q: {type_skin_eq: music_kit} %>
+                <% end %>
+              </button>
+            </div>
+            <div class="dropdown">
+              <button class="btn menu-items" style="color: #eeeeee">
+                <%= image_tag('graffiti.png', height: 30) %>
+                <% graffiti_type_collection.each do |graffiti| %>
+                  <%= link_to t('.graffiti'), q: {type_skin_eq: graffiti} %>
+                <% end %>
+              </button>
+            </div>
+            <div class="mobile-navigation"></div>
           </div>
         <% end %>
 			</div>

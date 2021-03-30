@@ -44,6 +44,7 @@ textarea {
 
 body {
   margin: 0;
+  height: 100vh;
 }
 
 a {
@@ -272,7 +273,12 @@ ul, ol {
 
 a {
   text-decoration: none;
-  color: #d7603e;
+  color: #eeeeee;
+}
+
+a:hover {
+  color: #eeeeee;
+  text-decoration: none;
 }
 
 address {
