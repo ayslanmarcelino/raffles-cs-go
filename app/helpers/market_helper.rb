@@ -128,12 +128,35 @@ module MarketHelper
     @smgs
   end
 
-  def others_collection
+  def stickers_type_collection
     Skin.pluck(:type_skin)
         .uniq
         .compact
-        .map! { |types| [types['Agent'], types['Sticker'], types['Music Kit'], types['Graffiti']] }
-        .flatten
+        .map! { |types| types['Sticker'] }
+        .compact
+  end
+
+  def agents_type_collection
+    Skin.pluck(:type_skin)
+        .uniq
+        .compact
+        .map! { |types| types['Agent'] }
+        .compact
+  end
+
+  def music_kits_type_collection
+    Skin.pluck(:type_skin)
+        .uniq
+        .compact
+        .map! { |types| types['Music Kit'] }
+        .compact
+  end
+
+  def graffiti_type_collection
+    Skin.pluck(:type_skin)
+        .uniq
+        .compact
+        .map! { |types| types['Graffiti'] }
         .compact
   end
 end

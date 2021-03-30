@@ -19,4 +19,5 @@ Rails.application.config.assets.precompile += %w[users.js users.css
                                                  rifle.png smg.png
                                                  knife.png gloves.png
                                                  pistol.png shotgun.png
-                                                 sticker.png]
+                                                 sticker.png music_kit.png
+                                                 agent.png graffiti.png]
