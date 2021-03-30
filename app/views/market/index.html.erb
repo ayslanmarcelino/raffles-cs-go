@@ -79,12 +79,12 @@
             </a>
             <% if skin.price_steam > skin.price_csmoney %>
               <div>
-                <%= image_tag('logo_steam.png', width: 28) %>
+                <%= image_tag('logo_without_name.png', width: 28) %>
                 <%= number_to_currency(skin.price_steam) %>
               </div>
             <% else %>
               <div>
-                <%= image_tag('logo_csmoney.png', width: 28) %>
+                <%= image_tag('logo_without_name.png', width: 28) %>
                 <%= number_to_currency(skin.price_csmoney) %>
               </div>
             <% end %>

@@ -17,80 +17,101 @@
           <div class="product-list">
             <% @skins.order(created_at: :desc).each do |skin| %>
               <div class="product">
-                <div class="chili-pepper-text market-prices market-card">
-                  <% if skin.price_steam > skin.price_csmoney %>
-                    <span class="badge badge-success tag-sale">
-                      <%= sale_percentage(skin.sale_price, skin.price_steam) %>% OFF
-                    </span>
-                  <% else %>
-                    <span class="badge badge-success tag-sale">
-                      <%= sale_percentage(skin.sale_price, skin.price_csmoney) %>% OFF
-                    </span>
-                  <% end %>
-                </div>
-                <% if current_user && current_user.is_admin %>
-                  <%= link_to edit_admins_skin_path(skin), class: 'btn btn-dark btn-sm pull-left' do %>
-                    <i class="fas fa-edit"></i>
-                  <% end %>
-                <% end %>
-                <div class="inner-product market-card">
-                  <% if skin.inspect_url.present? %>
-                    <a class="btn btn-outline-light btn-sm mb-2" href="<%= skin.inspect_url %>" style="font-size: 10px">
-                      <%= t('.inspect_in_game') %>
-                    </a>
-                  <% end %>
-                  <div class="figure-image">
-                    <% if skin.expiration_date.present? && time_tradelock_integer(skin.expiration_date).positive? %>
-                      <div class="tag-available">
-                        <i class="fas fa-lock"></i> <%= time_tradelock(skin.expiration_date) %>
-                      </div>
-                    <% else %>
-                      <div class="tag-available"></div>
-                    <% end %>
-                    <div class="market-sticker">
-                      <% if skin.has_sticker %>
-                        <% skin.image_sticker.each do |sticker| %>
-                          <%= image_tag(sticker, width: 40) %>
-                        <% end %>
-                      <% end %>
-                    </div>
-                    <%= image_tag(skin.image_skin, width: 300) %>
-                  </div>
-                  <h3 class="product-title" style="height: 45px">
-                    <a style="color: #<%= skin.description_color %>;">
-                      <%= skin.description %>
-                    </a>
-                  </h3>
-                  <% if positive_value?(skin.float) %>
-                    <div style="height: 50px;">
-                      <i class="fas fa-arrow-down float-left fs-10" style="margin-left: <%= skin.float * 100 %>%;"></i>
-                      <div class="progress float-chart"></div>
-                      <%= t('.float') %>: <%= skin.float %>
-                    </div>
-                  <% else %>
-                    <div style="height: 50px;">
-                    </div>
-                  <% end %>
-                  <small class="price">
+                <div style="height: 475px; border-radius: 5.5px; width: 100%; background-color: #cc5b3b;">
+                  <div class="chili-pepper-text market-prices market-card">
                     <% if skin.price_steam > skin.price_csmoney %>
-                      <div class="d-flex" style="height: 30px;">
-                        <div><%= image_tag('logo_steam.png', width: 28) %></div>
-                        <div style="margin-left: 10px; margin-top: 7px;"><%= number_to_currency(skin.price_steam) %></div>
+                      <span class="badge bg-green tag-sale">
+                        <%= sale_percentage(skin.sale_price, skin.price_steam) %>% OFF
+                      </span>
+                    <% else %>
+                      <span class="badge bg-green tag-sale">
+                        <%= sale_percentage(skin.sale_price, skin.price_csmoney) %>% OFF
+                      </span>
+                    <% end %>
+                  </div>
+                  <% if current_user && current_user.is_admin %>
+                    <%= link_to edit_admins_skin_path(skin), class: 'btn btn-dark btn-sm pull-left' do %>
+                      <i class="fas fa-edit"></i>
+                    <% end %>
+                  <% end %>
+                  <div class="inner-product market-card">
+                    <div class="figure-image">
+                      <% if skin.expiration_date.present? && time_tradelock_integer(skin.expiration_date).positive? %>
+                        <div class="tag-available">
+                          <i class="far fa-clock"></i> <%= time_tradelock(skin.expiration_date) %>
+                        </div>
+                      <% else %>
+                        <div class="tag-available"></div>
+                      <% end %>
+                      <%= image_tag(skin.image_skin, width: 300) %>
+                      <div class="market-sticker">
+                        <% if skin.has_sticker %>
+                          <% skin.image_sticker.each do |sticker| %>
+                            <%= image_tag(sticker, width: 65) %>
+                          <% end %>
+                        <% end %>
+                      </div>
+                    </div>
+                    <h3 class="product-title d-flex" style="height: 45px;">
+                      <div style="border-left: 3px solid #<%= skin.description_color %>; height: 19px"></div>
+                      <a style="color: #eeeeee; font-size: 15px; margin-left: 4px;">
+                        <%= skin.description %>
+                      </a>
+                    </h3>
+                    <% if skin.exterior != 'Nenhum' %>
+                      <div class="badge bg-dark" style="margin-left: 4px; height: 20px; font-size: 12px;">
+                        <%= skin.exterior %>
                       </div>
                     <% else %>
-                      <div class="d-flex" style="height: 30px;">
-                        <div style="margin-top: 7px;"><%= image_tag('logo_csmoney.png', width: 28) %></div>
-                        <div style="margin-left: 10px; margin-top: 7px;"><%= number_to_currency(skin.price_csmoney) %></div>
-                      </div>
+                      <div style="height: 20px;"></div>
                     <% end %>
-                    <div class="d-flex">
-                      <div><%= image_tag('logo_without_name.png', width: 28) %></div>
-                      <div style="margin-left: 10px; margin-top: 7px;"><%= number_to_currency(skin.sale_price) %></div>
+                    <small class="price" style="margin-left: 4px">
+                      <% if skin.price_steam > skin.price_csmoney %>
+                        <div style="height: 30px;">
+                          <div style="margin-left: 1px;">
+                            <s style="font-size: 13px">
+                              <%= number_to_currency(skin.price_steam) %>
+                            </s>
+                          </div>
+                          <div style="font-size: 20px">
+                            <%= number_to_currency(skin.sale_price) %>
+                          </div>
+                        </div>
+                      <% else %>
+                        <div style="height: 30px;">
+                          <div style="margin-left: 1px;">
+                            <s style="font-size: 13px;">
+                              <%= number_to_currency(skin.price_csmoney) %>
+                            </s>
+                          </div>
+                          <div style="font-size: 20px">
+                            <%= number_to_currency(skin.sale_price) %>
+                          </div>
+                        </div>
+                      <% end %>
+                    </small>
+                    <% if positive_value?(skin.float) %>
+                      <div style="height: 50px; font-size: 12px;">
+                        <div class="text-center">
+                          <%= t('.float') %>: <%= skin.float.round(4) %>
+                        </div>
+                        <i class="fas fa-sort-down float-left fs-10" style="margin-left: <%= skin.float * 100 %>%;"></i>
+                        <div class="progress float-chart"></div>
+                      </div>
+                    <% else %>
+                      <div style="height: 50px; font-size: 12px;"></div>
+                    <% end %>
+                    <%# <button class="button">
+                      <i class="fas fa-shopping-cart"></i>
+                    </button> %>
+                  </div>
+                  <% if skin.inspect_url.present? %>
+                    <div class="text-center btn-inspect">
+                      <a class="btn text-white" style="width: 100%; font-size: 15px; border-top-left-radius: 0; border-top-right-radius: 0;" href="<%= skin.inspect_url %>">
+                        <%= t('.inspect_in_game') %>
+                      </a>
                     </div>
-                  </small>
-                  <%# <button class="button">
-                    <i class="fas fa-shopping-cart"></i>
-                  </button> %>
+                  <% end %>
                 </div>
               </div>
             <% end %>

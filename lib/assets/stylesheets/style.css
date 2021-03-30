@@ -371,27 +371,40 @@ form textarea {
   color: white;
   margin-bottom: 2px;
   height: 18px;
-  margin-top: 4px;
+  margin-top: 8px;
 }
 
 .market-card {
-  background-color: #1F1F1F !important;
+  background-color: #7c7c7c !important;
   color: white;
 }
 
 .market-sticker {
-  position: relative;
-  float: right;
-  height: 0;
-  width: 42px;
+  text-align: center;
+  margin-top: -25px;
+  display: flex;
+  width: 53px;
+  height: 42px;
 }
 
 .bg-green {
-  background-color: green;
+  background-color: #84b235;
 }
 
 .bg-red {
   background-color: #f54041;
+}
+
+.bg-black {
+  background-color: #111;
+}
+
+.text-white {
+  color: #eeeeee !important;
+}
+
+.btn-inspect a:hover {
+  background-color: #111;
 }
 
 .progress {
@@ -410,8 +423,10 @@ form textarea {
 }
 
 .float-chart {
+  margin-bottom: 2px;
   width: 100%;
-  border: 1px solid #000;
+  margin-left: -2px;
+  border: 1.5px solid #7c7c7c !important;
   background: linear-gradient(to right, #3d818f 7%, #84b235 7%, #84b235 15%, #dfc04a 15%, #dfc04a 37%, #ef8641 37%, #ef8641 44%, #eb5757 44%, #eb5757 0);
 }
 
@@ -2028,7 +2043,7 @@ form textarea {
  * Header Styles
  */
 .site-header {
-  background-color: #2b2b2b;
+  background-color: #333333;
   position: relative;
 }
 .site-header > .container {
@@ -2413,9 +2428,9 @@ form textarea {
 }
 .product-list .product .inner-product {
   background: white;
-  padding: 25px;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
-  border-radius: 15px;
+  padding: 20px;
+  border-top-left-radius: 5.5px;
+  border-top-right-radius: 5.5px;
 }
 .product-list .product .inner-product a.button {
   margin-bottom: 10px;
@@ -2435,9 +2450,6 @@ form textarea {
   }
 }
 .product-list .product .figure-image {
-  border: 4px solid #dedede;
-  border-radius: 3px;
-  overflow: hidden;
   margin-bottom: 30px;
 }
 .product-list .product .figure-image img {
@@ -2463,7 +2475,6 @@ form textarea {
   color: #d7603e;
 }
 .product-list .product .price {
-  color: #d7603e;
   font-size: 16px;
   font-size: 1.1428571429em;
   text-align: left;
@@ -2486,6 +2497,7 @@ form textarea {
   border-radius: 0;
   line-height: 1.5 !important;
   border-bottom-left-radius: 10px;
+  border-top-right-radius: 5.5px;
 }
 
 section {
@@ -2521,13 +2533,6 @@ section header .all {
   font-size: 4.2857142857em;
   font-weight: 100;
   margin-bottom: 10px;
-}
-.page .price {
-  font-size: 30px;
-  font-size: 2.1428571429em;
-  color: #d7603e;
-  display: block;
-  margin-bottom: 30px;
 }
 .page .product-images figure, .page .product-images > a {
   border: 3px solid white;

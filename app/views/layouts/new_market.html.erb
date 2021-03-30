@@ -8,17 +8,28 @@
 		<link href="http://fonts.googleapis.com/css?family=Roboto:100,300,400,700|" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-		<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
-		<link href="fonts/lineo-icon/style.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 
 		<%= stylesheet_link_tag 'no_login' %>
 	</head>
-
-	<body class="slider-collapse">
+  <% env = ENV['DEPLOY_ENV'].presence || Rails.env %>
+  <% if env == 'production' %>
+    <script type="text/javascript">
+      var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+      (function(){
+      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+      s1.async=true;
+      s1.src='https://embed.tawk.to/60623bea067c2605c0bd7105/1f1vrk3fb';
+      s1.charset='UTF-8';
+      s1.setAttribute('crossorigin','*');
+      s0.parentNode.insertBefore(s1,s0);
+      })();
+    </script>
+  <% end %>
+	<body class="slider-collapse" style="background-color: #333333;">
     <%= render partial: 'layouts/components/environment_banner' %>
-		<div id="site-content" style="margin-bottom: 10px !important;">
+		<div id="site-content" style="margin-bottom: 10px !important; background-color: 333333;">
 			<div class="site-header">
 				<div class="container">
           <%= search_form_for @q, url: root_path do |f| %>
@@ -42,7 +53,7 @@
               <% end %>
             </div>
             <div class="search-form">
-              <%= f.text_field :description_cont, placeholder: 'Buscar skin', class: 'form-control col-md-12 mb-2' %>
+              <%= f.text_field :description_cont, placeholder: 'Digite sua busca', class: 'form-control col-md-12 mb-2' %>
             </div>
 					  <div class="main-navigation">
               <div class="dropdown">
@@ -54,7 +65,9 @@
                 </div>
               </div>
               <div class="dropdown">
-                <button class="btn">Tipo de arma</button>
+                <button class="btn">
+                  Tipo de arma
+                </button>
                 <div class="dropdown-content">
                   <% type_weapon_collection.each do |type| %>
                     <%= link_to type, q: {type_weapon_eq: type} %>
@@ -202,9 +215,6 @@
 			</div> <!-- .row -->
 		</div> <!-- .auth-popup --> %>
 
-		<script src="js/jquery-1.11.1.min.js"></script>
-		<script src="js/plugins.js"></script>
-		<script src="js/app.js"></script>
     <%= javascript_include_tag 'no_login' %>
 	</body>
 
