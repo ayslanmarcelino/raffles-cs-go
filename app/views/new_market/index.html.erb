@@ -17,7 +17,7 @@
           <div class="product-list">
             <% @skins.order(created_at: :desc).each do |skin| %>
               <div class="product">
-                <div style="height: 475px; border-radius: 5.5px; width: 100%; background-color: #cc5b3b;">
+                <div style="height: 510px; border-radius: 5.5px; width: 100%; background-color: #cc5b3b;">
                   <div class="chili-pepper-text market-prices market-card">
                     <% if skin.price_steam > skin.price_csmoney %>
                       <span class="badge bg-green tag-sale">
