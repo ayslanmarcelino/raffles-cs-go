@@ -17,17 +17,8 @@
           <div class="product-list">
             <% @skins.order(created_at: :desc).each do |skin| %>
               <div class="product">
-                <div style="height: 510px; border-radius: 5.5px; width: 100%; background-color: #cc5b3b;">
+                <div style="height: 475px; border-radius: 5.5px; width: 100%; background-color: #cc5b3b;">
                   <div class="chili-pepper-text market-prices market-card">
-                    <% if skin.price_steam > skin.price_csmoney %>
-                      <span class="badge bg-green tag-sale">
-                        <%= sale_percentage(skin.sale_price, skin.price_steam) %>% OFF
-                      </span>
-                    <% else %>
-                      <span class="badge bg-green tag-sale">
-                        <%= sale_percentage(skin.sale_price, skin.price_csmoney) %>% OFF
-                      </span>
-                    <% end %>
                   </div>
                   <% if current_user && current_user.is_admin %>
                     <%= link_to edit_admins_skin_path(skin), class: 'btn btn-dark btn-sm pull-left' do %>
@@ -35,6 +26,20 @@
                     <% end %>
                   <% end %>
                   <div class="inner-product market-card">
+                    <% if skin.price_steam > skin.price_csmoney %>
+                      <div class="badge bg-green" style="margin-left: 4px; font-size: 12px;">
+                        <%= sale_percentage(skin.sale_price, skin.price_steam) %>% OFF
+                      </div>
+                    <% else %>
+                      <div class="badge bg-green" style="margin-left: 4px; font-size: 12px;">
+                        <%= sale_percentage(skin.sale_price, skin.price_csmoney) %>% OFF
+                      </div>
+                    <% end %>
+                    <% if skin.exterior != 'Nenhum' %>
+                      <div class="badge bg-dark" style="margin-left: 4px; font-size: 12px;">
+                        <%= skin.exterior %>
+                      </div>
+                    <% end %>
                     <div class="figure-image">
                       <% if skin.expiration_date.present? && time_tradelock_integer(skin.expiration_date).positive? %>
                         <div class="tag-available">
@@ -43,11 +48,15 @@
                       <% else %>
                         <div class="tag-available"></div>
                       <% end %>
-                      <%= image_tag(skin.image_skin, width: 300) %>
+                      <div class="zoom">
+                        <%= image_tag(skin.image_skin, width: 300) %>
+                      </div>
                       <div class="market-sticker">
                         <% if skin.has_sticker %>
                           <% skin.image_sticker.each do |sticker| %>
-                            <%= image_tag(sticker, width: 65) %>
+                            <div class="zoom zoom-sticker" style="width: 60px">
+                              <%= image_tag(sticker) %>
+                            </div>
                           <% end %>
                         <% end %>
                       </div>
@@ -58,13 +67,6 @@
                         <%= skin.description %>
                       </a>
                     </h3>
-                    <% if skin.exterior != 'Nenhum' %>
-                      <div class="badge bg-dark" style="margin-left: 4px; height: 20px; font-size: 12px;">
-                        <%= skin.exterior %>
-                      </div>
-                    <% else %>
-                      <div style="height: 20px;"></div>
-                    <% end %>
                     <small class="price" style="margin-left: 4px">
                       <% if skin.price_steam > skin.price_csmoney %>
                         <div style="height: 30px;">
