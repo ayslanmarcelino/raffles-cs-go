@@ -31,61 +31,125 @@
     <%= render partial: 'layouts/components/environment_banner' %>
 		<div id="site-content" style="margin-bottom: 10px !important; background-color: 333333;">
 			<div class="site-header">
-				<div class="container">
-          <%= search_form_for @q, url: root_path do |f| %>
-            <a href="<%= root_path %>" id="branding">
-              <div class="logo-text">
-                <%= image_tag('logo.png', height: 100) %>
-              </div>
-            </a>
-            <div class="right-section pull-right">
-              <%# <a href="cart.html" class="cart"><i class="icon-cart"></i> 0 items in cart</a> %>
-              <% if current_user %>
-                <%= link_to market_index_path, class: 'btn' do %>
-                  <i class="fas fa-sign-in-alt"></i>
-                  <%= current_user.email %>
-                <% end %>
-              <% else %>
-                <%= link_to new_user_session_path, class: 'btn' do %>
-                  <i class="fas fa-sign-in-alt"></i>
-                  Login
-                <% end %>
+        <%= search_form_for @q, url: root_path do |f| %>
+          <a href="<%= root_path %>" id="branding">
+            <div class="logo-text">
+              <%= image_tag('logo.png', height: 100) %>
+            </div>
+          </a>
+          <div class="right-section pull-right">
+            <%# <a href="cart.html" class="cart"><i class="icon-cart"></i> 0 items in cart</a> %>
+            <% if current_user %>
+              <%= link_to market_index_path, class: 'btn btn-login' do %>
+                <i class="fas fa-sign-in-alt"></i>
+                <%= current_user.email %>
               <% end %>
-            </div>
-            <div class="search-form">
-              <%= f.text_field :description_cont, placeholder: 'Digite sua busca', class: 'form-control col-md-12 mb-2' %>
-            </div>
-					  <div class="main-navigation">
+            <% else %>
+              <%= link_to new_user_session_path, class: 'btn btn-login' do %>
+                <i class="fas fa-sign-in-alt"></i>
+                Login
+              <% end %>
+            <% end %>
+          </div>
+          <div class="search-form">
+            <%= f.text_field :description_cont, placeholder: 'Digite o que você procura', class: 'form-control mb-2' %>
+          </div>
+          <div class="main-navigation">
+            <% if knifes_collection.present? %>
               <div class="dropdown">
-                <button class="btn">Tipo de skin</button>
-                <div class="dropdown-content">
-                  <% type_skin_collection.each do |type| %>
-                    <%= link_to type, q: {type_skin_eq: type} %>
-                  <% end %>
-                </div>
-              </div>
-              <div class="dropdown">
-                <button class="btn">
-                  Tipo de arma
+                <button class="btn menu-items" style="color: #eeeeee">
+                  <%= image_tag('knife.png', height: 30) %>
+                  <%= t('.knifes') %>
+                  <i class="fas fa-chevron-down" style="font-size: 10px;"></i>
                 </button>
                 <div class="dropdown-content">
-                  <% type_weapon_collection.each do |type| %>
-                    <%= link_to type, q: {type_weapon_eq: type} %>
+                  <% knifes_collection.each do |knife| %>
+                    <%= link_to knife, q: {type_weapon_eq: knife} %>
                   <% end %>
                 </div>
               </div>
+            <% end %>
+            <% if gloves_collection.present? %>
               <div class="dropdown">
-                <button class="btn">Exterior</button>
+                <button class="btn menu-items" style="color: #eeeeee">
+                  <%= image_tag('gloves.png', height: 30) %>
+                  <%= t('.gloves') %>
+                  <i class="fas fa-chevron-down" style="font-size: 10px;"></i>
+                </button>
                 <div class="dropdown-content">
-                  <% exterior_collection.each do |exterior| %>
-                    <%= link_to exterior, q: {exterior_eq: exterior} %>
+                  <% gloves_collection.each do |glove| %>
+                    <%= link_to glove, q: {type_weapon_eq: glove} %>
                   <% end %>
                 </div>
               </div>
-						<div class="mobile-navigation"></div>
-					  </div>
-          <% end %>
-				</div>
+            <% end %>
+            <% if rifles_collection.present? %>
+              <div class="dropdown">
+                <button class="btn menu-items" style="color: #eeeeee">
+                  <%= image_tag('rifle.png', height: 30) %>
+                  <%= t('.rifles') %>
+                  <i class="fas fa-chevron-down" style="font-size: 10px;"></i>
+                </button>
+                <div class="dropdown-content">
+                  <% rifles_collection.each do |rifle| %>
+                    <%= link_to rifle, q: {type_weapon_eq: rifle} %>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+            <% if pistols_collection.present? %>
+              <div class="dropdown">
+                <button class="btn menu-items" style="color: #eeeeee">
+                  <%= image_tag('pistol.png', height: 30) %>
+                  <%= t('.pistols') %>
+                  <i class="fas fa-chevron-down" style="font-size: 10px;"></i>
+                </button>
+                <div class="dropdown-content">
+                  <% pistols_collection.each do |pistol| %>
+                    <%= link_to pistol, q: {type_weapon_eq: pistol} %>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+            <% if shotguns_collection.present? %>
+              <div class="dropdown">
+                <button class="btn menu-items" style="color: #eeeeee">
+                  <%= image_tag('shotgun.png', height: 30) %>
+                  <%= t('.shotguns') %>
+                  <i class="fas fa-chevron-down" style="font-size: 10px;"></i>
+                </button>
+                <div class="dropdown-content">
+                  <% shotguns_collection.each do |shotgun| %>
+                    <%= link_to shotgun, q: {type_weapon_eq: shotgun} %>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+            <% if smgs_collection.present? %>
+              <div class="dropdown">
+                <button class="btn menu-items" style="color: #eeeeee">
+                  <%= image_tag('smg.png', height: 30) %>
+                  <%= t('.smgs') %>
+                  <i class="fas fa-chevron-down" style="font-size: 10px;"></i>
+                </button>
+                <div class="dropdown-content">
+                  <% smgs_collection.each do |smg| %>
+                    <%= link_to smg, q: {type_weapon_eq: smg} %>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+            <%# <div class="dropdown">
+              <button class="btn" style="color: #eeeeee">
+                <%= image_tag('sticker.png', height: 30) %>
+                <%# stickers_collection.each do |sticker| %>
+                  <%#= link_to sticker, q: {type_skin_eq: sticker} %>
+                <%# end %>
+              <%# </button>
+            </div> %>
+          <div class="mobile-navigation"></div>
+          </div>
+        <% end %>
 			</div>
 			<%# <div class="home-slider">
 				<ul class="slides">
