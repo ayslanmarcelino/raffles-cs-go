@@ -26,13 +26,6 @@ module MarketHelper
         .uniq
   end
 
-  # def stickers_collection
-  #   Skin.pluck(:type_skin)
-  #       .uniq
-  #       .map! { |types| types['Sticker'] }
-  #       .compact
-  # end
-
   def knifes_type_collection
     Skin.pluck(:type_skin)
         .uniq
@@ -133,5 +126,14 @@ module MarketHelper
     end
 
     @smgs
+  end
+
+  def others_collection
+    Skin.pluck(:type_skin)
+        .uniq
+        .compact
+        .map! { |types| [types['Agent'], types['Sticker'], types['Music Kit'], types['Graffiti']] }
+        .flatten
+        .compact
   end
 end

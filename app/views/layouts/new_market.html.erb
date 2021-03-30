@@ -29,7 +29,7 @@
   <% end %>
 	<body class="slider-collapse" style="background-color: #333333;">
     <%= render partial: 'layouts/components/environment_banner' %>
-		<div id="site-content" style="margin-bottom: 10px !important; background-color: 333333;">
+		<div id="site-content" style="margin-bottom: 10px !important; background-color: #333333;">
 			<div class="site-header">
         <%= search_form_for @q, url: root_path do |f| %>
           <a href="<%= root_path %>" id="branding">
@@ -139,15 +139,21 @@
                 </div>
               </div>
             <% end %>
-            <%# <div class="dropdown">
-              <button class="btn" style="color: #eeeeee">
-                <%= image_tag('sticker.png', height: 30) %>
-                <%# stickers_collection.each do |sticker| %>
-                  <%#= link_to sticker, q: {type_skin_eq: sticker} %>
-                <%# end %>
-              <%# </button>
-            </div> %>
-          <div class="mobile-navigation"></div>
+            <% if others_collection.present? %>
+              <div class="dropdown">
+                <button class="btn menu-items" style="color: #eeeeee">
+                  <%= image_tag('sticker.png', height: 30) %>
+                  <%= t('.others') %>
+                  <i class="fas fa-chevron-down" style="font-size: 10px;"></i>
+                </button>
+                <div class="dropdown-content">
+                  <% others_collection.each do |other| %>
+                    <%= link_to other, q: {type_skin_eq: other} %>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+            <div class="mobile-navigation"></div>
           </div>
         <% end %>
 			</div>
