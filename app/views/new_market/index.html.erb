@@ -11,9 +11,27 @@
   <main class="main-content">
     <div class="container">
       <div class="page">
+        <div class="d-flex text-white mt-2 pull-right">
+          <div>
+            <i class="fas fa-filter" style="font-size: 14px;"></i>
+            <b>
+              <%= t('.order_by') %>:
+            </b>
+          </div>
+          <div class="ml-3">
+            <%= sort_link @q, :description, t('.description'), default_order: :asc %>
+          </div>
+          <div class="ml-3">
+            <%= sort_link @q, :float, t('.float') %>
+          </div>
+          <div class="ml-3">
+            <%= sort_link @q, :sale_price, t('.sale_price') %>
+          </div>
+          <div class="ml-3">
+            <%= sort_link @q, :id, t('.releases') %>
+          </div>
+        </div>
         <section>
-          <header>
-          </header>
           <div class="product-list">
             <% @skins.order(created_at: :desc).each do |skin| %>
               <div class="product">

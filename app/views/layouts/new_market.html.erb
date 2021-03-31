@@ -40,7 +40,7 @@
           <div class="right-section pull-right">
             <%# <a href="cart.html" class="cart"><i class="icon-cart"></i> 0 items in cart</a> %>
             <% if current_user %>
-              <%= link_to market_index_path, class: 'btn btn-login' do %>
+              <%= link_to dashboard_index_path, class: 'btn btn-login' do %>
                 <i class="fas fa-sign-in-alt"></i>
                 <%= current_user.email %>
               <% end %>
@@ -293,5 +293,4 @@
 
     <%= javascript_include_tag 'no_login' %>
 	</body>
-
 </html>
