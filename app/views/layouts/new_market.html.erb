@@ -127,38 +127,46 @@
                 <% end %>
               </div>
             </div>
-            <div class="dropdown">
-              <button class="btn menu-items" style="color: #eeeeee">
-                <%= image_tag('sticker.png', height: 30) %>
-                <% stickers_type_collection.each do |sticker| %>
-                  <%= link_to t('.sticker'), q: {type_skin_eq: sticker} %>
-                <% end %>
-              </button>
-            </div>
-            <div class="dropdown">
-              <button class="btn menu-items" style="color: #eeeeee">
-                <%= image_tag('agent.png', height: 30) %>
-                <% agents_type_collection.each do |agent| %>
-                  <%= link_to t('.agent'), q: {type_skin_eq: agent} %>
-                <% end %>
-              </button>
-            </div>
-            <div class="dropdown">
-              <button class="btn menu-items" style="color: #eeeeee">
-                <%= image_tag('music_kit.png', height: 30) %>
-                <% music_kits_type_collection.each do |music_kit| %>
-                  <%= link_to t('.music_kit'), q: {type_skin_eq: music_kit} %>
-                <% end %>
-              </button>
-            </div>
-            <div class="dropdown">
-              <button class="btn menu-items" style="color: #eeeeee">
-                <%= image_tag('graffiti.png', height: 30) %>
-                <% graffiti_type_collection.each do |graffiti| %>
-                  <%= link_to t('.graffiti'), q: {type_skin_eq: graffiti} %>
-                <% end %>
-              </button>
-            </div>
+            <% if stickers_type_collection.present? %>
+              <div class="dropdown">
+                <button class="btn menu-items" style="color: #eeeeee">
+                  <%= image_tag('sticker.png', height: 30) %>
+                  <% stickers_type_collection.each do |sticker| %>
+                    <%= link_to t('.sticker'), q: {type_skin_eq: sticker} %>
+                  <% end %>
+                </button>
+              </div>
+            <% end %>
+            <% if agents_type_collection.present? %>
+              <div class="dropdown">
+                <button class="btn menu-items" style="color: #eeeeee">
+                  <%= image_tag('agent.png', height: 30) %>
+                  <% agents_type_collection.each do |agent| %>
+                    <%= link_to t('.agent'), q: {type_skin_eq: agent} %>
+                  <% end %>
+                </button>
+              </div>
+            <% end %>
+            <% if music_kits_type_collection.present? %>
+              <div class="dropdown">
+                <button class="btn menu-items" style="color: #eeeeee">
+                  <%= image_tag('music_kit.png', height: 30) %>
+                  <% music_kits_type_collection.each do |music_kit| %>
+                    <%= link_to t('.music_kit'), q: {type_skin_eq: music_kit} %>
+                  <% end %>
+                </button>
+              </div>
+            <% end %>
+            <% if graffiti_type_collection.present? %>
+              <div class="dropdown">
+                <button class="btn menu-items" style="color: #eeeeee">
+                  <%= image_tag('graffiti.png', height: 30) %>
+                  <% graffiti_type_collection.each do |graffiti| %>
+                    <%= link_to t('.graffiti'), q: {type_skin_eq: graffiti} %>
+                  <% end %>
+                </button>
+              </div>
+            <% end %>
             <div class="mobile-navigation"></div>
           </div>
         <% end %>
