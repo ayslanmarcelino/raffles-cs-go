@@ -40,7 +40,7 @@ module MarketHelper
       @knifes << skin
     end
 
-    @knifes
+    @knifes.sort
   end
 
   def gloves_type_collection
@@ -57,14 +57,15 @@ module MarketHelper
       @gloves << skin
     end
 
-    @gloves
+    @gloves.sort
   end
 
   def rifles_type_collection
     Skin.pluck(:type_skin)
         .uniq
         .compact
-        .map! { |types| types['Rifle'] }
+        .map! { |types| [types['Rifle'], types['Sniper Rifle']] }
+        .flatten
         .compact
   end
 
@@ -74,7 +75,7 @@ module MarketHelper
       @rifles << skin
     end
 
-    @rifles
+    @rifles.sort
   end
 
   def pistols_type_collection
@@ -91,7 +92,7 @@ module MarketHelper
       @pistols << skin
     end
 
-    @pistols
+    @pistols.sort
   end
 
   def shotguns_type_collection
@@ -108,7 +109,7 @@ module MarketHelper
       @shotguns << skin
     end
 
-    @shotguns
+    @shotguns.sort
   end
 
   def smgs_type_collection
@@ -125,7 +126,7 @@ module MarketHelper
       @smgs << skin
     end
 
-    @smgs
+    @smgs.sort
   end
 
   def stickers_type_collection
