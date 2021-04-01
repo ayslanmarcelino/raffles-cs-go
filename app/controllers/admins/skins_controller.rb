@@ -102,13 +102,14 @@ module Admins
         skin_image_url = "https://steamcommunity-a.akamaihd.net/economy/image/#{icon_url}"
         exists_skin = Skin.find_by(id_steam: assetid)
 
-        next if skin['marketable'] == 0
+        next if skin['marketable'].zero?
         next if exists_skin
         next if skin['type'] == 'Base Grade Container'
         next if skin['type'] == 'Base Grade Graffiti'
         next if skin['type'] == 'Extraordinary Collectible'
         next if skin['type'] == 'Base Grade Tool'
         next if skin['type'] == 'Base Grade Pass'
+        next if skin['type'] == 'Recipiente'
 
         skin_model = Skin.new
         skin_model.id_steam = assetid
@@ -117,8 +118,8 @@ module Admins
         skin_model.exterior = skin['descriptions'].present? ? exterior(skin) : 'Nenhum'
         skin_model.image_skin = skin_image_url
         skin_model.float = skin['actions'].present? ? inspect_skin(assetid, inspect_url) : 0
-        skin_model.price_steam = price_steam(skin['market_name'])
-        skin_model.first_price_steam = price_steam(skin['market_name'])
+        skin_model.price_steam = price_steam(skin['market_hash_name'])
+        skin_model.first_price_steam = price_steam(skin['market_hash_name'])
         skin_model.has_sticker = sticker?(skin)
         skin_model.name_sticker = name_sticker(skin)
         skin_model.image_sticker = image_sticker(skin)
@@ -129,7 +130,7 @@ module Admins
         skin_model.type_skin = skin['tags'].first['name']
         skin_model.type_weapon = skin['tags'].second['name']
         skin_model.has_name_tag = true if skin['fraudwarnings'].present?
-        skin_model.description_name_tag = skin['fraudwarnings'].present? ? description_name_tag(skin['fraudwarnings']) : '' 
+        skin_model.description_name_tag = skin['fraudwarnings'].present? ? description_name_tag(skin['fraudwarnings']) : ''
         skin_model.save
       end
     end
@@ -148,7 +149,7 @@ module Admins
           exists_skin.name_sticker = name_sticker(skin)
           exists_skin.image_sticker = image_sticker(skin)
           exists_skin.has_name_tag = true if skin['fraudwarnings'].present?
-          exists_skin.description_name_tag = skin['fraudwarnings'].present? ? description_name_tag(skin['fraudwarnings']) : '' 
+          exists_skin.description_name_tag = skin['fraudwarnings'].present? ? description_name_tag(skin['fraudwarnings']) : ''
           exists_skin.save
           next
         end
@@ -156,7 +157,7 @@ module Admins
     end
 
     def requisition_api
-      url = "https://steamcommunity.com/id/#{@steam_account.url}/inventory/json/730/2"
+      url = "https://steamcommunity.com/id/#{@steam_account.url}/inventory/json/730/2?l=brazilian"
       resp = RestClient.get(url)
       @rg_inventory = JSON.parse(resp.body)['rgInventory'].reverse_each.to_a
       @skins_api = JSON.parse(resp.body)['rgDescriptions'].values.reverse
@@ -243,7 +244,7 @@ module Admins
     end
 
     def description_name_tag(name_tag)
-      name_tag.to_s.partition("Name Tag: ''").last.sub("''\"]", '')
+      name_tag.to_s.partition("Etiqueta de Nome: \\\"").last.sub("\\\"\"]", '')
     end
   end
 end

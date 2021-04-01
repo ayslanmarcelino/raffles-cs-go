@@ -30,7 +30,7 @@ module MarketHelper
     Skin.pluck(:type_skin)
         .uniq
         .compact
-        .map! { |types| types['Knife'] }
+        .map! { |types| types['Faca'] }
         .compact
   end
 
@@ -47,7 +47,7 @@ module MarketHelper
     Skin.pluck(:type_skin)
         .uniq
         .compact
-        .map! { |types| types['Gloves'] }
+        .map! { |types| types['Luvas'] }
         .compact
   end
 
@@ -64,7 +64,7 @@ module MarketHelper
     Skin.pluck(:type_skin)
         .uniq
         .compact
-        .map! { |types| [types['Rifle'], types['Sniper Rifle']] }
+        .map! { |types| [types['Rifle'], types['Rifle de Precisão']] }
         .flatten
         .compact
   end
@@ -82,7 +82,7 @@ module MarketHelper
     Skin.pluck(:type_skin)
         .uniq
         .compact
-        .map! { |types| types['Pistol'] }
+        .map! { |types| types['Pistola'] }
         .compact
   end
 
@@ -99,7 +99,24 @@ module MarketHelper
     Skin.pluck(:type_skin)
         .uniq
         .compact
-        .map! { |types| types['Shotgun'] }
+        .map! { |types| types['Escopeta'] }
+        .compact
+  end
+
+  def machineguns_collection
+    @machineguns = []
+    Skin.where(type_skin: machineguns_type_collection).map(&:type_weapon).uniq.each do |skin|
+      @machineguns << skin
+    end
+
+    @machineguns.sort
+  end
+
+  def machineguns_type_collection
+    Skin.pluck(:type_skin)
+        .uniq
+        .compact
+        .map! { |types| types['Metralhadora'] }
         .compact
   end
 
@@ -116,7 +133,7 @@ module MarketHelper
     Skin.pluck(:type_skin)
         .uniq
         .compact
-        .map! { |types| types['SMG'] }
+        .map! { |types| types['Submetralhadora'] }
         .compact
   end
 
@@ -131,33 +148,33 @@ module MarketHelper
 
   def stickers_type_collection
     Skin.pluck(:type_skin)
+        .compact
+        .map! { |types| types['Adesivo'] }
+        .compact
         .uniq
-        .compact
-        .map! { |types| types['Sticker'] }
-        .compact
   end
 
   def agents_type_collection
     Skin.pluck(:type_skin)
+        .compact
+        .map! { |types| types['Agente'] }
+        .compact
         .uniq
-        .compact
-        .map! { |types| types['Agent'] }
-        .compact
   end
 
   def music_kits_type_collection
     Skin.pluck(:type_skin)
+        .compact
+        .map! { |types| types['Trilha Sonora'] }
+        .compact
         .uniq
-        .compact
-        .map! { |types| types['Music Kit'] }
-        .compact
   end
 
   def graffiti_type_collection
     Skin.pluck(:type_skin)
+        .compact
+        .map! { |types| types['Grafite'] }
+        .compact
         .uniq
-        .compact
-        .map! { |types| types['Graffiti'] }
-        .compact
   end
 end

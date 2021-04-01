@@ -125,6 +125,20 @@
                 </div>
               </div>
             <% end %>
+            <% if machineguns_collection.present? %>
+              <div class="dropdown">
+                <button class="btn menu-items" style="color: #eeeeee">
+                  <%= image_tag('machinegun.png', height: 30) %>
+                  <%= t('.machineguns') %>
+                  <i class="fas fa-chevron-down" style="font-size: 10px;"></i>
+                </button>
+                <div class="dropdown-content">
+                  <% machineguns_collection.each do |machinegun| %>
+                    <%= link_to machinegun, q: {type_weapon_eq: machinegun} %>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
             <% if smgs_collection.present? %>
               <div class="dropdown">
                 <button class="btn menu-items" style="color: #eeeeee">

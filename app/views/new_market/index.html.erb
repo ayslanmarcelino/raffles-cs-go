@@ -19,7 +19,7 @@
             </b>
           </div>
           <div class="ml-3">
-            <%= sort_link @q, :description, t('.description'), default_order: :asc %>
+            <%= sort_link @q, :description, t('.description') %>
           </div>
           <div class="ml-3">
             <%= sort_link @q, :float, t('.float') %>
@@ -39,7 +39,7 @@
                   <div class="chili-pepper-text market-prices market-card">
                   </div>
                   <% if current_user && current_user.is_admin %>
-                    <%= link_to edit_admins_skin_path(skin), class: 'btn btn-dark btn-sm pull-left' do %>
+                    <%= link_to edit_admins_skin_path(skin), class: 'btn btn-dark pull-left' do %>
                       <i class="fas fa-edit"></i>
                     <% end %>
                   <% end %>
