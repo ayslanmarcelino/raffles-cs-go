@@ -42,7 +42,7 @@
             <% if current_user %>
               <%= link_to dashboard_index_path, class: 'btn btn-login' do %>
                 <i class="fas fa-sign-in-alt"></i>
-                <%= current_user.email %>
+                <%= current_user.nickname %>
               <% end %>
             <% else %>
               <%= link_to new_user_session_path, class: 'btn btn-login' do %>
