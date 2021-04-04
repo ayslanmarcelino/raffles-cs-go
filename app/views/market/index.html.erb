@@ -1,14 +1,14 @@
 <% if @skins.empty? %>
-  <div class="text-center" style="margin: 0 auto !important">
+  <div class="text-center" style="margin: 0 auto !important; height: 100vh">
     <div>
       <%= image_tag('logo_without_name.png', width: 250) %>
     </div>
-    <h2>
+    <div class="no-skins-available">
       <%= t('.no_skins_available') %>
-    </h2>
+    </div>
   </div>
 <% else %>
-  <main class="main-content">
+  <main>
     <div class="container">
       <div class="page">
         <div class="d-flex text-white mt-2 pull-right">
