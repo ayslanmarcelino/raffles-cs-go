@@ -8,13 +8,17 @@
 
 @import './helpers.scss';
 
-.dropbtn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
+// Colors
+
+$grey: #333333;
+$light-grey: #dddfeb;
+$orange: #d7603e;
+
+.bg-grey {
+  background-color: $grey !important;
 }
+
+// Dropdown menu
 
 .dropdown {
   position: relative;
@@ -37,11 +41,15 @@
   display: block;
 }
 
-.dropdown-content a:hover {background-color: #ddd;}
+.dropdown-content a:hover {
+  background-color: #7c7c7c;
+}
 
-.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
+// Pagination
 
 .pagination {
   display: flex;
@@ -56,17 +64,17 @@
   padding: 0.5rem 0.75rem;
   margin-left: -1px;
   line-height: 1.25;
-  color: #d7603e;
+  color: $orange !important;
   background-color: #fff;
-  border: 1px solid #dddfeb;
+  border: 1px solid $light-grey;
 }
 
 .page-link:hover {
   z-index: 2;
-  color: #d7603e;
+  color: $orange;
   text-decoration: none;
   background-color: #eaecf4;
-  border-color: #dddfeb;
+  border-color: $light-grey;
 }
 
 .page-link:focus {
@@ -88,9 +96,9 @@
 
 .page-item.active .page-link {
   z-index: 3;
-  color: #fff;
-  background-color: #d7603e;
-  border-color: #d7603e;
+  color: #fff !important;
+  background-color: $orange !important;
+  border-color: $orange !important;
 }
 
 .page-item.disabled .page-link {
@@ -98,7 +106,7 @@
   pointer-events: none;
   cursor: auto;
   background-color: #fff;
-  border-color: #dddfeb;
+  border-color: $light-grey;
 }
 
 .pagination-lg .page-link {

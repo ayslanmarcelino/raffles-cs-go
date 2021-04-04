@@ -1,4 +1,4 @@
-class NewMarketController < ApplicationController
+class MarketController < ApplicationController
   def index
     skin_available_to_sale
   end
