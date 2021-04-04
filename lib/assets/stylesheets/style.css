@@ -2250,7 +2250,7 @@ form textarea {
 .zoom:hover {
   -ms-transform: scale(1.19); /* IE 9 */
   -webkit-transform: scale(1.19); /* Safari 3-8 */
-  transform: scale(1.19); 
+  transform: scale(1.19);
 }
 
 .zoom-sticker:hover {

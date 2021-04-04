@@ -1,4 +1,4 @@
-class NewMarketController < NoLoginController
+class NewMarketController < ApplicationController
   def index
     skin_available_to_sale
   end

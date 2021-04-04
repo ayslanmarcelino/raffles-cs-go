@@ -15,7 +15,7 @@ Rails.application.config.assets.precompile += %w[users.js users.css
                                                  logo.png profile-avatar.png
                                                  favicon.ico .svg
                                                  .png logo_without_name.png
-                                                 no_login.css no_login.js
+                                                 application.css application.js
                                                  rifle.png smg.png
                                                  knife.png gloves.png
                                                  pistol.png shotgun.png

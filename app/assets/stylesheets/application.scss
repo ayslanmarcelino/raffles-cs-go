@@ -1,8 +1,9 @@
 /*
-  *= require bootstrap/dist/css/bootstrap
-  *= require metismenu/dist/metisMenu
-  *= require style
-  *= require font-awesome/css/font-awesome
+ *= require_self
+ *= require bootstrap/dist/css/bootstrap
+ *= require metismenu/dist/metisMenu
+ *= require style
+ *= require font-awesome/css/font-awesome
 */
 
 @import './helpers.scss';
