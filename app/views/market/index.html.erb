@@ -1,101 +1,144 @@
 <% if @skins.empty? %>
-  <div class="text-center" style="margin: 0 auto !important">
+  <div class="text-center" style="margin: 0 auto !important; height: 100vh">
     <div>
       <%= image_tag('logo_without_name.png', width: 250) %>
     </div>
-    <h2>
+    <div class="no-skins-available">
       <%= t('.no_skins_available') %>
-    </h2>
+    </div>
   </div>
 <% else %>
-  <%= render partial: 'layouts/filters_skins', locals: { redirect_path: market_index_path } %>
-  <div class="grid-view">
-    <% @skins.order(created_at: :desc).each do |skin| %>
-      <div class="mb-3 mr-3 market-card">
-        <% if skin.expiration_date.present? && time_tradelock_integer(skin.expiration_date).positive? %>
-          <div class="tag-available bg-red">
-            <%= t('.releases_on') %> <%= time_tradelock(skin.expiration_date) %>
+  <main>
+    <div class="container">
+      <div class="page">
+        <div class="d-flex text-white mt-2 pull-right">
+          <div>
+            <i class="fas fa-filter" style="font-size: 14px;"></i>
+            <b>
+              <%= t('.order_by') %>:
+            </b>
           </div>
-        <% else %>
-          <div class="tag-available bg-green">
-            <%= t('.available') %>
+          <div class="ml-3">
+            <%= sort_link @q, :description, t('.description'), default_order: :asc %>
           </div>
-        <% end %>
-        <% if skin.inspect_url.present? %>
-          <a class="btn btn-outline-light btn-sm mt-2 ml-2" href="<%= skin.inspect_url %>">
-            <%= t('.inspect_in_game') %>
-          </a>
-        <% end %>
-        <% if current_user.is_admin %>
-          <%= link_to edit_admins_skin_path(skin), class: 'col-xs-3 btn btn-dark btn-sm mt-2 mr-2 pull-right' do %>
-            <i class="fas fa-edit"></i>
-          <% end %>
-        <% end %>
-        <div class="col-lg-12">
-          <%= image_tag(skin.image_skin, width: 300) %>
-        </div>
-        <div class="card-body p-3">
-          <% if skin.has_sticker %>
-            <div class="market-sticker">
-              <% skin.image_sticker.each do |sticker| %>
-                <%= image_tag(sticker, width: 65) %>
-              <% end %>
-            </div>
-          <% end %>
-          <h5 class="card-title font-weight-bold fuchsia-rose-text mb-0 market-description" style="color: #<%= skin.description_color %>;">
-            <%= skin.description %>
-          </h5>
-          <p class="mb-0">
-            <% if skin.exterior != 'Nenhum' %>
-              <%= skin.exterior %>
-            <% end %>
-          </p>
-          <ul class="list-inline">
-            <% if positive_value?(skin.float) %>
-              <div>
-                <i class="fas fa-arrow-down float-left fs-10" style="margin-left: <%= skin.float * 100 %>%;"></i>
-                <div class="progress float-chart"></div>
-                <%= t('.float') %>: <%= skin.float %>
-              </div>
-            <% end %>
-          </ul>
-          <div class="chili-pepper-text mb-0 market-prices">
-            <% if skin.price_steam > skin.price_csmoney %>
-              <span class="badge badge-success tag-sale">
-                <%= sale_percentage(skin.sale_price, skin.price_steam) %>% OFF
-              </span>
-            <% else %>
-              <span class="badge badge-success tag-sale">
-                <%= sale_percentage(skin.sale_price, skin.price_csmoney) %>% OFF
-              </span>
-            <% end %>
+          <div class="ml-3">
+            <%= sort_link @q, :float, t('.float') %>
           </div>
-          <div class="chili-pepper-text mb-0 market-prices">
-            <br>
-            <a href="https://api.whatsapp.com/send?phone=<%= skin.steam_account.user.ddi %><%= skin.steam_account.user.cell_phone %>
-                    &text=Ol%C3%A1%2C%20fiquei%20interessado%20na%20skin:%20<%= skin.id %> - <%= skin.description %> <%= number_to_currency(skin.price_steam) %>"
-              target="_blank" class=" badge badge-dark uppercase" style="float: right; margin-top: 15px;">
-              <i class="fab fa-whatsapp" style="font-size: 30px;"></i>
-            </a>
-            <% if skin.price_steam > skin.price_csmoney %>
-              <div>
-                <%= image_tag('logo_without_name.png', width: 28) %>
-                <%= number_to_currency(skin.price_steam) %>
-              </div>
-            <% else %>
-              <div>
-                <%= image_tag('logo_without_name.png', width: 28) %>
-                <%= number_to_currency(skin.price_csmoney) %>
-              </div>
-            <% end %>
-            <div>
-              <%= image_tag('logo_without_name.png', width: 28) %>
-              <%= number_to_currency(skin.sale_price) %>
-            </div>
+          <div class="ml-3">
+            <%= sort_link @q, :sale_price, t('.sale_price') %>
+          </div>
+          <div class="ml-3">
+            <%= sort_link @q, :id, t('.releases') %>
           </div>
         </div>
+        <section>
+          <div class="product-list">
+            <% @skins.order(created_at: :desc).each do |skin| %>
+              <div class="product">
+                <div style="height: 475px; border-radius: 5.5px; width: 100%; background-color: #cc5b3b;">
+                  <div class="chili-pepper-text market-prices market-card">
+                  </div>
+                  <% if current_user && current_user.is_admin %>
+                    <%= link_to edit_admins_skin_path(skin), class: 'btn btn-dark btn-sm pull-left' do %>
+                      <i class="fas fa-edit"></i>
+                    <% end %>
+                  <% end %>
+                  <div class="inner-product market-card">
+                    <% if skin.price_steam > skin.price_csmoney %>
+                      <div class="badge bg-green" style="margin-left: 4px; font-size: 12px;">
+                        <%= sale_percentage(skin.sale_price, skin.price_steam) %>% OFF
+                      </div>
+                    <% else %>
+                      <div class="badge bg-green" style="margin-left: 4px; font-size: 12px;">
+                        <%= sale_percentage(skin.sale_price, skin.price_csmoney) %>% OFF
+                      </div>
+                    <% end %>
+                    <% if skin.exterior != 'Nenhum' %>
+                      <div class="badge bg-dark" style="margin-left: 4px; font-size: 12px;">
+                        <%= skin.exterior %>
+                      </div>
+                    <% end %>
+                    <div class="figure-image">
+                      <% if skin.expiration_date.present? && time_tradelock_integer(skin.expiration_date).positive? %>
+                        <div class="tag-available">
+                          <i class="far fa-clock"></i> <%= time_tradelock(skin.expiration_date) %>
+                        </div>
+                      <% else %>
+                        <div class="tag-available"></div>
+                      <% end %>
+                      <div class="zoom">
+                        <%= image_tag(skin.image_skin, width: 300) %>
+                      </div>
+                      <div class="market-sticker">
+                        <% if skin.has_sticker %>
+                          <% skin.image_sticker.each do |sticker| %>
+                            <div class="zoom zoom-sticker" style="width: 60px">
+                              <%= image_tag(sticker) %>
+                            </div>
+                          <% end %>
+                        <% end %>
+                      </div>
+                    </div>
+                    <h3 class="product-title d-flex" style="height: 45px;">
+                      <div style="border-left: 3px solid #<%= skin.description_color %>; height: 19px"></div>
+                      <a style="color: #eeeeee; font-size: 15px; margin-left: 4px;">
+                        <%= skin.description %>
+                      </a>
+                    </h3>
+                    <small class="price" style="margin-left: 4px">
+                      <% if skin.price_steam > skin.price_csmoney %>
+                        <div style="height: 30px;">
+                          <div style="margin-left: 1px;">
+                            <s style="font-size: 13px">
+                              <%= number_to_currency(skin.price_steam) %>
+                            </s>
+                          </div>
+                          <div style="font-size: 20px">
+                            <%= number_to_currency(skin.sale_price) %>
+                          </div>
+                        </div>
+                      <% else %>
+                        <div style="height: 30px;">
+                          <div style="margin-left: 1px;">
+                            <s style="font-size: 13px;">
+                              <%= number_to_currency(skin.price_csmoney) %>
+                            </s>
+                          </div>
+                          <div style="font-size: 20px">
+                            <%= number_to_currency(skin.sale_price) %>
+                          </div>
+                        </div>
+                      <% end %>
+                    </small>
+                    <% if positive_value?(skin.float) %>
+                      <div style="height: 50px; font-size: 12px;">
+                        <div class="text-center">
+                          <%= t('.float') %>: <%= skin.float.round(4) %>
+                        </div>
+                        <i class="fas fa-sort-down float-left fs-10" style="margin-left: <%= skin.float * 100 %>%;"></i>
+                        <div class="progress float-chart"></div>
+                      </div>
+                    <% else %>
+                      <div style="height: 50px; font-size: 12px;"></div>
+                    <% end %>
+                    <%# <button class="button">
+                      <i class="fas fa-shopping-cart"></i>
+                    </button> %>
+                  </div>
+                  <% if skin.inspect_url.present? %>
+                    <div class="text-center btn-inspect">
+                      <a class="btn text-white" style="width: 100%; font-size: 15px; border-top-left-radius: 0; border-top-right-radius: 0;" href="<%= skin.inspect_url %>">
+                        <%= t('.inspect_in_game') %>
+                      </a>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <%= paginate @skins %>
+        </section>
       </div>
-    <% end %>
-  </div>
-  <%= paginate @skins %>
+    </div>
+  </main>
 <% end %>

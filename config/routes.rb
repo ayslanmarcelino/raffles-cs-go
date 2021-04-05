@@ -22,9 +22,9 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/loja', to: 'market#index'
   get 'dashboard/index'
-  get 'market/index'
   devise_for :users
 
-  root to: 'new_market#index'
+  root to: 'market#index'
 end
