@@ -17,9 +17,10 @@
   <%= render partial: 'layouts/components/tawkio_bot' %>
 	<body class="slider-collapse">
     <%= render partial: 'layouts/components/environment_banner' %>
-		<div id="site-content" class="bg-grey">
+		<div id="site-content" class="bg-dark-grey">
 			<%= render partial: 'layouts/components/header_menu' %>
       <%= yield %>
+			<%= render partial: 'layouts/components/footer' %>
     </div>
     <%= javascript_include_tag 'application' %>
 	</body>

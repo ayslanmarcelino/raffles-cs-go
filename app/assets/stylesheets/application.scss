@@ -9,12 +9,14 @@
 
 // Colors
 
-$grey: #333333;
+$super-dark-grey: #2b2b2b;
+$dark-grey: #333333;
 $light-grey: #dddfeb;
+$grey: #7c7c7c;
 $orange: #d7603e;
 
-.bg-grey {
-  background-color: $grey !important;
+.bg-dark-grey {
+  background-color: $dark-grey !important;
 }
 
 .no-skins-available {
@@ -105,7 +107,7 @@ section {
 }
 
 .dropdown-content a {
-  color: $grey !important;
+  color: $dark-grey !important;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
@@ -663,4 +665,63 @@ section {
   margin-left: -2px;
   border: 1.5px solid #7c7c7c !important;
   background: linear-gradient(to right, #3d818f 7%, #84b235 7%, #84b235 15%, #dfc04a 15%, #dfc04a 37%, #ef8641 37%, #ef8641 44%, #eb5757 44%, #eb5757 0);
+}
+
+// Footer
+
+.site-footer {
+  background-color: $super-dark-grey;
+  padding: 50px 0;
+  font-size: 12px;
+  font-size: 0.8571428571em;
+}
+
+.site-footer a {
+  color: $orange !important;
+  -webkit-transition: .3s ease;
+          transition: .3s ease;
+} 
+
+.site-footer .colophon:after {
+  content: " ";
+  clear: both;
+  display: block;
+  overflow: hidden;
+  height: 0;
+}
+
+.site-footer .colophon .copy {
+  float: left;
+  margin-top: 10px;
+  font-size: 14px;
+  color: $light-grey;
+  line-height: 1.5;
+}
+
+.site-footer .colophon .developed-by {
+  font-size: 12px;
+}
+
+.site-footer .colophon .social-links {
+  float: right;
+}
+
+.site-footer .social-links a:hover {
+  background-color: $light-grey;
+}
+
+.social-links a {
+  display: inline-block;
+}
+
+.social-links.square a {
+  width: 35px;
+  height: 35px;
+  border-radius: 3px;
+  background: $dark-grey;
+  color: $orange !important;
+  text-align: center;
+  font-size: 14px;
+  font-size: 1.8em;
+  line-height: 1.8;
 }
