@@ -1,14 +1,4 @@
 pt-BR:
   layouts:
     application:
-      knifes: Facas
-      gloves: Luvas
-      rifles: Rifles
-      pistols: Pistolas
-      shotguns: Escopetas
-      smgs: SMG
-      others: Outros
-      sticker: Stickers
-      agent: Agentes
-      music_kit: Trilhas sonoras
-      graffiti: Grafites
+      title: Pingo Rifas e Skins - @pingo.rifas

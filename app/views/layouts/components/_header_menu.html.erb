@@ -26,28 +26,20 @@
         <div class="dropdown">
           <button class="btn menu-items" style="color: #eeeeee">
             <%= image_tag('knife.png', height: 30) %>
-            <%= t('.knifes') %>
-            <i class="fas fa-chevron-down" style="font-size: 10px;"></i>
-          </button>
-          <div class="dropdown-content">
-            <% knifes_collection.each do |knife| %>
-              <%= link_to knife, q: {type_weapon_eq: knife} %>
+            <% knifes_type_collection.each do |knife| %>
+              <%= link_to t('.knifes'), q: {type_skin_eq: knife} %>
             <% end %>
-          </div>
+          </button>
         </div>
       <% end %>
       <% if gloves_collection.present? %>
         <div class="dropdown">
           <button class="btn menu-items" style="color: #eeeeee">
             <%= image_tag('gloves.png', height: 30) %>
-            <%= t('.gloves') %>
-            <i class="fas fa-chevron-down" style="font-size: 10px;"></i>
-          </button>
-          <div class="dropdown-content">
-            <% gloves_collection.each do |glove| %>
-              <%= link_to glove, q: {type_weapon_eq: glove} %>
+            <% gloves_type_collection.each do |glove| %>
+              <%= link_to t('.gloves'), q: {type_skin_eq: glove} %>
             <% end %>
-          </div>
+          </button>
         </div>
       <% end %>
       <% if rifles_collection.present? %>
