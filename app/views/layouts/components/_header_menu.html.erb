@@ -7,10 +7,22 @@
     </a>
     <div class="right-section pull-right">
       <% if current_user %>
-        <%= link_to dashboard_index_path, class: 'btn' do %>
-          <i class="fas fa-sign-in-alt"></i>
-          <%= current_user.nickname %>
-        <% end %>
+        <div class="dropdown">
+          <button class="btn menu-items" style="color: #eeeeee">
+            <i class="fas fa-user-circle"></i>
+            <%= current_user.nickname %>
+          </button>
+          <div class="dropdown-content">
+            <%= link_to dashboard_index_path, class: 'dropdown-item' do %>
+              <i class="fas fa-chart-line fa-sm fa-fw mr-2 text-gray-400"></i>
+              <%= t('.dashboard') %>
+            <% end %>
+            <%= link_to destroy_user_session_path, method: :delete, class: 'dropdown-item' do %>
+              <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+              <%= t('.exit') %>
+            <% end %>
+          </div>
+        </div>
       <% else %>
         <div class="dropdown">
           <button class="btn menu-items" style="color: #eeeeee">
