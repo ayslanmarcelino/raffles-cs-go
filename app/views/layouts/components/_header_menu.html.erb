@@ -21,6 +21,33 @@
               <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
               <%= t('.exit') %>
             <% end %>
+            <% if current_user.is_admin %>
+              <span class="text-center color-white"><%= t('.admin') %></span>
+              <%= link_to admins_dashboard_index_path, class: 'dropdown-item' do %>
+                <i class="fas fa-chart-line fa-sm fa-fw mr-2 text-gray-400"></i>
+                <%= t('.dashboard') %>
+              <% end %>
+              <%= link_to admins_users_index_path, class: 'dropdown-item' do %>
+                <i class="fas fa-users fa-tachometer-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                <%= t('.users') %>
+              <% end %>
+              <%= link_to admins_steam_accounts_index_path, class: 'dropdown-item' do %>
+                <i class="far fa-id-card fa-sm fa-fw mr-2 text-gray-400"></i>
+                <%= t('.steam_accounts') %>
+              <% end %>
+              <%= link_to admins_transaction_types_index_path, class: 'dropdown-item' do %>
+                <i class="fas fa-fw fa-list-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                <%= t('.transaction_types') %>
+              <% end %>
+              <%= link_to admins_transactions_index_path, class: 'dropdown-item' do %>
+                <i class="fas fa-exchange-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                <%= t('.transactions') %>
+              <% end %>
+              <%= link_to admins_skins_index_path, class: 'dropdown-item' do %>
+                <%= image_tag('rifle.png', height: 20, class: 'fa-sm fa-fw mr-2 text-gray-400') %>
+                <%= t('.skins') %>
+              <% end %>
+            <% end %>
           </div>
         </div>
       <% else %>
