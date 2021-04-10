@@ -1,33 +1,31 @@
 <div>
   <%= search_form_for @q, url: root_path do |f| %>
-    <div>
-      <a href="<%= root_path %>" id="branding">
+    <a href="<%= root_path %>" id="branding">
+      <div class="logo-text">
         <%= image_tag('logo.png', height: 100) %>
-      </a>
-      <div class="">
-        <div class="">
-          <%= f.text_field :description_cont, placeholder: 'Digite o que você procura', class: 'form-control mb-2' %>
-        </div>
-        <div class="">
-          <% if current_user %>
-            <%= link_to dashboard_index_path, class: 'btn' do %>
-              <i class="fas fa-sign-in-alt"></i>
-              <%= current_user.nickname %>
-            <% end %>
-          <% else %>
-            <div class="dropdown">
-              <button class="btn menu-items" style="color: #eeeeee">
-                <i class="fas fa-user-circle"></i>
-                <%= t('.my_account') %>
-              </button>
-              <div class="dropdown-content">
-                <%= link_to '<i class="fas fa-plus"></i> Criar conta'.html_safe, new_user_registration_path %>
-                <%= link_to '<i class="fas fa-sign-in-alt"></i> Login'.html_safe, new_user_session_path %>
-              </div>
-            </div>
-          <% end %>
-        </div>
       </div>
+    </a>
+    <div class="right-section pull-right">
+      <% if current_user %>
+        <%= link_to dashboard_index_path, class: 'btn' do %>
+          <i class="fas fa-sign-in-alt"></i>
+          <%= current_user.nickname %>
+        <% end %>
+      <% else %>
+        <div class="dropdown">
+          <button class="btn menu-items" style="color: #eeeeee">
+            <i class="fas fa-user-circle"></i>
+            <%= t('.my_account') %>
+          </button>
+          <div class="dropdown-content">
+            <%= link_to '<i class="fas fa-plus"></i> Criar conta'.html_safe, new_user_registration_path %>
+            <%= link_to '<i class="fas fa-sign-in-alt"></i> Login'.html_safe, new_user_session_path %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="search-form">
+      <%= f.text_field :description_cont, placeholder: 'Digite o que você procura', class: 'form-control mb-2' %>
     </div>
     <div class="main-navigation">
       <% if knifes_collection.present? %>
