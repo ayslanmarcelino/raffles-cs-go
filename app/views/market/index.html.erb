@@ -121,9 +121,9 @@
                     <% else %>
                       <div style="height: 50px; font-size: 12px;"></div>
                     <% end %>
-                    <%# <button class="button">
-                      <i class="fas fa-shopping-cart"></i>
-                    </button> %>
+                    <div class="text-center">
+                      <%= link_to t('.more_info'), market_path(skin) %>
+                    </div>
                   </div>
                   <% if skin.inspect_url.present? %>
                     <div class="text-center btn-inspect">

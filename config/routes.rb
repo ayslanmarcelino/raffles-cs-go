@@ -22,7 +22,11 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :market, only: %i[show index]
+
   get '/loja', to: 'market#index'
+  get '/loja/:id', to: 'market#show'
+
   get 'dashboard/index'
   devise_for :users
 

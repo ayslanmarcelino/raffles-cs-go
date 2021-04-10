@@ -1,7 +1,6 @@
 class MarketController < ApplicationController
-  def index
-    skin_available_to_sale
-  end
+  before_action :skin_available_to_sale, only: %i[index show]
+  before_action :set_skin, only: %i[show]
 
   private
 
@@ -13,5 +12,9 @@ class MarketController < ApplicationController
              .page(params[:page])
              .ransack(params[:q])
     @skins = @q.result(distinct: true)
+  end
+
+  def set_skin
+    @skin = Skin.find(params[:id])
   end
 end

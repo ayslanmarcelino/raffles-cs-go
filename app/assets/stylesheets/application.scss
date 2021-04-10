@@ -624,6 +624,23 @@ section {
   transform: scale(1.90); 
 }
 
+.zoom-show {
+  transition: transform .4s;
+  margin: 0 auto;
+}
+
+.zoom-show:hover {
+  -ms-transform: scale(1.35); /* IE 9 */
+  -webkit-transform: scale(1.35); /* Safari 3-8 */
+  transform: scale(1.35);
+}
+
+.zoom-sticker:hover {
+  -ms-transform: scale(1.90); /* IE 9 */
+  -webkit-transform: scale(1.90); /* Safari 3-8 */
+  transform: scale(1.90); 
+}
+
 .bg-green {
   background-color: #84b235;
 }

@@ -51,7 +51,6 @@ module Dashboard
       price_paid = 0
       list_transactions.each do |transaction|
         transaction.skins.each do |skin|
-          skin.price_paid
           price_paid += skin.price_paid
         end
       end
@@ -79,7 +78,7 @@ module Dashboard
     end
 
     def transactions_by_type
-      list_transactions.where('created_at > ? AND created_at < ?', Time.now.beginning_of_month, Time.now.end_of_month)
+      list_transactions.where(created_at: Time.now.beginning_of_month..Time.now.end_of_month)
                        .group(:transaction_type)
                        .sum(:price)
     end
@@ -125,7 +124,7 @@ module Dashboard
     end
 
     def list_transactions
-      Transaction.where(user_id: @current_user.id)
+      Transaction.includes(:skins).where(user_id: @current_user.id)
     end
 
     def list_skins

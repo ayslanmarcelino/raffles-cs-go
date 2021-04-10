@@ -18,7 +18,9 @@
 	<body class="slider-collapse">
     <%= render partial: 'layouts/components/environment_banner' %>
 		<div id="site-content" class="bg-dark-grey">
+		<% if root_path %>
 			<%= render partial: 'layouts/components/header_menu' %>
+			<% end %>
       <%= yield %>
 			<%= render partial: 'layouts/components/footer' %>
     </div>
