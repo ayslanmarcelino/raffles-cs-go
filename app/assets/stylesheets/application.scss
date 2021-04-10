@@ -24,6 +24,38 @@ $orange: #d7603e;
   font-size: 25px;
 }
 
+.btn-orange {
+  color: $light-grey !important;
+  background-color: $orange !important;
+  border-color: $orange !important;
+}
+
+.static-value-registration {
+  position: absolute;
+  left: 70px;
+  font-weight: bold;
+  font-size: 0.8em;
+  color: #444;
+  top: 275px;
+}
+
+.input-ddi {
+	padding: 5px 5px 5px 25px !important;
+}
+
+.custom-control-label {
+  position: relative;
+  margin-bottom: 0;
+  vertical-align: top;
+  margin-left: 42px;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  color: #fff;
+  border-color: $orange !important;
+  background-color: $orange !important;
+}
+
 // Native methods
 
 body {

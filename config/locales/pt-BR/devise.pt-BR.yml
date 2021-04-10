@@ -3,7 +3,7 @@
 pt-BR:
   devise:
     shared:
-      sign_up: Ainda não possui conta? Cadastre-se aqui
+      sign_up: Criar nova conta
     confirmations:
       confirmed: "Sua conta foi confirmada com sucesso. Você está logado."
       send_instructions: "Dentro de minutos, você receberá um e-mail com instruções para a confirmação da sua conta."
@@ -72,7 +72,8 @@ pt-BR:
       signed_out: "Saiu com sucesso."
       already_signed_out: "Saiu com sucesso."
       new:
-        welcome: Bem-vindo ao @pingo.rifas
+        has_login: Já sou cadastrado
+        no_login: Ainda não possuo cadastro
         email: Digite seu e-mail
         password: Digite sua senha
         enter: Entrar
