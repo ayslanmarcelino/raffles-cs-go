@@ -1,6 +1,6 @@
 <% if @transaction_info[:transactions_by_month_values].present? %>
   <div class="d-flex">
-    <div class="card text-center mb-2 mr-1" style="width: 50%;">
+    <div class="text-center mb-2 mr-1" style="width: 50%;">
       <h4><%= t('admins.dashboard.index.chart_transactions') %></h4>
       <canvas id="chartTransactions" style="width: 50%; height: 50%"></canvas>
       <div id="values"
@@ -8,7 +8,7 @@
            data-values="<%= @transaction_info[:transactions_by_month_values] %>">
       </div>
     </div>
-    <div class="card text-center mb-2" style="width: 50%;">
+    <div class="text-center mb-2" style="width: 50%;">
       <h4><%= t('admins.dashboard.index.chart_net_profit') %></h4>
       <canvas id="chartNetProfit" style="width: 50%; height: 50%"></canvas>
       <div id="valuesNetProfit"
@@ -19,7 +19,7 @@
   </div>
 <% end %>
 <% if @transaction_info[:transactions_by_type_values].sum.positive? %>
-  <div class="card text-center">
+  <div class="text-center">
     <h4><%= t('admins.dashboard.index.chart_pie_by_transactions_in') %> <%= Date.today.strftime('%m/%Y') %></h4>
     <canvas id="chartPieTransactions" style="width: 50%; height: 50%"></canvas>
     <div id="valuesPie"

@@ -25,7 +25,9 @@
     <%= render partial: 'layouts/components/environment_banner' %>
 		<div id="site-content" class="bg-dark-grey">
 			<%= render partial: 'layouts/components/header_menu' %>
-      <%= yield %>
+      <div style="padding: 50px;">
+        <%= yield %>
+      </div>
 			<%= render partial: 'layouts/components/footer' %>
     </div>
     <%= javascript_include_tag 'application' %>
