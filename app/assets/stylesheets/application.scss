@@ -673,6 +673,12 @@ section {
   color: #eeeeee !important;
 }
 
+.btn-inspect {
+  background-color: $orange;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
 .btn-inspect a:hover {
   background-color: #111;
 }
