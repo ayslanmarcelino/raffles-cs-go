@@ -84,40 +84,32 @@
                     </a>
                   </h3>
                   <small class="price" style="margin-left: 4px">
-                    <% if skin.price_steam > skin.price_csmoney %>
-                      <div style="height: 30px;">
-                        <div style="margin-left: 1px;">
-                          <s style="font-size: 13px">
+                    <div class="text-center" style="height: 30px;">
+                      <div style="font-size: 20px">
+                        <b><%= number_to_currency(skin.sale_price) %></b>
+                      </div>
+                      <div style="margin-left: 1px;">
+                        <div class="text-center" style="font-size: 13px;">
+                          <%= t('.suggested_price') %>:
+                          <% if skin.price_steam > skin.price_csmoney %>
                             <%= number_to_currency(skin.price_steam) %>
-                          </s>
-                        </div>
-                        <div style="font-size: 20px">
-                          <%= number_to_currency(skin.sale_price) %>
-                        </div>
-                      </div>
-                    <% else %>
-                      <div style="height: 30px;">
-                        <div style="margin-left: 1px;">
-                          <s style="font-size: 13px;">
+                          <% else %>
                             <%= number_to_currency(skin.price_csmoney) %>
-                          </s>
-                        </div>
-                        <div style="font-size: 20px">
-                          <%= number_to_currency(skin.sale_price) %>
+                          <% end %>
                         </div>
                       </div>
-                    <% end %>
+                    </div>
                   </small>
                   <% if positive_value?(skin.float) %>
-                    <div style="height: 50px; font-size: 12px;">
+                    <div class="float">
                       <div class="text-center">
-                        <%= t('.float') %>: <%= skin.float.round(4) %>
+                        <b><%= t('.float') %>: <%= skin.float.round(4) %></b>
                       </div>
                       <i class="fas fa-sort-down float-left fs-10" style="margin-left: <%= skin.float * 100 %>%;"></i>
                       <div class="progress float-chart"></div>
                     </div>
                   <% else %>
-                    <div style="height: 50px; font-size: 12px;"></div>
+                    <div class="float"></div>
                   <% end %>
                   <%# <button class="button">
                     <i class="fas fa-shopping-cart"></i>

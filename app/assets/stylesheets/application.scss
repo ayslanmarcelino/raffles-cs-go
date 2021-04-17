@@ -706,6 +706,12 @@ section {
   background: linear-gradient(to right, #3d818f 7%, #84b235 7%, #84b235 15%, #dfc04a 15%, #dfc04a 37%, #ef8641 37%, #ef8641 44%, #eb5757 44%, #eb5757 0);
 }
 
+.float {
+  height: 50px;
+  font-size: 12px;
+  color: $light-grey;
+}
+
 // Footer
 
 .site-footer {
