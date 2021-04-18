@@ -28,7 +28,7 @@
                   <td><%= full_name_formatted(user) %></td>
                   <td><%= user.email %></td>
                   <td>
-                    <span class="badge-type badge-<%= admin_color?(user.is_admin) %>">
+                    <span class="badge badge-<%= admin_color?(user.is_admin) %>">
                       <%= admin?(user.is_admin) %>
                     </span>
                   </td>
