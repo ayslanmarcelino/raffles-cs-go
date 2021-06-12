@@ -24,6 +24,7 @@ class SteamAccount < ApplicationRecord
   belongs_to :user
   validates_uniqueness_of :url
   validates_uniqueness_of :steam_id
+  has_many :skin
 
   def account_formatted
     "#{url} | #{description}"
