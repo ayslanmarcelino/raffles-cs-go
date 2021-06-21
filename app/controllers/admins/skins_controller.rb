@@ -12,8 +12,9 @@ module Admins
                .ransack(params[:q])
 
       @skins = @q.result(distinct: true)
-      @all_skins = Skin.all
-      @available_skins = Skin.where(is_available: true)
+      @all_skins = Skin.joins(:steam_account).where('steam_accounts.user_id' => current_user.id)
+      @available_skins = Skin.joins(:steam_account)
+                              .where('steam_accounts.user_id' => current_user.id, is_available: true)
       @steam_accounts = SteamAccount.where(user_id: current_user.id)
                                     .order(:description)
     end
@@ -87,7 +88,7 @@ module Admins
       params.require(:skin).permit(:description, :float, :price_steam,
                                    :price_csmoney, :price_paid, :sale_price,
                                    :is_stattrak, :has_sticker, :is_available,
-                                   :transaction_id)
+                                   :transaction_id, :ignore_financial)
     end
 
     def search_skins

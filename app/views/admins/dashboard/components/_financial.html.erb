@@ -1,9 +1,9 @@
 <h4>
   <%= t('admins.dashboard.index.financial') %>
 </h4>
-<div class="col-12 d-inline-flex f-wrap">
+<div class="col-12 d-inline-flex f-wrap row">
   <div class="col-xl-3 col-md-6 mb-4 f-wrap">
-    <div class="card border-left-steam shadow h-100 py-2">
+    <div class="border-left-steam shadow h-100 py-2">
       <div class="card-body">
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
@@ -22,7 +22,7 @@
     </div>
   </div>
   <div class="col-xl-3 col-md-6 mb-4 f-wrap">
-    <div class="card border-left-csmoney shadow h-100 py-2">
+    <div class="border-left-csmoney shadow h-100 py-2">
       <div class="card-body">
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
@@ -41,7 +41,7 @@
     </div>
   </div>
   <div class="col-xl-3 col-md-6 mb-4 f-wrap">
-    <div class="card border-left-warning shadow h-100 py-2">
+    <div class="border-left-warning shadow h-100 py-2">
       <div class="card-body">
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
@@ -60,7 +60,7 @@
     </div>
   </div>
   <div class="col-xl-3 col-md-6 mb-4 f-wrap">
-    <div class="card border-left-<%= @financial_info[:difference_value].positive? ? 'success' : 'danger' %> shadow h-100 py-2">
+    <div class="border-left-<%= @financial_info[:difference_value].positive? ? 'success' : 'danger' %> shadow h-100 py-2">
       <div class="card-body">
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
