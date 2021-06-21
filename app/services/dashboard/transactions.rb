@@ -132,6 +132,7 @@ module Dashboard
       Skin.includes(:steam_account)
           .joins(:steam_account)
           .where("steam_accounts.user_id = #{@current_user.id}")
+          .where(ignore_financial: false)
     end
   end
 end

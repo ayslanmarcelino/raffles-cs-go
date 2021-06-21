@@ -13,6 +13,7 @@
 #  has_name_tag         :boolean          default(FALSE)
 #  has_sticker          :boolean          default(FALSE)
 #  id_steam             :bigint           not null
+#  ignore_financial     :boolean          default(FALSE)
 #  image_skin           :string
 #  image_sticker        :text             default([]), is an Array
 #  inspect_url          :string

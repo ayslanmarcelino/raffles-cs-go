@@ -88,7 +88,7 @@ module Admins
       params.require(:skin).permit(:description, :float, :price_steam,
                                    :price_csmoney, :price_paid, :sale_price,
                                    :is_stattrak, :has_sticker, :is_available,
-                                   :transaction_id)
+                                   :transaction_id, :ignore_financial)
     end
 
     def search_skins
