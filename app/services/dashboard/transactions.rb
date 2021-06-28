@@ -79,6 +79,9 @@ module Dashboard
     end
 
     def transactions_by_type
+      
+      binding.pry
+      
       list_transactions.where('created_at > ? AND created_at < ?', Time.now.beginning_of_month, Time.now.end_of_month)
                        .group(:transaction_type)
                        .sum(:price)
@@ -120,6 +123,7 @@ module Dashboard
 
     def list_transactions
       Transaction.where(user_id: @current_user.id)
+                 .where('extract(year from created_at) = ?', Date.current.year)
     end
 
     def list_skins
