@@ -120,6 +120,7 @@ module Dashboard
 
     def list_transactions
       Transaction.where(user_id: @current_user.id)
+                 .where('extract(year from transactions.created_at) = ?', Date.current.year)
     end
 
     def list_skins
@@ -127,6 +128,7 @@ module Dashboard
           .joins(:steam_account)
           .where("steam_accounts.user_id = #{@current_user.id}")
           .where(ignore_financial: false)
+          .where('extract(year from skins.created_at) = ?', Date.current.year)
     end
   end
 end
