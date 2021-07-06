@@ -79,9 +79,6 @@ module Dashboard
     end
 
     def transactions_by_type
-      
-      binding.pry
-      
       list_transactions.where('created_at > ? AND created_at < ?', Time.now.beginning_of_month, Time.now.end_of_month)
                        .group(:transaction_type)
                        .sum(:price)
